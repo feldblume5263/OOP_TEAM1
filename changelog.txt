@@ -5,3 +5,4 @@ change log
 -make changelog file
 2020-09-25 push 박준홍
 - make Plan_manager file
+- merge plan_manger.h into existing file
