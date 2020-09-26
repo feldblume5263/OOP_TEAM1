@@ -19,7 +19,7 @@ class               PlanManger
 {
 private:
     vector<Plan>    plan_array;
-    
+
 public:
     PlanManger();
     ~PlanManger();
