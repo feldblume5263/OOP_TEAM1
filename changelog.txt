@@ -1,7 +1,7 @@
-change log 
+change log
 
-2020-09-25 1st push 이지호 
--make new header files 
+2020-09-25 1st push 이지호
+-make new header files
 -make changelog file
 2020-09-25 push 박준홍
 - make Plan_manager file
@@ -11,3 +11,5 @@ change log
 2020-09-27 push 이지호
 -update plan.h date.h
 -add plan.cpp date.cpp
+2020-09-29 push 박준홍
+-update plan_manger.cpp, plan_manager.h - Class Functions implementation (except sorting and detailed design):w
