@@ -6,6 +6,7 @@
 # include <vector>
 # include <algorithm>
 # include <cstring>
+# include <ctime>
 
 using namespace std;
 
@@ -20,12 +21,11 @@ private:
 public:
 	Plan(int _month = 0, int _day = 0, string _meal = "", int _meal_type = 0)
 	{
-		month = _month;
-		day = _day;
-		meal = _meal;
-		meal_type = _meal_type;
+		this->month = _month;
+		this->day = _day;
+		this->meal = _meal;
+		this->meal_type = _meal_type;
 	}
-	Plan() {}
 
 	void			make_plan() {}
 	bool			find_plan(int _month, int _day, int _meal_type)
@@ -50,6 +50,19 @@ public:
 		cout << meal << endl;
 		cout << endl;
 		return ;
+	}
+	bool			operator < (Plan plan) const
+	{
+		if (this->month == plan.month)
+		{
+			if (this->day == plan.day)
+				return (this->meal_type < plan.meal_type);
+			else
+				return (this->day < plan.day);
+		}
+		else
+			return (this->month < plan.month);
+
 	}
 };
 
