@@ -1,4 +1,4 @@
-## change log
+## Change Log
 
 ****
 
@@ -25,4 +25,5 @@
 - edit meal.h   
    
 ##### 2020-10-01 push 박준홍   
-- complete planData sorting   
+- complete planData sorting
+- change logfile format into markdown   
