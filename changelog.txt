@@ -21,5 +21,6 @@ change log
 2020-09-30 push 유준서
 - add meal.cpp
 - edit meal.h
+
 2020-10-01 push 박준홍
-- finsih sorting
+- complete planData sorting
