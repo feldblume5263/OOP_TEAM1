@@ -70,8 +70,5 @@ int		main(void)
 	plan_data.delete_plan(7, 21, 2);
 	cout << "<after delete>" << endl;
 	plan_data.show_all_meal();
-
-
-
-
+	return (0);
 }
