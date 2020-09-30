@@ -3,37 +3,33 @@
 
 
 
-Meal::Meal()
-    : num_of_people(1)
-{}
-
-void Meal::setNumofpeople(const int& people_in)
+int Meal::getNumofpeople(int order)
 {
-    num_of_people = people_in;
+    return num_of_people[order];
 }
 
-int Meal::getNumofpeople()
-{
-    return num_of_people;
-}
-
-// add vector ingredientes
-void Meal::addMenu(Recipe _menu)
+// add vector Menu and num_of_people
+void Meal::addMenu(Recipe _menu, const int& people_in)
 {
     menus.push_back(_menu);
+    num_of_people.push_back(people_in);
 }
 
 // delete menus and ingredients form selected menus
 void Meal::deleteMenu(int order)
 {
-    auto itr = menus.begin() + order - 1;
-    //delete *itr;
-    menus.erase(itr);
+    auto itr1 = menus.begin() + order;
+    auto itr2 = num_of_people.begin() + order;
+    menus.erase(itr1);
+    num_of_people.erase(itr2);
 }
+
 
 // show name of menus and ingredients scaled by num_of_people
 void Meal::showMeal()
 {
+    int i = 0;
+
     for (auto each_menu : menus)
     {
         cout << " >> Recipe Name :" << each_menu.getMenu() << endl;
@@ -41,18 +37,30 @@ void Meal::showMeal()
         cout << " >> Ingredients :" << endl;
         for (auto each_ingredient : each_menu.getIngredients())
         {
-            cout << "  - " << each_ingredient << "  \tX" << num_of_people << endl;
+            cout << "  - " << each_ingredient << "  \tX" << num_of_people[i] << endl;
         }
+
+        i += 1;
 
         cout << "---------------------\n" << endl;
 
     }
 }
 
-
-
-//return one meal(menus, ingredients) for plan class...
-vector<Recipe>& Meal::get_menus()
+vector<Recipe> Meal::get_menus()
 {
     return menus;
 }
+
+vector<int> Meal::get_num_of_people()
+{
+    return num_of_people;
+}
+
+
+//return one meal(menus, ingredients) for plan class...
+// TODO : contain num_of_people
+//auto Meal::get_menus()
+//{
+//    return tuple<std::vector<Recipe>, std::vector<int>>(menus, num_of_people);
+//}

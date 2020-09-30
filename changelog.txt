@@ -13,3 +13,6 @@ change log
 -add plan.cpp date.cpp
 2020-09-29 push 박준홍
 -update plan_manger.cpp, plan_manager.h - Class Functions implementation (except sorting and detailed design):w
+20202-09-30 push 유준서
+-add meal.cpp
+-edit meal.h
