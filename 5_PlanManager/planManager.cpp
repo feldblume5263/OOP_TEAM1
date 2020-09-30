@@ -1,4 +1,4 @@
-#include "PlanManager.h"
+#include "planManager.h"
 
 using namespace std;
 
@@ -46,6 +46,7 @@ void	PlanManger::show_all_meal()
 {
 	int		idx;
 
+	sort(plan_array.begin(), plan_array.end());
 	idx = 0;
 	while (idx < plan_array.size())
 	{
@@ -58,20 +59,21 @@ void	PlanManger::show_all_meal()
 int		main(void)
 {
 	Plan	plan1(7, 21, "hamburger", 2);
-	Plan	plan2(4, 12, "cake", 3);
-	Plan	plan3(1, 7, "chicken", 1);
+	Plan	plan2(1, 7, "chicken", 1);
+	Plan	plan3(4, 12, "cake", 3);
+	Plan	plan4(4, 12, "rice", 1);
+	Plan	plan5(4, 12, "chicken", 2);
 
 	PlanManger plan_data;
 	plan_data.add_plan(plan1);
 	plan_data.add_plan(plan2);
 	plan_data.add_plan(plan3);
+	plan_data.add_plan(plan4);
+	plan_data.add_plan(plan5);
 	cout << "<before delete>" << endl;
 	plan_data.show_all_meal();
 	plan_data.delete_plan(7, 21, 2);
 	cout << "<after delete>" << endl;
 	plan_data.show_all_meal();
-
-
-
-
+	return (0);
 }
