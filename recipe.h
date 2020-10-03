@@ -3,23 +3,43 @@
 #include<vector>
 #include<string>
 using namespace std;
+
 class Recipe {
 private:
-	vector<string> ingredients;
-	vector<string> order;
-	string name;
+    int id;
+    string name;
+    string description;
+    vector<string> ingredients;
 public:
-	Recipe();
-	Recipe(string _name);
-	~Recipe();
-	void Revise();
-	void Add();
-	void Remove();
-	void ShowRecipe();
-	string get_name();
-	string set_name();
-
-
+    Recipe(int id) { this->id = id; }
+    ~Recipe(){};
+   
+    //Functions
+    void addIngredient(string ingredient);
+    bool removeIngredient(string ingredient);
+    bool searchIngredient(string ingredient);
+    void printRecipe();
+    //Get
+    int getID() {
+        return id;
+    }
+    string getName() {
+        return name;
+    }
+    string getDescription() {
+        return description;
+    }
+    vector<string>& getIngredients() {
+        return ingredients;
+    } 
+    //Set
+    void setName(string name) {
+        this->name = name;
+    }
+    void setDescription(string description) {
+        this->description = description;
+    }
+	
 };
 
 

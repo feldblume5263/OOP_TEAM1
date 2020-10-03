@@ -1,4 +1,4 @@
-#include<iostream>
+
 #include"date.h"
 Date::Date() {
 	month = 0;
@@ -49,7 +49,7 @@ void Date::set_month(int _month) {
 	}
 }
 int Date::get_day() {
-
+	return day;
 }
 void Date::set_day(int _day) {
 	switch (month) {

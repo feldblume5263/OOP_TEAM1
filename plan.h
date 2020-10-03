@@ -1,5 +1,6 @@
 #ifndef PLAN_H
 #define PLAN_H
+#include<iostream>
 #include"meal.h"
 #include"date.h"
 using namespace std;
