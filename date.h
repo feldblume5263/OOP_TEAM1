@@ -13,9 +13,9 @@ public:
 	Date(int _month, int _day, string _comment);
 	~Date();
 	int get_month();
-	void set_month(int_month);
+	void set_month(int _month);
 	int get_day();
-	void set_month(int_day);
+	void set_day(int _day);
 	string get_comment();
 	void set_comment(string _comment);
 };
