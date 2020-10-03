@@ -3,10 +3,11 @@
 #include <cstdlib>
 #include <algorithm>
 #include "recipe.h"
+#include "iikh.hpp"
 using namespace std;
 
 //재료 추가
-void Recipe::addIngredient(string ingredient)
+void Recipe::addIngredient(Ingredient ingredient)
 {
 	ingredients.push_back(ingredient);
 }
@@ -16,18 +17,16 @@ bool Recipe::removeIngredient(string ingredient)
 {
 	int size = ingredients.size();
 	for (int i = 0; i < size; i++) {
-		if (ingredients[i] == ingredient) {
+		if (ingredients[i].name == ingredient) {
 			ingredients.erase(ingredients.begin() + i);
 			return true;
 		}
 	}
 	return false;
 }
-bool Recipe::searchIngredient(string ingredient)
+void Recipe::addOrder(string order)
 {
-    if(find(ingredients.begin(),ingredients.end(),ingredient) != ingredients.end() ) {
-        return true;
-    }else { return false; }
+    ingredient_order.push_back(order);
 }
 //출력
 void Recipe::printRecipe()
@@ -37,21 +36,33 @@ void Recipe::printRecipe()
     cout << "-------------------"<< endl;
     cout << endl;
 
-    cout << " <Name> " << getName() << endl;
+    cout << " Name: " << getName() << endl;
+    cout << " Cooking Time: " << getDuration() << endl;
+    if (getDescription().size())
+    {
+        cout << endl;
+        cout << "Description: " << getDescription();
+    }
+
     if (getIngredients().size())
     {
         cout << endl;
         cout << " <Ingredients List>" << endl;
         for (int i = 0; i < getIngredients().size(); i++)
         {
-            cout << " " << i + 1 << ". " << getIngredients()[i] << endl;
+            cout << " " << i + 1 << ". " << getIngredients()[i].name << endl;
         }
     }
 
-    if (getDescription().size())
+    if (getOrder().size())
     {
         cout << endl;
-        cout << " <Description> " << getDescription();
+        cout << " Cooking Order ";
+        for (int i = 0; i < getIngredients().size(); i++)
+        {
+            cout << " " << i + 1 << ". " << getOrder()[i] << endl;
+        }
+
     }
 
     cout << endl << endl;
