@@ -27,8 +27,7 @@ bool Recipe::searchIngredient(string ingredient)
 {
     if(find(ingredients.begin(),ingredients.end(),ingredient) != ingredients.end() ) {
         return true;
-    }
-    return false;
+    }else { return false; }
 }
 //출력
 void Recipe::printRecipe()
