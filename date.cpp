@@ -1,4 +1,4 @@
-#include<iostream>
+
 #include"date.h"
 Date::Date() {
 	month = 0;
