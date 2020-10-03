@@ -9,12 +9,11 @@ private:
     int id;
     string name;
     string description;
-	vector<string> ingredients;
+    vector<string> ingredients;
 public:
-	Recipe();
+    Recipe();
     Recipe(int id) { this->id = id; }
-	Recipe(string _name);
-	~Recipe();
+   
     //Functions
     void addIngredient(string ingredient);
     bool removeIngredient(string ingredient);
@@ -39,10 +38,7 @@ public:
     void setDescription(string description) {
         this->description = description;
     }
-    
-    
-
-
+	
 };
 
 
