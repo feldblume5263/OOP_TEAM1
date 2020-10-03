@@ -16,6 +16,10 @@ protected:
     std::vector <Recipe> menus;
 
 public:
+    Meal();
+
+    ~Meal();
+
     int getNumofpeople(int order);
 
     void addMenu(Recipe _menu, const int& people_in = 1);

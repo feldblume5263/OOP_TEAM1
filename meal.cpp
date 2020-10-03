@@ -3,6 +3,16 @@
 
 
 
+Meal::Meal()
+{
+    ;
+}
+
+Meal::~Meal()
+{
+    ;
+}
+
 int Meal::getNumofpeople(int order)
 {
     return num_of_people[order];
