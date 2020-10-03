@@ -11,9 +11,8 @@ private:
     string description;
     vector<string> ingredients;
 public:
-    Recipe();
     Recipe(int id) { this->id = id; }
-    ~Recipe();
+    ~Recipe(){};
    
     //Functions
     void addIngredient(string ingredient);
