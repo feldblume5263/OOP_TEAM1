@@ -13,10 +13,12 @@ private:
 public:
     Recipe();
     Recipe(int id) { this->id = id; }
+    ~Recipe();
    
     //Functions
     void addIngredient(string ingredient);
     bool removeIngredient(string ingredient);
+    bool searchIngredient(string ingredient);
     void printRecipe();
     //Get
     int getID() {
