@@ -12,14 +12,15 @@ private:
 	int meal_type;
 public:
 	Plan();
-	Plan(Date& _date, Meal& _menu, int _meal_type);
+	Plan(int _month, int _day, Meal& _menu, int _meal_type);
 	~Plan();
-	Date get_date();
-	void set_date(Date& _date);
-	Meal get_menu();
-	void set_menu(Meal& _menu);
-	int get_meal_type();
-	void set_meal_type(int _meal_type);
-	void ShowPlan();
+	Date getDate();
+	void setDate(Date& _date);
+	void setDate(int _year, int _month);
+	Meal getMenu();
+	void setMenu(Meal& _menu);
+	int getMealType();
+	void setMealType(int _meal_type);
+	void showPlan();
 };
 #endif

@@ -1,61 +1,96 @@
-
 #include"plan.h"
 
-
 using namespace std;
+
+/*
+Plan Class
+
+-Control Menu, Date, Meal Type
+
+*/
 
 Plan::Plan() {
 }
 
-Plan::Plan(Date& _date, Meal& _menu, int _meal_type) {
-	date = _date;
+
+
+Plan::Plan(int _month, int _day, Meal& _menu, int _meal_type) {
+
+	//Handling exception from Date Class
+	try {
+		date = Date(_month, _day, "");
+	}
+	catch (out_of_range e)
+	{
+		cout << "Error	: Can not construct date instance. Check parameter!";
+	}
+
 	menu = _menu;
 	meal_type = _meal_type;
 }
 Plan::~Plan() {
 
 }
-Date Plan::get_date() {
+
+//Getter and Setter of Private Value;
+
+Date Plan::getDate() {
 	return date;
 }
-void Plan::set_date(Date&_date) {
+
+void Plan::setDate(Date& _date) {
 	date = _date;
 }
-Meal Plan::get_menu() {
+
+void Plan::setDate(int _year, int _month) {
+	date = Date(_year, _month, "");
+}
+
+Meal Plan::getMenu() {
 	return menu;
 }
-void Plan::set_menu(Meal& _menu) {
+
+void Plan::setMenu(Meal& _menu) {
 	menu = _menu;
 }
-int Plan::get_meal_type() {
+
+int Plan::getMealType() {
 	return meal_type;
 }
-void Plan::set_meal_type(int _meal_type) {
+
+void Plan::setMealType(int _meal_type) {
 	meal_type = _meal_type;
 }
-void Plan::ShowPlan() {
-	
-	string month = (date.get_month() < 10) ? "0" + to_string(date.get_month()) : to_string(date.get_month());
-	string day=(date.get_day() < 10) ? "0" + to_string(date.get_day()) : to_string(date.get_day());
 
-	cout << "Date:" + month + "-" + day + "\n";
+
+//Show plan
+
+void Plan::showPlan() {
+
+	string month = (date.getMonth() < 10) ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
+	string day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
+
+	cout << "Date	:" + month + "-" + day + "\n";
 	switch (meal_type) {
 	case 1:
-		cout << "Meal Type: Breakfast\n";
+		cout << "Meal Type	: Breakfast\n";
 		break;
 	case 2:
-		cout << "Meal Type: Lunch\n";
+		cout << "Meal Type	: Lunch\n";
 		break;
 	case 3:
-		cout << "Meal Type: Dinner\n";
+		cout << "Meal Type	: Dinner\n";
 		break;
 	case 4:
-		cout << "Meal Type: Snack\n";
+		cout << "Meal Type	: Snack\n";
 		break;
 	case 5:
-		cout << "Meal Type: Late-Night Snack\n";
+		cout << "Meal Type	: Late-Night Snack\n";
+		break;
+	defalut:
+		cout << "Meal Type	: Unknown\n";
 		break;
 	}
-	menu.ShowMeal();
-	}
-	
+	menu.showMeal();
+}
+

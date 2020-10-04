@@ -13,12 +13,12 @@ public:
 	Date();
 	Date(int _month, int _day, string _comment);
 	~Date();
-	int get_month();
-	void set_month(int _month);
-	int get_day();
-	void set_day(int _day);
-	string get_comment();
-	void set_comment(string _comment);
+	int getMonth();
+	void setMonth(int _month);
+	int getDay();
+	void setDay(int _day);
+	string getComment();
+	void setComment(string _comment);
 };
 
 
