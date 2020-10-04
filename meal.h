@@ -1,37 +1,39 @@
 #pragma once
 #ifndef MEAL_H
 #define MEAL_H
-#include"recipe.h"
 #include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <tuple>
+#include "iikh.hpp"
+#include"recipe.h"
 
 
 class Meal
 {
 protected:
-    std::vector <int> num_of_people;
-    std::vector <Recipe> menus;
+    typedef struct Serving {
+        Recipe menus;
+        int num_of_people;
+    } Serving;
+
+    std::vector <Serving> meals;
 
 public:
     Meal();
 
     ~Meal();
 
-    int getNumofpeople(int order);
-
+    // add menus
     void addMenu(Recipe _menu, const int& people_in = 1);
 
+    // delete menus and ingredients form selected menus
     void deleteMenu(int order);
 
+    // show name of menus and ingredients scaled by num_of_people
     void showMeal();
 
-    vector <Recipe> get_menus();
-
-    vector <int> get_num_of_people();
-
+    vector <Serving> get_meals();
 };
 
 

@@ -24,4 +24,9 @@ typedef struct Ingredient {
 	}
 } Ingredient;
 
+//typedef struct Serving {
+//	std::vector <int> num_of_people;
+//	std::vector <Recipe> menus;
+//} Serving;
+
 #endif
