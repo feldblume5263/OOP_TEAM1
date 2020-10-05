@@ -9,12 +9,13 @@ Date Class
 
 
 Date::Date() {
+	/*year = 0;*/ 
 	month = 0;
 	day = 0;
 	comment = "";
 }
 Date::Date(int _year, int _month, int _day, string _comment) {
-	if (_year < 0) throw out_of_range("Check Year Argument");
+	/*if (_year < 0) throw out_of_range("Check Year Argument");*/
 	//Check Month Value
 	if (_month > 12 || _month <= 0) {
 		throw out_of_range("Check Month Argument");
@@ -39,7 +40,7 @@ Date::Date(int _year, int _month, int _day, string _comment) {
 			}
 		}
 	}
-	year = _year;
+	/*year = _year;*/
 	month = _month;
 	day = _day;
 	comment = _comment;
@@ -57,13 +58,13 @@ Date::~Date() {
 //Getter and Setter of Private Value
 
 
-int Date::getYear() {
+/*int Date::getYear() {
 	return year;
 }
 
 void Date::setYear(int _year) {
 	year = _year;
-}
+}*/
 int Date::getMonth() {
 	return month;
 }

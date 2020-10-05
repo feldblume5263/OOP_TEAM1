@@ -6,16 +6,16 @@ using namespace std;
 
 class Date {
 private:
-	int year;
+	/*int year;*/
 	int month;
 	int day;
 	string comment;
 public:
 	Date();
-	Date(int _year, int _month, int _day, string _comment);
+	/*Date(int _year, int _month, int _day, string _comment);*/
 	~Date();
-	int getYear();
-	void setYear(int _year);
+	/*int getYear();
+	void setYear(int _year);*/
 	int getMonth();
 	void setMonth(int _month);
 	int getDay();
