@@ -10,19 +10,19 @@ PlanManger::~PlanManger()
 {
 }
 
-void	PlanManger::add_plan(Plan planToAdd)
+void	PlanManger::addPlan(Plan planToAdd)
 {
 	plan_array.push_back(planToAdd);
 }
 
-void	PlanManger::delete_plan(int _month, int _day, int _meal_type)
+void	PlanManger::deletePlan(int _month, int _day, int _meal_type)
 {
 	int		idx;
 
 	idx = 0;
 	while (idx < plan_array.size())
 	{
-		if (plan_array[idx].find_plan(_month, _day, _meal_type) == true)
+		if (plan_array[idx].findPlan(_month, _day, _meal_type) == true)
 		{
 			plan_array.erase(plan_array.begin() + idx);
 			return ;
@@ -33,16 +33,16 @@ void	PlanManger::delete_plan(int _month, int _day, int _meal_type)
 	return ;
 }
 
-void	PlanManger::revise_plan(int _month, int _day, int _meal_type)
+void	PlanManger::revisePlan(int _month, int _day, int _meal_type)
 {
 	Plan	planToRevise;
 
-	delete_plan(_month, _day, _meal_type);
-	planToRevise.make_plan(); //plan클래스에서 plan만드는 단계
-	add_plan(planToRevise);
+	deletePlan(_month, _day, _meal_type);
+	planToRevise.makePlan(); //plan클래스에서 plan만드는 단계
+	addPlan(planToRevise);
 }
 
-void	PlanManger::show_all_meal()
+void	PlanManger::showAllMeal()
 {
 	int		idx;
 
@@ -50,7 +50,7 @@ void	PlanManger::show_all_meal()
 	idx = 0;
 	while (idx < plan_array.size())
 	{
-		plan_array[idx].print_plan();
+		plan_array[idx].printPlan();
 		idx++;
 	}
 	return ;
@@ -65,15 +65,15 @@ int		main(void)
 	Plan	plan5(4, 12, "chicken", 2);
 
 	PlanManger plan_data;
-	plan_data.add_plan(plan1);
-	plan_data.add_plan(plan2);
-	plan_data.add_plan(plan3);
-	plan_data.add_plan(plan4);
-	plan_data.add_plan(plan5);
+	plan_data.addPlan(plan1);
+	plan_data.addPlan(plan2);
+	plan_data.addPlan(plan3);
+	plan_data.addPlan(plan4);
+	plan_data.addPlan(plan5);
 	cout << "<before delete>" << endl;
-	plan_data.show_all_meal();
-	plan_data.delete_plan(7, 21, 2);
+	plan_data.showAllMeal();
+	plan_data.deletePlan(7, 21, 2);
 	cout << "<after delete>" << endl;
-	plan_data.show_all_meal();
+	plan_data.showAllMeal();
 	return (0);
 }

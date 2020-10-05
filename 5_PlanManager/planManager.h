@@ -27,14 +27,14 @@ public:
 		this->meal_type = _meal_type;
 	}
 
-	void			make_plan() {}
-	bool			find_plan(int _month, int _day, int _meal_type)
+	void			makePlan() {}
+	bool			findPlan(int _month, int _day, int _meal_type)
 	{
 		if (month == _month && day == _day && meal_type == _meal_type)
 			return (true);
 		return (false);
 	}
-	void			print_plan()
+	void			printPlan()
 	{
 		string	meal_label;
 
@@ -75,11 +75,11 @@ public:
 	PlanManger();
 	~PlanManger();
 
-	void			add_plan(Plan planToAdd);
-	void			delete_plan(int _month, int _day, int _meal_type);
-	void			revise_plan(int _month, int _day, int _meal_type);
-	void			show_all_meal();
-	bool			find_plan(Plan planToFind, int _month, int _day, int _meal_type);
+	void			addPlan(Plan planToAdd);
+	void			deletePlan(int _month, int _day, int _meal_type);
+	void			revisePlan(int _month, int _day, int _meal_type);
+	void			showAllMeal();
+	bool			findPlan(Plan planToFind, int _month, int _day, int _meal_type);
 };
 
 #endif
