@@ -1,7 +1,7 @@
 #include "../includes/recipe_database.h"
 
 RecipeDatabase::RecipeDatabase() {
-    this->file_name = "recipe.txt";
+    this->file_name = "../database/recipe.txt";
     ifstream dbfile(file_name);
 
     if(dbfile.is_open()) {
