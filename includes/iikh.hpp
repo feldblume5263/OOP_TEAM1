@@ -18,13 +18,31 @@
 
 using namespace std;
 
-typedef struct Ingredient {
+//typedef struct Ingredient {
+	//string name;
+	//int weight;
+	//bool operator<(const Ingredient& a) {
+		//return a.name == this->name ? this->name < a.name : this->weight < a.weight;
+	//}
+//} Ingredient;
+class Ingredient {
+private:
 	string name;
 	int weight;
-	bool operator<(const Ingredient& a) {
-		return a.name == this->name ? this->name < a.name : this->weight < a.weight;
+public:
+	string getName() {
+		return name;
 	}
-} Ingredient;
+	int getWeight() {
+		return weight;
+	}
+	void setName(string name) {
+		this->name = name;
+	}
+	void setWeight(int weight) {
+		this->weight = weight;
+	}
+};
 
 //typedef struct Serving {
 //	std::vector <int> num_of_people;

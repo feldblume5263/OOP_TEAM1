@@ -8,13 +8,13 @@
 #include"recipe.h"
 
 using namespace std;
-typedef struct Ingredient {
-	string name;
-	int weight;
-	bool operator<(const Ingredient& a) {
-		return a.name == this->name ? this->name < a.name : this->weight < a.weight;
-	}
-} Ingredient;
+//typedef struct Ingredient {
+//	string name;
+//	int weight;
+//	bool operator<(const Ingredient& a) {
+//		return a.name == this->name ? this->name < a.name : this->weight < a.weight;
+//	}
+//} Ingredient;
 
 class RecipeDatabase {
 private:
