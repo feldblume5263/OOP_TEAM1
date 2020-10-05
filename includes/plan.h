@@ -31,7 +31,6 @@ public:
 	//Greeter
 	void			makePlan() {}
 
-
 	void			showPlan();
 	bool			findPlan(int _month, int _day, int _meal_type);
 	void			printPlan();
