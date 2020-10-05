@@ -3,6 +3,7 @@
 #include<vector>
 #include<string>
 #include "iikh.hpp"
+
 using namespace std;
 
 class Recipe {
@@ -16,7 +17,7 @@ private:
 public:
     Recipe(int id) { this->id = id; }
     ~Recipe(){};
-   
+
     //Functions
     void addIngredient(Ingredient ingredient);
     bool removeIngredient(string ingredient);
@@ -35,7 +36,7 @@ public:
     }
     vector<Ingredient>& getIngredients() {
         return ingredients;
-    } 
+    }
     vector<string>& getOrder() {
         return ingredient_order;
     }
@@ -53,8 +54,8 @@ public:
     void setDuration(int duration) {
         this->duration = duration;
     }
-    
-	
+
+
 };
 
 

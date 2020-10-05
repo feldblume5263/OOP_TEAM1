@@ -40,8 +40,8 @@ public:
 	// 플랜을 비교할 때 우선순위를 제공하기 위한 연산자
 	bool			operator < (Plan plan)
 	{
-		//if (this-> date.getYear() == plan.getYear())
-		//{
+		if (this-> date.getYear() == plan.getYear())
+		{
 			if (this->date.getMonth() == plan.date.getMonth())
 			{
 				if (this->date.getDay() == plan.date.getDay())
@@ -51,9 +51,9 @@ public:
 			}
 			else
 				return (this->date.getMonth() < plan.date.getMonth());
-		//}
-		//else
-		//	return (this-> date.getYear() < plan.getYear());
+		}
+		else
+			return (this-> date.getYear() < plan.getYear());
 	}
 };
 

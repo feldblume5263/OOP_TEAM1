@@ -89,7 +89,7 @@ bool			Plan::findPlan(int _month, int _day, int _meal_type)
 // plan을 출력하기 위한 오브젝트
 void			Plan::printPlan()
 {
-	int			idx;
+	string		s_year = to_string(date.getYear());
 	string		s_month = date.getMonth() < 10 ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
 	string 		s_day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
 	string		meal_label;
@@ -107,7 +107,6 @@ void			Plan::printPlan()
 	else
 		meal_label = "unknown";
 	cout << s_month << " / " << s_day << " / " << meal_label << endl;
-	idx = 0;
 	menu.showMeal();
 	cout << endl;
 	return ;

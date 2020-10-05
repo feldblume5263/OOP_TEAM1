@@ -5,7 +5,8 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
-#include"../recipe.h"
+#include"recipe.h"
+
 using namespace std;
 typedef struct Ingredient {
 	string name;
@@ -30,7 +31,7 @@ public:
 	void deleteRecipe(Recipe recipe);
 	vector<Recipe> getRecipes();
 	vector<Recipe> getRecipes(vector<string> ingredients);
- 
+
 };
 
 

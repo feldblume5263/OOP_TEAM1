@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/*
+Plan Class
+
+-Control Menu, Date, Meal Type
+
+*/
+
 Plan::Plan(int _year, int _month, int _day, Meal& _menu, int _meal_type)
 {
 

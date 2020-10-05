@@ -1,17 +1,17 @@
-#include "../database/recipe_database.h"
+#include "../includes/recipe_database.h"
 
 RecipeDatabase::RecipeDatabase() {
     this->file_name = "recipe.txt";
     ifstream dbfile(file_name);
 
-    if(dbfile.is_open()) {   
+    if(dbfile.is_open()) {
         dbfile.seekg(0, std::ios::end);
         int size = dbfile.tellg();
         if(size == 0) last_id = 10000;
         else {
             dbfile.seekg(0, std::ios::beg);
             string line;
-            while(dbfile) { 
+            while(dbfile) {
                 getline(dbfile, line);
             }
             istringstream ss(line);
@@ -57,7 +57,7 @@ void RecipeDatabase::insertRecipe(vector<Ingredient> ingredients) {
 
         for(int i=0; i<ingredients_num; i++) {
             dbout << ingredients[i].name << "," << ingredients[i].weight;
-            dbout << (i == ingredients_num-1) ? "\n" : "/"; 
+            dbout << (i == ingredients_num-1) ? "\n" : "/";
         }
         dbout.close();
     }
@@ -112,7 +112,7 @@ void RecipeDatabase::writeRecipes(vector<Recipe> recipes) {
             for(int j=0; j<ingredients_num; j++) {
                 dbout << recipes[i].getid() << "/";
                 dbout << recipes[i].getIngredients()[j] << "," << recipes[i].getWeights()[j];
-                dbout << (j == ingredients_num-1) ? "\n" : "/"; 
+                dbout << (j == ingredients_num-1) ? "\n" : "/";
             }
         }
         dbout.close();
@@ -138,7 +138,7 @@ bool RecipeDatabase::containsIngredients(vector<string> ingredients, Recipe reci
             }
         }
     }
-    
+
     if(same_num < ingredients.size()) return false;
     return true;
 }
@@ -184,7 +184,7 @@ vector<Recipe> RecipeDatabase::getRecipes(vector<string> ingredients) {
         // throw noRecipesExeception();
     }
 
-    if(ret.size() == 0) { 
+    if(ret.size() == 0) {
         //throw noRecipesException();
      }
      return ret;

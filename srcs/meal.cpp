@@ -1,5 +1,5 @@
 #pragma once
-#include "meal.h"
+#include "../includes/plan.h"
 
 Meal::Meal()
 {
@@ -40,7 +40,7 @@ void Meal::showMeal()
         for (auto each_ingredient : each_menu.menus.getIngredients())
         {
             cout << "  - " << each_ingredient << "  \tX" << each_menu.num_of_people << endl;
-            // TODO :  get_weight * num_of_people (( After checking recipe class )) 
+            // TODO :  get_weight * num_of_people (( After checking recipe class ))
         }
 
         i += 1;

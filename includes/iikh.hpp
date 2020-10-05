@@ -1,11 +1,12 @@
 #pragma once
+
 #ifndef MEAL_H
 #define MEAL_H
 #include "date.h"
 #include "meal.h"
 #include "plan.h"
-#include "5_PlanManager/planManager.h"
-#include "database/recipe_database.h"
+#include "planManager.h"
+#include "recipe_database.h"
 #include "recipe.h"
 #include <iostream>
 #include <string>
@@ -14,6 +15,7 @@
 #include <tuple>
 #include <fstream>
 #include <sstream>
+
 using namespace std;
 
 typedef struct Ingredient {

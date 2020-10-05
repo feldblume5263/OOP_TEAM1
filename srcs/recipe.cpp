@@ -2,8 +2,8 @@
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
-#include "recipe.h"
-#include "iikh.hpp"
+#include "../includes/recipe.h"
+#include "../includes/iikh.hpp"
 using namespace std;
 
 //재료 추가
