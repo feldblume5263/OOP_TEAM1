@@ -9,6 +9,13 @@ using namespace std;
 //재료 추가
 void Recipe::addIngredient(Ingredient ingredient)
 {
+    int size = ingredients.size();
+    for (int i=0;i<size;i++) {
+        if(ingredients[i].getName()==ingredient.getName()) {
+            ingredients[i].setWeight(ingredients[i].getWeight() + ingredient.getWeight());
+            return;
+        }
+    }
 	ingredients.push_back(ingredient);
 }
 
@@ -17,7 +24,7 @@ bool Recipe::removeIngredient(string ingredient)
 {
 	int size = ingredients.size();
 	for (int i = 0; i < size; i++) {
-		if (ingredients[i].name == ingredient) {
+		if (ingredients[i].getName() == ingredient) {
 			ingredients.erase(ingredients.begin() + i);
 			return true;
 		}
@@ -50,7 +57,7 @@ void Recipe::printRecipe()
         cout << " <Ingredients List>" << endl;
         for (int i = 0; i < getIngredients().size(); i++)
         {
-            cout << " " << i + 1 << ". " << getIngredients()[i].name << endl;
+            cout << " " << i + 1 << ". " << getIngredients()[i].getName() << endl;
         }
     }
 

@@ -21,7 +21,6 @@ public:
     //Functions
     void addIngredient(Ingredient ingredient);
     bool removeIngredient(string ingredient);
-    bool searchIngredient(Ingredient ingredient);
     void addOrder(string order);
     void printRecipe();
     //Get
