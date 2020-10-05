@@ -32,8 +32,8 @@ public:
 	void			makePlan() {}
 
 	void			showPlan();
-	bool			findPlan(int _month, int _day, int _meal_type);
-	void			printPlan();
+	void			showPlan(int _year, int _month, int _day, int _meal_type);
+	bool			comparePlan(int _year, int _month, int _day, int _meal_type);
 	bool			comparePlan(Plan plan);
 
 	// 플랜을 비교할 때 우선순위를 제공하기 위한 연산자

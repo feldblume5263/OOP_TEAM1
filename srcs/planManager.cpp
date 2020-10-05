@@ -2,12 +2,12 @@
 
 using namespace std;
 
-PlanManger::PlanManger() { }
+PlanManager::PlanManager() { }
 
-PlanManger::~PlanManger() { }
+PlanManager::~PlanManager() { }
 
 // 새로운 플랜을 planData에 추가
-void		PlanManger::addPlan(Plan planToAdd) {
+void		PlanManager::addPlan(Plan planToAdd) {
 	int		idx;
 	Plan	temp;
 
@@ -26,13 +26,13 @@ void		PlanManger::addPlan(Plan planToAdd) {
 }
 
 // 특정 plan을 planData에서 삭제 (월, 일, 식사타입으로 검색 후 삭제)
-	void	PlanManger::deletePlan(int _month, int _day, int _meal_type) {
+	void	PlanManager::deletePlan(int _year, int _month, int _day, int _meal_type) {
 	int		idx;
 
 	idx = 0;
 	// 일치하는 plan이 있을 경우 삭제
 	while (idx < planData.size()) {
-		if (planData[idx].findPlan(_month, _day, _meal_type) == true) {
+		if (planData[idx].comparePlan(_year, _month, _day, _meal_type) == true) {
 			planData.erase(planData.begin() + idx);
 			return ;
 		}
@@ -44,36 +44,36 @@ void		PlanManger::addPlan(Plan planToAdd) {
 }
 
 // plan 수정 (월, 일 , 식사 타입을 입력하면, 검색하여 삭제 후, 새로운 추가 작업 진행)
-void		PlanManger::revisePlan(int _month, int _day, int _meal_type) {
+void		PlanManager::revisePlan(int _year, int _month, int _day, int _meal_type) {
 	Plan	planToRevise;
 
-	deletePlan(_month, _day, _meal_type);
+	deletePlan(_year, _month, _day, _meal_type);
 	planToRevise.makePlan(); //plan클래스에서 plan만드는 단계
 	addPlan(planToRevise);
 }
 
 // 모든 plan들을 sort작업을 진행한 후 표시함.
-void		PlanManger::showAllMeal() {
+void		PlanManager::showAllMeal() {
 	int		idx;
 
 	sort(planData.begin(), planData.end());
 	idx = 0;
 	while (idx < planData.size()) {
-		planData[idx].printPlan();
+		planData[idx].showPlan();
 		idx++;
 	}
 	return ;
 }
 
 // 특정 plan을 찾기 위한 오브젝트
-bool			Plan::findPlan(int _month, int _day, int _meal_type) {
-	if (this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
+bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
+	if (this->date.getYear() == _year, this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
 		return (true);
 	return (false);
 }
 
 // plan을 출력하기 위한 오브젝트
-void			Plan::printPlan() {
+void			Plan::showPlan() {
 	string		s_year = to_string(date.getYear());
 	string		s_month = date.getMonth() < 10 ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
 	string 		s_day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
