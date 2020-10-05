@@ -28,29 +28,10 @@ public:
 	}
 
 	void			makePlan() {}
-	bool			findPlan(int _month, int _day, int _meal_type)
-	{
-		if (month == _month && day == _day && meal_type == _meal_type)
-			return (true);
-		return (false);
-	}
-	void			printPlan()
-	{
-		string	meal_label;
-
-		if (meal_type == 1)
-			meal_label = "Breakfast";
-		else if (meal_type == 2)
-			meal_label = "Lunch";
-		else if (meal_type == 3)
-			meal_label = "Dinner";
-		else
-			meal_label = "unknown";
-		cout << month << "/" << day << "/" << meal_label << endl;
-		cout << meal << endl;
-		cout << endl;
-		return ;
-	}
+	bool			findPlan(int _month, int _day, int _meal_type);
+	void			printPlan();
+	bool			comparePlan(Plan plan);
+	// 플랜을 비교할 때 우선순위를 제공하기 위한 연산자
 	bool			operator < (Plan plan) const
 	{
 		if (this->month == plan.month)
@@ -69,7 +50,7 @@ public:
 class				PlanManger
 {
 private:
-	vector<Plan>	plan_array;
+	vector<Plan>	planData;
 
 public:
 	PlanManger();
