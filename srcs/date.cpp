@@ -7,16 +7,14 @@ Date Class
 
 */
 
-Date::Date()
-{
+Date::Date() {
 	year = 0;
 	month = 0;
 	day = 0;
 	comment = "";
 }
 
-Date::Date(int _year, int _month, int _day, string _comment)
-{
+Date::Date(int _year, int _month, int _day, string _comment) {
 	if (_year < 0) throw out_of_range("Check Year Argument");
 	//Check Month Value
 	if (_month > 12 || _month <= 0) {
@@ -52,59 +50,47 @@ Date::~Date() { }
 
 //Getter and Setter of Private Value
 
-int				Date::getYear()
-{
+int				Date::getYear() {
 	return (year);
 }
 
-void			Date::setYear(int _year)
-{
+void			Date::setYear(int _year) {
 	year = _year;
 }
 
-int				Date::getMonth()
-{
+int				Date::getMonth() {
 	return (month);
 }
 
 
-void			Date::setMonth(int _month)
-{
-	if (_month > 12 || _month <= 0)
-	{
+void			Date::setMonth(int _month) {
+	if (_month > 12 || _month <= 0) {
 		throw out_of_range("Check Month Argument");
 	}
-	else
-	{
+	else {
 		month = _month;
 	}
 }
 
-int				Date::getDay()
-{
+int				Date::getDay() {
 	return (day);
 }
 
 
-void			Date::setDay(int _day)
-{
-	switch (month)
-	{
+void			Date::setDay(int _day) {
+	switch (month) {
 	case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-		if (_day > 31 || _day <= 0)
-		{
+		if (_day > 31 || _day <= 0) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
 	case 4: case 6: case 9: case 11:
-		if (_day > 30 || _day <= 0)
-		{
+		if (_day > 30 || _day <= 0) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
 	case 2:
-		if (_day > 28 || _day <= 0)
-		{
+		if (_day > 28 || _day <= 0) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
@@ -112,13 +98,11 @@ void			Date::setDay(int _day)
 	day = _day;
 }
 
-string Date::getComment()
-{
+string Date::getComment() {
 	return (comment);
 }
 
 
-void Date::setComment(string _comment)
-{
+void Date::setComment(string _comment) {
 	comment = _comment;
 }
