@@ -12,11 +12,11 @@ private:
 	int meal_type;
 public:
 	Plan();
-	Plan(int _month, int _day, Meal& _menu, int _meal_type);
+	Plan(int _year, int _month, int _day, Meal& _menu, int _meal_type);
 	~Plan();
 	Date getDate();
 	void setDate(Date& _date);
-	void setDate(int _year, int _month);
+	void setDate(int _year, int _month, int _day);
 	Meal getMenu();
 	void setMenu(Meal& _menu);
 	int getMealType();

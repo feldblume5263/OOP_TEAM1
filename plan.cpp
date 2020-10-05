@@ -14,11 +14,11 @@ Plan::Plan() {
 
 
 
-Plan::Plan(int _month, int _day, Meal& _menu, int _meal_type) {
+Plan::Plan(int _year, int _month, int _day, Meal& _menu, int _meal_type) {
 
 	//Handling exception from Date Class
 	try {
-		date = Date(_month, _day, "");
+		date = Date(_year, _month, _day, "");
 	}
 	catch (out_of_range e)
 	{
@@ -42,8 +42,8 @@ void Plan::setDate(Date& _date) {
 	date = _date;
 }
 
-void Plan::setDate(int _year, int _month) {
-	date = Date(_year, _month, "");
+void Plan::setDate(int _year, int _month, int _day) {
+	date = Date(_year, _month, _day, "");
 }
 
 Meal Plan::getMenu() {
@@ -66,11 +66,11 @@ void Plan::setMealType(int _meal_type) {
 //Show plan
 
 void Plan::showPlan() {
-
+	string year = to_string(date.getYear());
 	string month = (date.getMonth() < 10) ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
 	string day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
 
-	cout << "Date	:" + month + "-" + day + "\n";
+	cout << "Date	:" + year + "/" + month + "/" + day + "\n";
 	switch (meal_type) {
 	case 1:
 		cout << "Meal Type	: Breakfast\n";
