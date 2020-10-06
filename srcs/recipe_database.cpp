@@ -6,7 +6,9 @@ RecipeDatabase::RecipeDatabase(){
     new_id = recipe_list.size()==0 ? 10000 : recipe_list.back().getID() + 1;
 }
 
-RecipeDatabase::~RecipeDatabase(){}
+RecipeDatabase::~RecipeDatabase(){
+    file_manager -> write(recipe_list);
+}
 void RecipeDatabase::updateDatabase(Recipe recipe) {
     for(auto& rec: recipe_list) {
         if(rec.getID() == recipe.getID()) {
@@ -55,7 +57,7 @@ vector<Recipe> RecipeDatabase::getRecipes(vector<string> keywords) {
 }
 
 // File Manager Class
-FileManager::FileManager(): file_name("../database/recipe.txt") {
+FileManager::FileManager(): file_name("./database/recipe.txt") {
     parser = new Parser();
 }
 FileManager::~FileManager() {
@@ -65,16 +67,25 @@ FileManager::~FileManager() {
 void FileManager::load(vector<Recipe>& recipes) {
     ifstream ifs(file_name);
     if(ifs.fail()) {
-        // throw FileOpenError();
+        ofstream file_creation(file_name);
+        if(file_creation.fail()) {
+            throw runtime_error("Unable to open the file");
+        }
+        else {
+            file_creation.close();
+        }
     }
     else {
         while(ifs) {
             string line;
             Recipe recipe;
             getline(ifs, line);
-            parser -> parse(line, recipe);
-            recipes.push_back(recipe);
+            if(line.length() > 1) {
+                parser -> parse(line, recipe);
+                recipes.push_back(recipe);
+            }
         }
+        ifs.close();
     }
 }
 
@@ -87,19 +98,22 @@ void FileManager::write(vector<Recipe> recipes) {
 
             int order_num = recipe.getOrder().size();
             for(int i=0; i<order_num; i++) {
-                ofs << (i == order_num-1) ? "/" : "|";
+                ofs << recipe.getOrder()[i];
+                ofs << ((i == order_num-1) ? "/" : "|");
             }
             ofs << recipe.getDuration() << "/";
 
             int ingredients_num = recipe.getIngredients().size();
             for(int i=0; i<ingredients_num; i++) {
                 ofs << recipe.getIngredients()[i].getName() << "," << recipe.getIngredients()[i].getWeight();
-                ofs << (i == ingredients_num-1) ? "\n" : "/";
+                ofs << ((i == ingredients_num-1) ? "\n" : "/");
             }
         }
+
+        ofs.close();
     }
     else {
-        // throw FileOpenError();
+        throw runtime_error("Unable to open the file");
     }
 }
 
@@ -136,4 +150,33 @@ void Parser::parse(string line, Recipe& recipe) {
     }
 
     recipe.setIngredients(ingredients);
+}
+
+int main() {
+    try {
+        RecipeDatabase* recipedb = new RecipeDatabase();
+        vector<Ingredient> ingredients;
+        ingredients.push_back(Ingredient("µÎºÎ", 400));
+        ingredients.push_back(Ingredient("±èÄ¡", 600));
+        recipedb -> insertRecipe("µÎºÎ±èÄ¡", ingredients, {"±èÄ¡¸¦ ½ã´Ù.", "µÎºÎ¸¦ ½ã´Ù.", "Á¢½Ã¿¡ ´ã´Â´Ù."}, 5);
+
+        ingredients.clear();
+        ingredients.push_back(Ingredient("±èÄ¡", 400));
+        ingredients.push_back(Ingredient("¹°", 600));
+        ingredients.push_back(Ingredient("´ÙÁø ¸¶´Ã", 10));
+        recipedb -> insertRecipe("±èÄ¡Âî°³", ingredients, {"±èÄ¡¸¦ ½ã´Ù.", "´ÙÁø ¸¶´ÃÀ» ºº´Â´Ù.", "¹°À» º×°í ²úÀÎ´Ù.", "±èÄ¡¸¦ ³Ö°í ²úÀÎ´Ù."}, 20);
+
+        vector<Recipe> recipes = recipedb -> getRecipes();
+        for(auto recipe: recipes) {
+            cout << recipe.getName();
+        }
+
+        // TODO: database °´Ã¼ ¸¸µå´Â factory °´Ã¼ ÀÛ¼º (½º¸¶Æ®)
+        delete recipedb;
+    } catch(const exception& e) {
+        cerr << e.what() << endl;
+        return 1;
+    }
+
+    return 0;
 }

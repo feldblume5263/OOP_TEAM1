@@ -1,6 +1,7 @@
 #pragma once
 
 #ifndef IIKH_HPP
+<<<<<<< HEAD
 # define IIKH_HPP
 # include "date.h"
 # include "meal.h"
@@ -15,6 +16,18 @@
 # include <tuple>
 # include <fstream>
 # include <sstream>
+=======
+#define IIKH_HPP
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <tuple>
+#include <fstream>
+#include <sstream>
+#include <stdexcept>
+#include <ctime>
+>>>>>>> 1a639a1a122ddeb07ab5a7b3b8f89e49ad222644
 
 using namespace std;
 

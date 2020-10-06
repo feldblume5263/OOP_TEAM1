@@ -1,10 +1,7 @@
 #ifndef PLAN_H
 # define PLAN_H
-
-# include <iostream>
-# include "meal.h"
-# include "date.h"
-# include "planManager.h"
+#include "plan.h"
+#include "iikh.hpp"
 
 using namespace std;
 

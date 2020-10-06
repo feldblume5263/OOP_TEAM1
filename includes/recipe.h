@@ -1,8 +1,7 @@
 #ifndef RECIPE_H
 #define RECIPE_H
-#include<vector>
-#include<string>
 #include "iikh.hpp"
+#include "recipe.h"
 
 using namespace std;
 

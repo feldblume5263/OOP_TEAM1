@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <algorithm>
 #include "../includes/recipe.h"
-#include "../includes/iikh.hpp"
 using namespace std;
 
 //재료 추가
@@ -45,11 +40,6 @@ void Recipe::printRecipe()
 
     cout << " Name: " << getName() << endl;
     cout << " Cooking Time: " << getDuration() << endl;
-    if (getDescription().size())
-    {
-        cout << endl;
-        cout << "Description: " << getDescription();
-    }
 
     if (getIngredients().size())
     {
