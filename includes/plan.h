@@ -5,9 +5,9 @@
 
 using namespace std;
 
-class				Plan
+class				Plan : PlanManager
 {
-private:
+protected:
 	Date			date;
 	Meal			menu;
 	int				meal_type;
@@ -24,14 +24,18 @@ public:
 	void			setMenu(Meal& _menu);
 	int				getMealType();
 	void			setMealType(int _meal_type);
-
-	//Greeter
-	void			makePlan() {}
-
-	void			showPlan();
-	void			showPlan(int _year, int _month, int _day, int _meal_type);
 	bool			comparePlan(int _year, int _month, int _day, int _meal_type);
 	bool			comparePlan(Plan plan);
+	void			showPlan();
+
+	void			makePlan() { }; // 플랜을 처음부터 만드는 오브젝트
+
+	//생성 필요
+	void			renewMeal(int _year, int _month, int _day, int _meal_type) {}; // Plan에서 Meal정보 새로 받아오는 오브젝트
+	void			renewYear(int _year, int _month, int _day, int _meal_type) {}; // Plan에서 year정보 새로 받아오는 오브젝트
+	void			renewMonth(int _year, int _month, int _day, int _meal_type) {}; // Plan에서 month정보 새로 받아오는 오브젝트
+	void			renewDay(int _year, int _month, int _day, int _meal_type) {}; // Plan에서 day정보 새로 받아오는 오브젝트
+	void			renewMealType(int _year, int _month, int _day, int _meal_type) {}; // Plan에서 Meal_type정보 새로 받아오는 오브젝트
 
 	// 플랜을 비교할 때 우선순위를 제공하기 위한 연산자
 	bool			operator < (Plan plan) {
