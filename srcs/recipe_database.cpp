@@ -1,4 +1,5 @@
 #include "../includes/recipe_database.h"
+#include "../includes/factory.hpp"
 
 RecipeDatabase::RecipeDatabase(){
     file_manager = new FileManager();
@@ -154,25 +155,34 @@ void Parser::parse(string line, Recipe& recipe) {
 
 int main() {
     try {
-        RecipeDatabase* recipedb = new RecipeDatabase();
+        Database* db = new Database();
+        RecipeDatabase recipedb = *db -> getDatabase();
         vector<Ingredient> ingredients;
         ingredients.push_back(Ingredient("두부", 400));
         ingredients.push_back(Ingredient("김치", 600));
-        recipedb -> insertRecipe("두부김치", ingredients, {"김치를 썬다.", "두부를 썬다.", "접시에 담는다."}, 5);
+        recipedb.insertRecipe("두부김치", ingredients, {"김치를 썬다.", "두부를 썬다.", "접시에 담는다."}, 5);
 
         ingredients.clear();
         ingredients.push_back(Ingredient("김치", 400));
         ingredients.push_back(Ingredient("물", 600));
         ingredients.push_back(Ingredient("다진 마늘", 10));
-        recipedb -> insertRecipe("김치찌개", ingredients, {"김치를 썬다.", "다진 마늘을 볶는다.", "물을 붓고 끓인다.", "김치를 넣고 끓인다."}, 20);
+        recipedb.insertRecipe("김치찌개", ingredients, {"김치를 썬다.", "다진 마늘을 볶는다.", "물을 붓고 끓인다.", "김치를 넣고 끓인다."}, 20);
 
-        vector<Recipe> recipes = recipedb -> getRecipes();
+        recipedb.deleteRecipe(Recipe(10000));
+        recipedb.deleteRecipe(Recipe(10001));
+
+        ingredients.clear();
+        ingredients.push_back(Ingredient("된장", 50));
+        ingredients.push_back(Ingredient("물", 600));
+        ingredients.push_back(Ingredient("다진 마늘", 10));
+        recipedb.updateDatabase(Recipe(10003, 60, "된장찌개", ingredients, {"된장을 넣는다.", "물을 끓인다."}));
+
+        vector<Recipe> recipes = recipedb.getRecipes();
         for(auto recipe: recipes) {
-            cout << recipe.getName();
+            recipe.printRecipe();
         }
 
-        // TODO: database 객체 만드는 factory 객체 작성 (스마트)
-        delete recipedb;
+        delete db;
     } catch(const exception& e) {
         cerr << e.what() << endl;
         return 1;
