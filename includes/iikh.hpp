@@ -12,6 +12,12 @@
 #include <stdexcept>
 #include <ctime>
 
+# include "recipe.h"
+# include "recipe_database.h"
+# include "meal.h"
+# include "plan.h"
+# include "planManager.h"
+
 using namespace std;
 
 //typedef struct Ingredient {
