@@ -45,6 +45,7 @@ void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
 		return ;
 	}
 	cout << "Please enter new meal" << endl;
+	newMeal.get_meals(); // Greeter
 	searchPlan(_year, _month, _day, _meal_type)->setMenu(newMeal);
 
 	return ;
