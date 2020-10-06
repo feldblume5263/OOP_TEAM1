@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef MEAL_H
-#define MEAL_H
+#ifndef IIKH_HPP
+#define IIKH_HPP
 #include "date.h"
 #include "meal.h"
 #include "plan.h"
@@ -30,6 +30,7 @@ private:
 	string name;
 	int weight;
 public:
+	Ingredient(string name, int weight): name(name), weight(weight) {}
 	string getName() {
 		return name;
 	}
@@ -43,6 +44,18 @@ public:
 		this->weight = weight;
 	}
 };
+
+vector<string> split(string str, char delimiter) {
+    vector<string> internal;
+    stringstream ss(str);
+    string temp;
+ 
+    while (getline(ss, temp, delimiter)) {
+        internal.push_back(temp);
+    }
+ 
+    return internal;
+}
 
 //typedef struct Serving {
 //	std::vector <int> num_of_people;

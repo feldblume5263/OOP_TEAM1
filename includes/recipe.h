@@ -8,14 +8,16 @@ using namespace std;
 
 class Recipe {
 private:
-    int id;
+    unsigned int id;
     int duration;
     string name;
-    string description;
     vector<Ingredient> ingredients;
     vector<string> ingredient_order;
 public:
-    Recipe(int id) { this->id = id; }
+    Recipe() {}
+    Recipe(unsigned int id) { this->id = id; }
+    Recipe(unsigned int id, int duration, string name, vector<Ingredient> ingredients, vector<string> orders)
+        : id(id), duration(duration), name(name), ingredients(ingredients), ingredient_order(orders) {}
     ~Recipe(){};
 
     //Functions
@@ -24,19 +26,16 @@ public:
     void addOrder(string order);
     void printRecipe();
     //Get
-    int getID() {
+    unsigned int getID() {
         return id;
     }
     string getName() {
         return name;
     }
-    string getDescription() {
-        return description;
-    }
-    vector<Ingredient>& getIngredients() {
+    vector<Ingredient> getIngredients() {
         return ingredients;
     }
-    vector<string>& getOrder() {
+    vector<string> getOrder() {
         return ingredient_order;
     }
     int getDuration() {
@@ -44,16 +43,21 @@ public:
     }
 
     //Set
+    void setID(unsigned int id) {
+        this->id = id;
+    }
     void setName(string name) {
         this->name = name;
-    }
-    void setDescription(string description) {
-        this->description = description;
     }
     void setDuration(int duration) {
         this->duration = duration;
     }
-
+    void setIngredients(vector<Ingredient> ingredients) {
+        this->ingredients = ingredients;
+    }
+    void setOrder(vector<string> order) {
+        this->ingredient_order = order;
+    }
 
 };
 
