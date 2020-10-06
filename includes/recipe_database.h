@@ -33,7 +33,8 @@ public:
 	RecipeDatabase();
 	~RecipeDatabase();
 	void updateDatabase(Recipe recipe);
-	void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
+	void insertRecipe(Recipe recipe);
+	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
 	void deleteRecipe(Recipe recipe);
 	vector<Recipe> getRecipes();
 	vector<Recipe> getRecipes(vector<string> keywords);

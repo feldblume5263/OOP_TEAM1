@@ -3,7 +3,7 @@
 
 class Greeter {
 private:
-
+	RecipeDatabase recipedatabese;
 public:
 	
 };
@@ -20,35 +20,63 @@ void searchRecipe();
 
 
 void addRecipe() {
-	std::cout << "Enter recipe name" << std::endl;
-	std::cout << "Name    :" << endl;
+	Recipe recipe;
+	
+	std::cout << "-------Recipe Infromation-------" << std::endl;
+	// std::flush; std::cin.clear(); std::cin.ignore();
+	
+	// set name
+	std::cout << "Name    :" << endl; //TODO : /t/t 등 구현하기.
+	std::string recipe_name;
+	std::getline(std::cin, recipe_name);
+	recipe.setName(recipe_name);
+	
+	// set duration
+	std::cout << "Cooking Duration(min)    :" << std::endl; //TODO : Name이랑 줄간격
+	// std::flush; std::cin.clear();
+	int duration;
+	std::cin >> duration;
+	recipe.setDuration(duration);
+
+	// set ingredients
+	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
+	// std::flush
+	std::vector<Ingredient> ingredients;
+	// std::cin.ignore();
+	while (true) {
+		// set ingredient name
+		std::cout << "Ingredient name     : " << endl;
+		string name;
+		std::getline(std::cin, name);
+		if (name == "stop") { break; }
+		
+		// set ingredient weight
+		int weight;
+		std::cout << "Ingredient weight(gram) : " << endl;
+		std::cin >> weight;
+
+		Ingredient _ingredient(name, weight);
+		ingredients.push_back(_ingredient);
+	}
+	recipe.setIngredients(ingredients);
+
+	// set order
+	std::cout << "---Cookin Oreder---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
+	vector<string> ingredient_order;
+	while (true) {
+		int i = 1;
+		std::cout << "Order" << i << " : ";
+		string order;
+		std::getline(std::cin, order);
+		if (order == "stop") { break; }
+		else { recipe.addOrder(order); }
+		i += 1;
+	}
 	
 
-
-	//std::cout << "Enter recipe information in [[ NAME -> DESCRIPTION -> TIME -> INGREDIENTS ]] order" << std::endl;
-	//std::cout << "Name			: " << std::flush;	std::cin.clear();	std::cin.ignore();	std::string name;			std::getline(std::cin, name);
-	//std::cout << "Direction	: " << std::flush;	std::cin.clear();						std::string description;	std::getline(std::cin, description);
-	//std::cout << "Cooking Time(min)	: " << std::flush;	std::cin.clear();						int time;					std::cin >> time;
-	//std::cout << "Ingredients (If you want to stop enter \"stop\" ) : " << std::flush;
-	//std::vector<std::string> ingredients;
-	//std::cin.ignore();
-
-	//while (true)
-	//{
-	//	std::string ingredient; std::getline(std::cin, ingredient);
-	//	if (ingredient == "stop")break;
-	//	ingredients.push_back(ingredient);
-	//}
-
-	//try
-	//{
-	//	Recipe* recipe = new Recipe(name, description, time, ingredients);
-	//	recipeDB._insert(name, *recipe);
-	//}
-	//catch (DBException& e) {
-	//	e.resolve();
-	//}
-
+	// use try catch sentence??
+	// TODO : modify error.
+	// recipedatabese.insertRecipe(recipe);
 }
 
 void deleteRecipe() {

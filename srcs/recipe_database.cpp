@@ -20,11 +20,17 @@ void RecipeDatabase::updateDatabase(Recipe recipe) {
     }
 }
 
-void RecipeDatabase::insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration) {
-    Recipe new_recipe = Recipe(new_id, duration, name, ingredients, orders);
-    recipe_list.push_back(new_recipe);
+
+void RecipeDatabase::insertRecipe(Recipe recipe) {
+    recipe_list.push_back(recipe);
     new_id += 1;
 }
+
+//void RecipeDatabase::insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration) {
+//    Recipe new_recipe = Recipe(new_id, duration, name, ingredients, orders);
+//    recipe_list.push_back(new_recipe);
+//    new_id += 1;
+//}
 void RecipeDatabase::deleteRecipe(Recipe recipe) {
     for(int i=0; i<recipe_list.size(); i++) {
         if(recipe_list[i].getID() == recipe.getID()) {
