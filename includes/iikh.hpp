@@ -53,6 +53,12 @@ vector<string> split(string str, char delimiter) {
     return internal;
 }
 
+
+struct Serving {
+	Recipe menus;
+	int num_of_people;
+};
+
 //typedef struct Serving {
 //	std::vector <int> num_of_people;
 //	std::vector <Recipe> menus;
