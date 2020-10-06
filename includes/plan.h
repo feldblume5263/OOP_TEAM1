@@ -1,6 +1,7 @@
 #ifndef PLAN_H
 # define PLAN_H
 #include "plan.h"
+#include "meal.h"
 #include "iikh.hpp"
 
 using namespace std;
