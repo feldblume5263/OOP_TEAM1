@@ -1,7 +1,8 @@
 #ifndef PLANMANAGER_H
 # define PLANMANAGER_H
-#include "plan.h"
-#include "iikh.hpp"
+
+# include "plan.h"
+# include "iikh.hpp"
 
 using namespace std;
 

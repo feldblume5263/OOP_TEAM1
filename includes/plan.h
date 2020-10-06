@@ -2,11 +2,12 @@
 # define PLAN_H
 #include "plan.h"
 #include "meal.h"
+#include "date.h"
 #include "iikh.hpp"
 
 using namespace std;
 
-class				Plan : PlanManager
+class				Plan
 {
 protected:
 	Meal			menu;

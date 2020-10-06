@@ -35,7 +35,7 @@ void		PlanManager::addPlan(Plan planToAdd) {
 	return ;
 }
 
-// plan Meal 수정 (플랜 전체를 삭제하고 새로 수정)
+// plan Meal수정
 void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
 	Meal		newMeal;
 
@@ -44,7 +44,7 @@ void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
 		cout << "No matching Plans" << endl;
 		return ;
 	}
-	cout << "Please enter new meal" << endl;
+	newMeal.get_meals(); // Greeter
 	searchPlan(_year, _month, _day, _meal_type)->setMenu(newMeal);
 
 	return ;
