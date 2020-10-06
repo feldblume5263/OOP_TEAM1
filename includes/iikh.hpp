@@ -1,20 +1,20 @@
 #pragma once
 
 #ifndef IIKH_HPP
-#define IIKH_HPP
-#include "date.h"
-#include "meal.h"
-#include "plan.h"
-#include "planManager.h"
-#include "recipe_database.h"
-#include "recipe.h"
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
-#include <tuple>
-#include <fstream>
-#include <sstream>
+# define IIKH_HPP
+# include "date.h"
+# include "meal.h"
+# include "plan.h"
+# include "planManager.h"
+# include "recipe_database.h"
+# include "recipe.h"
+# include <iostream>
+# include <string>
+# include <algorithm>
+# include <vector>
+# include <tuple>
+# include <fstream>
+# include <sstream>
 
 using namespace std;
 
@@ -49,11 +49,11 @@ vector<string> split(string str, char delimiter) {
     vector<string> internal;
     stringstream ss(str);
     string temp;
- 
+
     while (getline(ss, temp, delimiter)) {
         internal.push_back(temp);
     }
- 
+
     return internal;
 }
 

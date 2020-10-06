@@ -1,12 +1,12 @@
 #pragma once
 #ifndef MEAL_H
-#define MEAL_H
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include "iikh.hpp"
-#include"recipe.h"
+# define MEAL_H
+# include <iostream>
+# include <vector>
+# include <string>
+# include <algorithm>
+# include "iikh.hpp"
+# include "recipe.h"
 
 
 class Meal
