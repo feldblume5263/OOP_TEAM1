@@ -8,11 +8,6 @@
 class Meal
 {
 protected:
-    typedef struct Serving {
-        Recipe menus;
-        int num_of_people;
-    } Serving;
-
     std::vector <Serving> meals;
 
 public:

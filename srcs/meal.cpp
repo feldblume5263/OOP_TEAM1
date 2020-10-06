@@ -1,5 +1,6 @@
 #pragma once
 #include "../includes/meal.h"
+//#include <vector>
 
 Meal::Meal()
 {
@@ -25,8 +26,6 @@ void Meal::deleteMenu(int order)
     meals.erase(itr);
 }
 
-
-
 void Meal::showMeal()
 {
     int i = 1;
@@ -39,7 +38,7 @@ void Meal::showMeal()
         cout << " >> Ingredients" << endl;
         for (auto each_ingredient : each_menu.menus.getIngredients())
         {
-            cout << "  - " << each_ingredient << "  \tX" << each_menu.num_of_people << endl;
+            /*cout << "  - " << each_ingredient << "  \tX" << each_menu.num_of_people << endl;*/
             // TODO :  get_weight * num_of_people (( After checking recipe class ))
         }
 
@@ -49,6 +48,7 @@ void Meal::showMeal()
     }
 }
 
-vector<Serving> Meal::get_meals() {
+std::vector<Serving> Meal::get_meals() {
+
     return meals;
 }
