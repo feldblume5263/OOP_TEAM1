@@ -1,5 +1,4 @@
 #include "../includes/recipe.h"
-using namespace std;
 
 //재료 추가
 void Recipe::addIngredient(Ingredient ingredient)
@@ -33,36 +32,38 @@ void Recipe::addOrder(string order)
 //출력
 void Recipe::printRecipe()
 {
-    cout << "------------------"<< endl;
-    cout << "| Selected Recipe |" << endl;
-    cout << "-------------------"<< endl;
-    cout << endl;
-
-    cout << " Name: " << getName() << endl;
-    cout << " Cooking Time: " << getDuration() << endl;
-
-    if (getIngredients().size())
     {
+        cout << "------------------"<< endl;
+        cout << "| Selected Recipe |" << endl;
+        cout << "-------------------"<< endl;
         cout << endl;
-        cout << " <Ingredients List>" << endl;
-        for (int i = 0; i < getIngredients().size(); i++)
-        {
-            cout << " " << i + 1 << ". " << getIngredients()[i].getName() << endl;
-        }
-    }
 
-    if (getOrder().size())
-    {
-        cout << endl;
-        cout << " Cooking Order ";
-        for (int i = 0; i < getIngredients().size(); i++)
+        cout << " Name: " << getName() << endl;
+        cout << " Cooking Time: " << getDuration() << endl;
+
+        if (getIngredients().size())
         {
-            cout << " " << i + 1 << ". " << getOrder()[i] << endl;
+            cout << endl;
+            cout << " <Ingredients List>" << endl;
+            for (int i = 0; i < getIngredients().size(); i++)
+            {
+                cout << " " << i + 1 << ". " << getIngredients()[i].getName() << endl;
+            }
         }
 
-    }
+        if (getOrder().size())
+        {
+            cout << endl;
+            cout << " Cooking Order " << endl;
+            for (int i = 0; i < getIngredients().size(); i++)
+            {
+                cout << " " << i + 1 << ". " << getOrder()[i] << endl;
+            }
 
-    cout << endl << endl;
+        }
+
+        cout << endl << endl;
+    }
 }
 
 

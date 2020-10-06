@@ -1,7 +1,6 @@
 #ifndef RECIPE_H
 #define RECIPE_H
 #include "iikh.hpp"
-#include "recipe.h"
 
 using namespace std;
 
@@ -14,7 +13,7 @@ private:
     vector<string> ingredient_order;
 public:
     Recipe() {}
-    Recipe(unsigned int id) { this->id = id; }
+    Recipe(unsigned int id) : id(id) {}
     Recipe(unsigned int id, int duration, string name, vector<Ingredient> ingredients, vector<string> orders)
         : id(id), duration(duration), name(name), ingredients(ingredients), ingredient_order(orders) {}
     ~Recipe(){};
@@ -59,10 +58,6 @@ public:
     }
 
 };
-
-
-
-
 
 
 #endif

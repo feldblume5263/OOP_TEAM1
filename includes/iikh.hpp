@@ -11,6 +11,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <ctime>
+#include <memory>
 
 using namespace std;
 
@@ -52,10 +53,5 @@ vector<string> split(string str, char delimiter) {
  
     return internal;
 }
-
-//typedef struct Serving {
-//	std::vector <int> num_of_people;
-//	std::vector <Recipe> menus;
-//} Serving;
 
 #endif
