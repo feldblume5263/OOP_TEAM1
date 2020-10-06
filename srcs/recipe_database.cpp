@@ -41,7 +41,7 @@ void RecipeDatabase::deleteRecipe(Recipe recipe) {
 vector<Recipe> RecipeDatabase::getRecipes() {
     return recipe_list;
 }
-vector<Recipe> RecipeDatabase::getRecipes(vector<string> keywords) {
+vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> keywords) {
     vector<Recipe> ret;
     for(Recipe recipe: recipe_list) {
         int matched_num = 0;
@@ -61,6 +61,13 @@ vector<Recipe> RecipeDatabase::getRecipes(vector<string> keywords) {
 
     return ret;
 }
+
+Recipe RecipeDatabase::getRecipes_recipename(string recipename) {
+    // TODO
+}
+
+
+
 
 // File Manager Class
 FileManager::FileManager(): file_name("./database/recipe.txt") {
