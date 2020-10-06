@@ -30,6 +30,7 @@ void Recipe::addOrder(string order)
 {
     ingredient_order.push_back(order);
 }
+
 //출력
 void Recipe::printRecipe()
 {
