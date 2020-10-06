@@ -1,7 +1,8 @@
 #ifndef PLANMANAGER_H
 # define PLANMANAGER_H
-#include "plan.h"
-#include "iikh.hpp"
+
+# include "plan.h"
+# include "iikh.hpp"
 
 using namespace std;
 
@@ -28,8 +29,8 @@ public:
 	void			reviseDay(int _year, int _month, int _day, int _meal_type);
 	void			reviseMealType(int _year, int _month, int _day, int _meal_type);
 
-
-	bool			findPlan(Plan planToFind, int _month, int _day, int _meal_type);
+	Plan			*searchPlan(int _year, int _month, int _day, int _meal_type);
+	Plan			*searchPlan(Plan plan);
 
 	void			showSpecificPlan(int _year, int _month, int _day, int _meal_type);
 	void			showAllPlan();

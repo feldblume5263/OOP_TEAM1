@@ -8,18 +8,10 @@ PlanManager::~PlanManager() { }
 
 // 새로운 플랜을 planData에 추가
 void		PlanManager::addPlan(Plan planToAdd) {
-	int		idx;
-	Plan	temp;
-
-	idx = 0;
 	// 날짜가 덮어씌워지는 것을 방지
-	while (idx < planData.size()) {
-		temp = planData[idx];
-		if (temp.comparePlan(planToAdd) == true) {
-			cout << "You already have a plan at that time." << endl;
-			return ;
-		}
-		idx++;
+	if ((searchPlan(planToAdd))) {
+		cout << "plan already exists at that time." << endl;
+		return ;
 	}
 	// 덮어씌워지지 않는 경우 새로운 플랜을 vector에 추가
 	planData.push_back(planToAdd);
@@ -43,49 +35,85 @@ void		PlanManager::addPlan(Plan planToAdd) {
 	return ;
 }
 
-// plan Meal 수정 (플랜 전체를 삭제하고 새로 수정)
+// plan Meal수정
 void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
-	Plan	planToRevise;
+	Meal		newMeal;
 
-	deletePlan(_year, _month, _day, _meal_type);
-	planToRevise.renewMeal(_year, _month, _day, _meal_type); //plan클래스
-	addPlan(planToRevise);
+	if (!(searchPlan(_year, _month, _day, _meal_type)))
+	{
+		cout << "No matching Plans" << endl;
+		return ;
+	}
+	newMeal.get_meals(); // Greeter
+	searchPlan(_year, _month, _day, _meal_type)->setMenu(newMeal);
+
 	return ;
 }
 
 void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
-	Plan	planToRevise;
 
-	deletePlan(_year, _month, _day, _meal_type);
-	planToRevise.renewYear(_year, _month, _day, _meal_type); //plan클래스
-	addPlan(planToRevise);
+	int			newYear;
+
+	newYear = 0;
+	if (!(searchPlan(_year, _month, _day, _meal_type)))
+	{
+		cout << "No matching Plans" << endl;
+		return ;
+	}
+	cout << "Please enter a new year" << endl;
+	cin >> newYear;
+	searchPlan(_year, _month, _day, _meal_type)->date.setYear(newYear);
+
 	return ;
 }
 
 void		PlanManager::reviseMonth(int _year, int _month, int _day, int _meal_type) {
-	Plan	planToRevise;
 
-	deletePlan(_year, _month, _day, _meal_type);
-	planToRevise.renewMonth(_year, _month, _day, _meal_type); //plan클래스
-	addPlan(planToRevise);
+	int			newMonth;
+
+	newMonth = 0;
+	if (!(searchPlan(_year, _month, _day, _meal_type)))
+	{
+		cout << "No matching Plans" << endl;
+		return ;
+	}
+	cout << "Please enter a new Month" << endl;
+	cin >> newMonth;
+	searchPlan(_year, _month, _day, _meal_type)->date.setMonth(newMonth);
+
 	return ;
 }
 
 void		PlanManager::reviseDay(int _year, int _month, int _day, int _meal_type) {
-	Plan	planToRevise;
 
-	deletePlan(_year, _month, _day, _meal_type);
-	planToRevise.renewDay(_year, _month, _day, _meal_type); //plan클래스
-	addPlan(planToRevise);
+	int			newDay;
+
+	newDay = 0;
+	if (!(searchPlan(_year, _month, _day, _meal_type)))
+	{
+		cout << "No matching Plans" << endl;
+		return ;
+	}
+	cout << "Please enter a new Day" << endl;
+	cin >> newDay;
+	searchPlan(_year, _month, _day, _meal_type)->date.setMonth(newDay);
+
 	return ;
 }
 
 void		PlanManager::reviseMealType(int _year, int _month, int _day, int _meal_type) {
-	Plan	planToRevise;
+	int			newMealType;
 
-	deletePlan(_year, _month, _day, _meal_type);
-	planToRevise.renewMealType(_year, _month, _day, _meal_type); //plan클래스
-	addPlan(planToRevise);
+	newMealType = 0;
+	if (!(searchPlan(_year, _month, _day, _meal_type)))
+	{
+		cout << "No matching Plans" << endl;
+		return ;
+	}
+	cout << "Please enter a new Meal" << endl;
+	cin >> newMealType;
+	searchPlan(_year, _month, _day, _meal_type)->date.setMonth(newMealType);
+
 	return ;
 }
 
@@ -115,5 +143,33 @@ void		PlanManager::showSpecificPlan(int _year, int _month, int _day, int _meal_t
 		idx++;
 		cout << "No matching Plans" << endl;
 		return ;
+	}
+}
+
+Plan		*PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) {
+	int		idx;
+
+	idx = 0;
+	while (idx < planData.size()) {
+		if (planData[idx].comparePlan(_year, _month, _day, _meal_type) == true) {
+			return (&(planData[idx]));
+		}
+		idx++;
+		cout << "No matching Plans" << endl;
+		return (NULL);
+	}
+}
+
+Plan		*PlanManager::searchPlan(Plan plan) {
+	int		idx;
+
+	idx = 0;
+	while (idx < planData.size()) {
+		if (planData[idx].comparePlan(plan) == true) {
+			return (&(planData[idx]));
+		}
+		idx++;
+		cout << "No matching Plans" << endl;
+		return (NULL);
 	}
 }

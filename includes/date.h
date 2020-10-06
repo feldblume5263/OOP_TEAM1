@@ -1,6 +1,8 @@
 #ifndef DATE_H
 # define DATE_H
+
 #include "iikh.hpp"
+
 using namespace std;
 
 class			Date

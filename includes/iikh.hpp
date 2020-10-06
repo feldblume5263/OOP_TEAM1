@@ -13,6 +13,12 @@
 #include <ctime>
 #include <memory>
 
+# include "recipe.h"
+# include "recipe_database.h"
+# include "meal.h"
+# include "plan.h"
+# include "planManager.h"
+
 using namespace std;
 
 //typedef struct Ingredient {
@@ -46,12 +52,17 @@ vector<string> split(string str, char delimiter) {
     vector<string> internal;
     stringstream ss(str);
     string temp;
- 
+
     while (getline(ss, temp, delimiter)) {
         internal.push_back(temp);
     }
- 
+
     return internal;
 }
+
+struct Serving {
+	Recipe menus;
+	int num_of_people;
+};
 
 #endif
