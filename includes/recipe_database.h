@@ -1,6 +1,28 @@
 #ifndef RECIPE_DATABASE_H
 #define RECIPE_DATABASE_H
-#include "../includes/iikh.hpp"
+#include "recipe.h"
+#include "recipe_database.h"
+#include "iikh.hpp"
+
+class Parser {
+private:
+	enum STORING_RULE {
+		CODE, NAME, PREPARATION_STEP, EXPECTED_TIME, INGREDIENT
+	};
+public:
+	void parse(string line, Recipe& recipe);
+};
+
+class FileManager {
+private:
+	string file_name;
+	Parser *parser;
+public:
+	FileManager();
+	~FileManager();
+	void load(vector<Recipe>& recipes);
+	void write(vector<Recipe> recipes);
+};
 
 class RecipeDatabase {
 private:
@@ -16,26 +38,6 @@ public:
 	vector<Recipe> getRecipes();
 	vector<Recipe> getRecipes(vector<string> keywords);
 
-};
-
-class FileManager {
-private:
-	string file_name;
-	Parser *parser;
-public:
-	FileManager();
-	~FileManager();
-	void load(vector<Recipe>& recipes);
-	void write(vector<Recipe> recipes);
-};
-
-class Parser {
-private:
-	enum STORING_RULE {
-		CODE, NAME, PREPARATION_STEP, EXPECTED_TIME, INGREDIENT
-	};
-public:
-	void parse(string line, Recipe& recipe);
 };
 
 #endif

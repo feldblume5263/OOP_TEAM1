@@ -2,12 +2,6 @@
 
 #ifndef IIKH_HPP
 #define IIKH_HPP
-#include "date.h"
-#include "meal.h"
-#include "plan.h"
-#include "planManager.h"
-#include "recipe_database.h"
-#include "recipe.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -15,6 +9,8 @@
 #include <tuple>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
+#include <ctime>
 
 using namespace std;
 

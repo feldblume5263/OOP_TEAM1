@@ -1,12 +1,7 @@
 #ifndef PLANMANAGER_H
 # define PLANMANAGER_H
-
-# include "plan.h"
-# include <iostream>
-# include <vector>
-# include <algorithm>
-# include <cstring>
-# include <ctime>
+#include "plan.h"
+#include "iikh.hpp"
 
 using namespace std;
 

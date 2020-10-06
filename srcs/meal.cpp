@@ -1,5 +1,5 @@
 #pragma once
-#include "../includes/plan.h"
+#include "../includes/meal.h"
 
 Meal::Meal()
 {
@@ -34,7 +34,7 @@ void Meal::showMeal()
     for (auto each_menu : meals)
     {
         cout << "---------------------" << endl;
-        cout << "| Serving " << i << " " << each_menu.menus.getMenu() << " |" << endl;
+        cout << "| Serving " << i << " " << each_menu.menus.getName() << " |" << endl;
 
         cout << " >> Ingredients" << endl;
         for (auto each_ingredient : each_menu.menus.getIngredients())
