@@ -1,5 +1,169 @@
 #include "../OOP_TEAM1/includes/greeter.h"
 
+void Greeter::showTitle() {
+	cout << "¦£";
+	for (int i = 0; i < 54; i++) 	cout << "¦¡";
+	cout << "¦¤" << endl;
+	cout << "¦¢000000000000  000000000000  00        00  00        00¦¢" << endl;
+	cout << "¦¢     00            00       00      00    00        00¦¢" << endl;
+	cout << "¦¢     00            00       00    00      00        00¦¢" << endl;
+	cout << "¦¢     00            00       00  00        00        00¦¢" << endl;
+	cout << "¦¢     00            00       0000          00        00¦¢" << endl;
+	cout << "¦¢     00            00       00            000000000000¦¢" << endl;
+	cout << "¦¢     00            00       0000          00        00¦¢" << endl;
+	cout << "¦¢     00            00       00  00        00        00¦¢" << endl;
+	cout << "¦¢     00            00       00    00      00        00¦¢" << endl;
+	cout << "¦¢     00            00       00      00    00        00¦¢" << endl;
+	cout << "¦¢000000000000  000000000000  00        00  00        00¦¢" << endl;
+	cout << "¦¦";
+	for (int i = 0; i < 54; i++) 	cout << "¦¡";
+	cout << "¦¥" << endl << endl;
+}
+
+
+void Greeter::showMenu() {
+
+	int input_number;
+	while (true) {
+		system("cls");
+		showTitle();
+		cout << "----" << endl;
+		cout << "Menu" << endl;
+		cout << "----" << endl;
+		cout << "[1] Edit Recipe" << endl;
+		cout << "[2] Edit Plan" << endl;
+		cout << "[0] Exit" << endl;
+		int input_number;
+		cin >> input_number;
+
+		if (input_number == 0) {
+			cout << "Exit Program...." << endl;
+			return;
+		}
+		else if (input_number == 1) {
+
+			while (true) {
+				system("cls");
+				cout << "-----------" << endl;
+				cout << "Edit Recipe" << endl;
+				cout << "-----------" << endl;
+				cout << "[1] Add Recipe" << endl;
+				cout << "[2] Delete Recipe" << endl;
+				cout << "[3] Revise Recipe" << endl;
+				cout << "[4] Search Recipe" << endl;
+				cout << "[5] Show All Recipe" << endl;
+				cout << "[0] Back To Menu" << endl;
+				int input_num_in_recipe;
+				cin >> input_num_in_recipe;
+				if (input_num_in_recipe == 0) {
+
+					break;
+				}
+				else if (input_num_in_recipe == 1) {
+					system("cls");
+					addRecipe();
+					continue;
+				}
+				else if (input_num_in_recipe == 2) {
+					system("cls");
+					deleteRecipeDB();
+					continue;
+				}
+				else if (input_num_in_recipe == 3) {
+					system("cls");
+					editRecipe();
+					continue;
+				}
+				else if (input_num_in_recipe == 4) {
+					system("cls");
+					searchRecipe();
+					continue;
+				}
+				else if (input_num_in_recipe == 5) {
+					system("cls");
+					showRecipe();
+					continue;
+				}
+				else {
+					cout << "-----------------------------------------------" << endl;
+					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
+					cout << "-----------------------------------------------" << endl;
+
+					if (_getch())continue;
+
+				}
+
+
+
+
+
+			}
+			continue;
+		}
+		else if (input_number == 2) {
+			while (true) {
+				system("cls");
+				cout << "---------" << endl;
+				cout << "Edit Plan" << endl;
+				cout << "---------" << endl;
+				cout << "[1] Add Plan" << endl;
+				cout << "[2] Delete Plan" << endl;
+				cout << "[3] Revise Plan" << endl;
+				cout << "[4] Search Plan" << endl;
+				cout << "[5] Show All Plan" << endl;
+				cout << "[0] Back To Menu" << endl;
+				int input_num_in_plan;
+				cin >> input_num_in_plan;
+				if (input_num_in_plan == 0) {
+
+					break;
+				}
+				else if (input_num_in_plan == 1) {
+					system("cls");
+					//addPlan();
+					continue;
+				}
+				else if (input_num_in_plan == 2) {
+					system("cls");
+					//deletePlan();
+					continue;
+				}
+				else if (input_num_in_plan == 3) {
+					system("cls");
+					//revisePlan();
+					continue;
+				}
+				else if (input_num_in_plan == 4) {
+					system("cls");
+					//searchPlan();
+					continue;
+				}
+				else if (input_num_in_plan == 5) {
+					system("cls");
+					//showPlan();
+					continue;
+				}
+				else {
+					cout << "-----------------------------------------------" << endl;
+					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
+					cout << "-----------------------------------------------" << endl;
+					if (_getch())continue;
+
+				}
+
+			}
+			continue;
+		}
+		else {
+			cout << "-----------------------------------------------" << endl;
+			cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
+			cout << "-----------------------------------------------" << endl;
+			if (_getch())continue;
+		}
+
+
+	}
+}
 void Greeter::addRecipe() {
 	Recipe recipe;
 
