@@ -79,8 +79,8 @@ public:
 	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
 	void deleteRecipe(Recipe recipe);
 	vector<Recipe> getRecipes();
-	vector<Recipe> getRecipes_ingredients(vector<string> ingredients);
-	Recipe getRecipes_recipename(string recipename);
+	vector<Recipe> searchRecipes_ingredients(vector<string> ingredients);
+	Recipe searchRecipes_recipename(string recipename);
 
 };
 

@@ -22,8 +22,8 @@ void RecipeDatabase::updateDatabase(Recipe recipe) {
 }
 
 
-void RecipeDatabase::insertRecipe(Recipe recipe) {
-    recipe_list.push_back(recipe);
+void RecipeDatabase::insertRecipe(Recipe new_recipe) {
+    recipe_list.push_back(new_recipe);
     new_id += 1;
 }
 
@@ -42,7 +42,7 @@ void RecipeDatabase::deleteRecipe(Recipe recipe) {
 vector<Recipe> RecipeDatabase::getRecipes() {
     return recipe_list;
 }
-vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> ingredients) {
+vector<Recipe> RecipeDatabase::searchRecipes_ingredients(vector<string> ingredients) {
     vector<Recipe> ret;
     for(Recipe recipe: recipe_list) {
         int matched_num = 0;
@@ -63,7 +63,7 @@ vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> ingredients
     return ret;
 }
 
-Recipe RecipeDatabase::getRecipes_recipename(string recipename) {
+Recipe RecipeDatabase::searchRecipes_recipename(string recipename) {
     Recipe ret;
     for (Recipe recipe : recipe_list) {
         if (recipename == recipe.getName()) {
