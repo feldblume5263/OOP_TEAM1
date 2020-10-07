@@ -20,6 +20,9 @@ Plan::Plan(int _year, int _month, int _day, Meal& _menu, int _meal_type) {
 	}
 	menu = _menu;
 	meal_type = _meal_type;
+	year = getDate().getYear();
+	month = getDate().getMonth();
+	day = getDate().getDay();
 }
 
 Plan::~Plan() { }
@@ -56,9 +59,10 @@ void			Plan::setMealType(int _meal_type) {
 
 // plan을 출력하기 위한 오브젝트
 void			Plan::showPlan() {
-	string		s_year = to_string(date.getYear());
-	string		s_month = date.getMonth() < 10 ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
-	string 		s_day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
+
+	string		s_year = to_string(getDate().getYear());
+	string		s_month = getDate().getMonth() < 10 ? "0" + to_string(getDate().getMonth()) : to_string(getDate().getMonth());
+	string 		s_day = (getDate().getDay() < 10) ? "0" + to_string(getDate().getDay()) : to_string(getDate().getDay());
 	string		meal_label;
 
 	if (meal_type == 1)
@@ -70,10 +74,10 @@ void			Plan::showPlan() {
 	else if (meal_type == 4)
 		meal_label = "Snack";
 	else if (meal_type == 5)
-		meal_label == "Late Night Snack";
+		meal_label = "Late Night Snack";
 	else
 		meal_label = "unknown";
-	cout << s_month << " / " << s_day << " / " << meal_label << endl;
+	cout << s_year << " / " << s_month << " / " << s_day << " / " << meal_label << endl;
 	menu.showMeal();
 	cout << endl;
 	return ;
@@ -81,7 +85,7 @@ void			Plan::showPlan() {
 
 // 특정 plan을 찾기 위한 오브젝트
 bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
-	if (this->date.getYear() == _year, this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
+	if (this->date.getYear() == _year && this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
 		return (true);
 	return (false);
 }
