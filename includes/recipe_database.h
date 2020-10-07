@@ -74,13 +74,13 @@ public:
 	/**
 	 * @param keywords User-entered ingredient list
 	 */
-	vector<Recipe> getRecipes(vector<string> keywords);
+	vector<Recipe> getRecipes();
 	void insertRecipe(Recipe recipe);
 	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
 	void deleteRecipe(Recipe recipe);
 	vector<Recipe> getRecipes();
-	vector<Recipe> getRecipes_ingredients(vector<string> keywords);
-	Recipe getRecipes_recipename(string keywords);
+	vector<Recipe> getRecipes_ingredients(vector<string> ingredients);
+	Recipe getRecipes_recipename(string recipename);
 
 };
 
