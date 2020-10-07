@@ -6,48 +6,48 @@ PlanManager::PlanManager() { }
 
 PlanManager::~PlanManager() { }
 
-// ?ˆë¡œ???Œëœ??planData??ì¶”ê?
+
 void		PlanManager::addPlan(Plan planToAdd) {
-	// ? ì§œê°€ ??–´?Œì›Œì§€??ê²ƒì„ ë°©ì?
+	//Prevention from Overwriting
 	if ((searchPlan(planToAdd))) {
 		cout << "plan already exists at that time." << endl;
-		return ;
+		return;
 	}
-	// ??–´?Œì›Œì§€ì§€ ?ŠëŠ” ê²½ìš° ?ˆë¡œ???Œëœ??vector??ì¶”ê?
+
 	planData.push_back(planToAdd);
 }
 
-// ?¹ì • plan??planData?ì„œ ?? œ (?? ?? ?ì‚¬?€?…ìœ¼ë¡?ê²€?????? œ)
-	void	PlanManager::deletePlan(int _year, int _month, int _day, int _meal_type) {
+
+void	PlanManager::deletePlan(int _year, int _month, int _day, int _meal_type) {
 	int		idx;
 
 	idx = 0;
-	// ?¼ì¹˜?˜ëŠ” plan???ˆì„ ê²½ìš° ?? œ
+	//Case:There is the plan
 	while (idx < planData.size()) {
 		if (planData[idx].comparePlan(_year, _month, _day, _meal_type) == true) {
 			planData.erase(planData.begin() + idx);
-			return ;
+			return;
 		}
 		idx++;
 	}
-	// ?¼ì¹˜?˜ëŠ” plan???†ì„ ê²½ìš°
+	// Case:No plan
 	cout << "No matching Plans" << endl;
-	return ;
+	return;
 }
 
-// plan Meal?˜ì •
+
 void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
 	Meal		newMeal;
 	Plan* temp = searchPlan(_year, _month, _day, _meal_type);
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return ;
+		return;
 	}
 	newMeal.get_meals(); // Greeter
 	temp->setMenu(newMeal);
 
-	return ;
+	return;
 }
 
 void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
@@ -59,13 +59,13 @@ void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return ;
+		return;
 	}
 	cout << "Please enter a new year" << endl;
 	cin >> newYear;
-	Temp->getDate()->setYear(newYear);
+	temp->getDate()->setYear(newYear);
 
-	return ;
+	return;
 }
 
 void		PlanManager::reviseMonth(int _year, int _month, int _day, int _meal_type) {
@@ -77,13 +77,13 @@ void		PlanManager::reviseMonth(int _year, int _month, int _day, int _meal_type) 
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return ;
+		return;
 	}
 	cout << "Please enter a new Month" << endl;
 	cin >> newMonth;
 	temp->getDate()->setMonth(newMonth);
-	
-	return ;
+
+	return;
 }
 
 void		PlanManager::reviseDay(int _year, int _month, int _day, int _meal_type) {
@@ -113,16 +113,16 @@ void		PlanManager::reviseMealType(int _year, int _month, int _day, int _meal_typ
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return ;
+		return;
 	}
 	cout << "Please enter a new Meal" << endl;
 	cin >> newMealType;
-	temp->getDate()->setMonth(newMealType);
+	temp->setMealType(newMealType);
 
-	return ;
+	return;
 }
 
-// ëª¨ë“  plan?¤ì„ sort?‘ì—…??ì§„í–‰????ë³´ì—¬ì£¼ê¸°.
+
 void		PlanManager::showAllPlan() {
 	int		idx;
 
@@ -132,10 +132,10 @@ void		PlanManager::showAllPlan() {
 		planData[idx].showPlan();
 		idx++;
 	}
-	return ;
+	return;
 }
 
-// ?¹ì • plan??ê²€?‰í•˜??ë³´ì—¬ì£¼ê¸°
+
 void		PlanManager::showSpecificPlan(int _year, int _month, int _day, int _meal_type) {
 	int		idx;
 
@@ -145,11 +145,11 @@ void		PlanManager::showSpecificPlan(int _year, int _month, int _day, int _meal_t
 	}
 	else {
 		cout << "No matching Plans" << endl;
-		return ;
+		return;
 	}
 }
 
-Plan		*PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) {
+Plan* PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) {
 	int		idx;
 
 	idx = 0;
@@ -163,7 +163,7 @@ Plan		*PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) 
 	}
 }
 
-Plan		*PlanManager::searchPlan(Plan plan) {
+Plan* PlanManager::searchPlan(Plan plan) {
 	int		idx;
 
 	idx = 0;

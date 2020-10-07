@@ -33,9 +33,9 @@ public:
 	bool			comparePlan(Plan plan);
 	void			showPlan();
 
-	void			makePlan() { }; // ?Œëœ??ì²˜ìŒë¶€??ë§Œë“œ???¤ë¸Œ?íŠ¸
+	void			makePlan() { }; // make new plan
 
-	// ?Œëœ??ë¹„êµ?????°ì„ ?œìœ„ë¥??œê³µ?˜ê¸° ?„í•œ ?°ì‚°??
+	//for vector sorting
 	bool			operator < (Plan plan) const {
 		if (this->getDate().getYear() == plan.getDate().getYear()) {
 			if (this->getDate().getMonth() == plan.getDate().getMonth()) {

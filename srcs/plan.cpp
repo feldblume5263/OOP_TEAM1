@@ -57,7 +57,7 @@ void			Plan::setMealType(int _meal_type) {
 	meal_type = _meal_type;
 }
 
-// plan??ì¶œë ¥?˜ê¸° ?„í•œ ?¤ë¸Œ?íŠ¸
+
 void			Plan::showPlan() {
 
 	string		s_year = to_string(getDate().getYear());
@@ -83,14 +83,14 @@ void			Plan::showPlan() {
 	return ;
 }
 
-// ?¹ì • plan??ì°¾ê¸° ?„í•œ ?¤ë¸Œ?íŠ¸
+
 bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
 	if (this->date.getYear() == _year && this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
 		return (true);
 	return (false);
 }
 
-// plan???œë¡œ ë¹„êµ?˜ê¸° ?„í•œ ?¤ë¸Œ?íŠ¸
+
 bool			Plan::comparePlan(Plan plan) {
 	if (plan.date.getMonth() == date.getMonth() && plan.date.getDay() == date.getDay() && plan.meal_type == meal_type)
 		return (true);
