@@ -28,16 +28,19 @@ Date::Date(int _year, int _month, int _day, string _comment) {
 				throw out_of_range("Check Day Argument");
 				break;
 			}
+			break;
 		case 4: case 6: case 9: case 11:
 			if (_day > 30 || _day <= 0) {
 				throw out_of_range("Check Day Argument");
 				break;
 			}
+			break;
 		case 2:
 			if (_day > 28 || _day <= 0) {
 				throw out_of_range("Check Day Argument");
 				break;
 			}
+			break;
 		}
 	}
 	year = _year;
@@ -84,16 +87,19 @@ void			Date::setDay(int _day) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
+		break;
 	case 4: case 6: case 9: case 11:
 		if (_day > 30 || _day <= 0) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
+		break;
 	case 2:
 		if (_day > 28 || _day <= 0) {
 			throw out_of_range("Check Day Argument");
 			break;
 		}
+		break;
 	}
 	day = _day;
 }

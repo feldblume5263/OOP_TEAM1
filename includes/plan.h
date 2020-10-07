@@ -22,9 +22,9 @@ public:
 	Plan();
 	~Plan();
 
-	Date			getDate();
+	Date*			getDate();
 	void			setDate(Date& _date);
-	void			setDate(int _year, int _month, int _day);
+	void			setDate(int _year, int _month, int _day,string _comment);
 	Meal			getMenu();
 	void			setMenu(Meal& _menu);
 	int				getMealType();
@@ -33,9 +33,9 @@ public:
 	bool			comparePlan(Plan plan);
 	void			showPlan();
 
-	void			makePlan() { }; // 플랜을 처음부터 만드는 오브젝트
+	void			makePlan() { }; // ?�랜??처음부??만드???�브?�트
 
-	// 플랜을 비교할 때 우선순위를 제공하기 위한 연산자
+	// ?�랜??비교?????�선?�위�??�공?�기 ?�한 ?�산??
 	bool			operator < (Plan plan) const {
 		if (this->getDate().getYear() == plan.getDate().getYear()) {
 			if (this->getDate().getMonth() == plan.getDate().getMonth()) {

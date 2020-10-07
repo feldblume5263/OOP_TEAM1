@@ -29,18 +29,16 @@ Plan::~Plan() { }
 
 //Getter and Setter of Private Value;
 
-Date			Plan::getDate() {
-	return (date);
+Date*			Plan::getDate() {
+	return &date;
 }
 
 void			Plan::setDate(Date& _date) {
 	date = _date;
 }
 
-void			Plan::setDate(int _year, int _month, int _day) {
-	date.setYear(_year);
-	date.setMonth(_month);
-	date.setDay(_day);
+void			Plan::setDate(int _year, int _month, int _day,string _comment) {
+	date = Date(_year, _month, _day, _comment);
 }
 
 Meal			Plan::getMenu() {
@@ -59,7 +57,7 @@ void			Plan::setMealType(int _meal_type) {
 	meal_type = _meal_type;
 }
 
-// plan을 출력하기 위한 오브젝트
+// plan??출력?�기 ?�한 ?�브?�트
 void			Plan::showPlan() {
 
 	string		s_year = to_string(getDate().getYear());
@@ -85,14 +83,14 @@ void			Plan::showPlan() {
 	return ;
 }
 
-// 특정 plan을 찾기 위한 오브젝트
+// ?�정 plan??찾기 ?�한 ?�브?�트
 bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
 	if (this->date.getYear() == _year && this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
 		return (true);
 	return (false);
 }
 
-// plan을 서로 비교하기 위한 오브젝트
+// plan???�로 비교?�기 ?�한 ?�브?�트
 bool			Plan::comparePlan(Plan plan) {
 	if (plan.date.getMonth() == date.getMonth() && plan.date.getDay() == date.getDay() && plan.meal_type == meal_type)
 		return (true);
