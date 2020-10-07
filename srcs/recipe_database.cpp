@@ -22,8 +22,8 @@ void RecipeDatabase::updateDatabase(Recipe recipe) {
 }
 
 
-void RecipeDatabase::insertRecipe(Recipe recipe) {
-    recipe_list.push_back(recipe);
+void RecipeDatabase::insertRecipe(Recipe new_recipe) {
+    recipe_list.push_back(new_recipe);
     new_id += 1;
 }
 
@@ -42,11 +42,11 @@ void RecipeDatabase::deleteRecipe(Recipe recipe) {
 vector<Recipe> RecipeDatabase::getRecipes() {
     return recipe_list;
 }
-vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> keywords) {
+vector<Recipe> RecipeDatabase::searchRecipes_ingredients(vector<string> ingredients) {
     vector<Recipe> ret;
     for(Recipe recipe: recipe_list) {
         int matched_num = 0;
-        for(string keyword: keywords) {
+        for(string keyword: ingredients) {
             for(Ingredient ingredient: recipe.getIngredients()) {
                 if(keyword == ingredient.getName()) {
                     matched_num += 1;
@@ -55,7 +55,7 @@ vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> keywords) {
             }
         }
 
-        if(keywords.size() == matched_num) {
+        if(ingredients.size() == matched_num) {
             ret.push_back(recipe);
         }
     }
@@ -63,10 +63,16 @@ vector<Recipe> RecipeDatabase::getRecipes_ingredients(vector<string> keywords) {
     return ret;
 }
 
-Recipe RecipeDatabase::getRecipes_recipename(string recipename) {
-    // TODO
+Recipe RecipeDatabase::searchRecipes_recipename(string recipename) {
+    Recipe ret;
+    for (Recipe recipe : recipe_list) {
+        if (recipename == recipe.getName()) {
+            ret = recipe;
+            break;
+        }
+    }
+    return ret;
 }
-
 
 
 
