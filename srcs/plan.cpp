@@ -38,7 +38,9 @@ void			Plan::setDate(Date& _date) {
 }
 
 void			Plan::setDate(int _year, int _month, int _day) {
-	date = Date(_month, _year, _day, "");
+	date.setYear(_year);
+	date.setMonth(_month);
+	date.setDay(_day);
 }
 
 Meal			Plan::getMenu() {
