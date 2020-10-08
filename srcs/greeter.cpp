@@ -178,7 +178,7 @@ void Greeter::showMenu() {
 	}
 }
 
-// TODO : first letter.
+
 void Greeter::addRecipe() {
 	Recipe recipe;
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
@@ -188,6 +188,7 @@ void Greeter::addRecipe() {
 	std::cin.clear();
 	std::string recipe_name;
 	std::getline(std::cin, recipe_name);
+	recipe.setName(recipe_name);
 
 	// set duration
 	while (1) { // TODO : Check int type
@@ -255,6 +256,8 @@ void Greeter::addRecipe() {
 	std::cout << "Recipe " << recipe.getName() << "save in DB!\nPress Enter to continue.." << endl;
 }
 
+
+// TODO :  && ID 10000??
 // delete recipe
 void Greeter::deleteRecipeDB() {
 	std::cout << "Enter the recipe name you want to delete : " << std::flush;
