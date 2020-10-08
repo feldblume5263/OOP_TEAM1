@@ -2,14 +2,14 @@
 
 Greeter::Greeter() {
 
-	recipedatabase = make_unique<RecipeDatabase>();
-	planmanager = PlanManager();
+	RecipeDatabase recipedatabase;
+	PlanManager planmanager;
 
 }
 void Greeter::showTitle() {
-	
-	
-	
+
+
+
 	cout << "000000000000  000000000000  00        00  00        00" << endl;
 	cout << "     00            00       00      00    00        00" << endl;
 	cout << "     00            00       00    00      00        00" << endl;
