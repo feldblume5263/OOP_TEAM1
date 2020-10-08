@@ -4,7 +4,7 @@
 
 class Greeter {
 private:
-	RecipeDatabase recipedatabase;
+	unique_ptr<RecipeDatabase> recipedatabase;
 	PlanManager planmanager;
 public:
 	void showTitle();

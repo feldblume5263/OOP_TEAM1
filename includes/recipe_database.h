@@ -50,8 +50,6 @@ public:
  * Update what is added, deleted, or modified while the program is running
  * Save the contents of the array to a file when the instance is destroyed.
  * 
- * IMPORTANT: Create an instance through the database class in the factory.hpp header file.
- * This ensures that updated content is safely stored in the file when the program is terminated without having to worry about memory management.
  */
 class RecipeDatabase {
 private:

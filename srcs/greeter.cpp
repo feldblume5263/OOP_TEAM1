@@ -2,29 +2,28 @@
 
 Greeter::Greeter() {
 
-	RecipeDatabase recipedatabase = RecipeDatabase();
-	PlanManager planmanager = PlanManager();
-
+	recipedatabase = make_unique<RecipeDatabase>();
+	planmanager = PlanManager();
 
 }
 void Greeter::showTitle() {
-	cout << "¦£";
-	for (int i = 0; i < 54; i++) 	cout << "¦¡";
-	cout << "¦¤" << endl;
-	cout << "¦¢000000000000  000000000000  00        00  00        00¦¢" << endl;
-	cout << "¦¢     00            00       00      00    00        00¦¢" << endl;
-	cout << "¦¢     00            00       00    00      00        00¦¢" << endl;
-	cout << "¦¢     00            00       00  00        00        00¦¢" << endl;
-	cout << "¦¢     00            00       0000          00        00¦¢" << endl;
-	cout << "¦¢     00            00       00            000000000000¦¢" << endl;
-	cout << "¦¢     00            00       0000          00        00¦¢" << endl;
-	cout << "¦¢     00            00       00  00        00        00¦¢" << endl;
-	cout << "¦¢     00            00       00    00      00        00¦¢" << endl;
-	cout << "¦¢     00            00       00      00    00        00¦¢" << endl;
-	cout << "¦¢000000000000  000000000000  00        00  00        00¦¢" << endl;
-	cout << "¦¦";
-	for (int i = 0; i < 54; i++) 	cout << "¦¡";
-	cout << "¦¥" << endl << endl;
+	cout << "ï¿½ï¿½";
+	for (int i = 0; i < 54; i++) 	cout << "ï¿½ï¿½";
+	cout << "ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½000000000000  000000000000  00        00  00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00      00    00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00    00      00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00  00        00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       0000          00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00            000000000000ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       0000          00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00  00        00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00    00      00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½     00            00       00      00    00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½000000000000  000000000000  00        00  00        00ï¿½ï¿½" << endl;
+	cout << "ï¿½ï¿½";
+	for (int i = 0; i < 54; i++) 	cout << "ï¿½ï¿½";
+	cout << "ï¿½ï¿½" << endl << endl;
 }
 
 
@@ -223,7 +222,7 @@ void Greeter::addRecipe() {
 	}
 
 	// use try catch sentence??
-	recipedatabase.insertRecipe(recipe);
+	recipedatabase->insertRecipe(recipe);
 }
 
 // delete recipe
@@ -233,9 +232,9 @@ void Greeter::deleteRecipeDB() {
 	std::getline(std::cin, del_recipe_name);
 
 	// serarch
-	Recipe del_recipe = recipedatabase.searchRecipes_recipename(del_recipe_name);
+	Recipe del_recipe = recipedatabase->searchRecipes_recipename(del_recipe_name);
 	if (del_recipe.getID()) {
-		recipedatabase.deleteRecipe(del_recipe);
+		recipedatabase->deleteRecipe(del_recipe);
 		std::cout << "Completely Delete" << endl;
 	}
 	else { std::cout << "There is no search result for \"" << del_recipe_name << "\" in recipe list" << endl; }
@@ -248,7 +247,7 @@ inline void Greeter::editRecipe() {
 	string search_recipe;
 	std::getline(cin, search_recipe);
 
-	Recipe search_result = recipedatabase.searchRecipes_recipename(search_recipe);
+	Recipe search_result = recipedatabase->searchRecipes_recipename(search_recipe);
 	search_result.printRecipe();
 
 	std::cout << "Which part wnat to edit?\n[1] : name\n[2] : duration\n[3] : ingredients\n[4] : order" << endl;
@@ -314,7 +313,7 @@ inline void Greeter::editRecipe() {
 		cout << "select between 1~4" << endl;
 	}
 
-	recipedatabase.updateDatabase(search_result);
+	recipedatabase->updateDatabase(search_result);
 }
 
 // search recipe by ingredients or recipename
@@ -329,9 +328,9 @@ void Greeter::searchRecipe() {
 		std::getline(std::cin, search_recipename);
 
 		Recipe search_recipe;
-		search_recipe = recipedatabase.searchRecipes_recipename(search_recipename);
+		search_recipe = recipedatabase->searchRecipes_recipename(search_recipename);
 		if (search_recipe.getID()) {
-			recipedatabase.searchRecipes_recipename(search_recipename).printRecipe();
+			recipedatabase->searchRecipes_recipename(search_recipename).printRecipe();
 		}
 		else {
 			std::cout << "There is no search result for \"" << search_recipename << "\" in recipe list" << endl;
@@ -353,7 +352,7 @@ void Greeter::searchRecipe() {
 		}
 
 		vector<Recipe> search_list;
-		search_list = recipedatabase.searchRecipes_ingredients(search_ingredients);
+		search_list = recipedatabase->searchRecipes_ingredients(search_ingredients);
 		if (!search_list.empty()) {  // If search_list is not empty, then..
 			for (Recipe result_recipe : search_list) {
 				result_recipe.printRecipe();
@@ -368,7 +367,7 @@ void Greeter::searchRecipe() {
 // show all recipe
 inline void Greeter::showRecipe() {
 	vector<Recipe> recipe_list;
-	recipe_list = recipedatabase.getRecipes();
+	recipe_list = recipedatabase->getRecipes();
 	for (Recipe recipe : recipe_list)
 	{
 		recipe.printRecipe();
@@ -397,7 +396,7 @@ void Greeter::addPlan() {
 			system("cls");
 			cout << "Enter name of menu you want:";
 			getline(cin, recipe_name);
-			menu_to_add = recipedatabase.searchRecipes_recipename(recipe_name);
+			menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
 			while (true) {
 				cout << "Enter number of people:";
 				cin >> num_of_people;
@@ -523,7 +522,7 @@ void Greeter::revisePlan() {
 			system("cls");
 			cout << "Enter name of menu you want:";
 			getline(cin, recipe_name);
-			menu_to_add = recipedatabase.searchRecipes_recipename(recipe_name);
+			menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
 			while (true) {
 				cout << "Enter number of people:";
 				cin >> num_of_people;
