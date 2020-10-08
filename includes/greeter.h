@@ -7,6 +7,7 @@ private:
 	unique_ptr<RecipeDatabase> recipedatabase;
 	PlanManager planmanager;
 public:
+	Greeter();
 	void showTitle();
 	void showMenu();
 	void addRecipe(); // add new recipe

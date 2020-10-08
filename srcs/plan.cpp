@@ -25,6 +25,7 @@ Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _menu, int _
 	day = getDate()->getDay();
 }
 
+Plan::Plan();
 Plan::~Plan() { }
 
 //Getter and Setter of Private Value;

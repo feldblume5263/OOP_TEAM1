@@ -172,7 +172,7 @@ void Parser::parse(string line, Recipe& recipe) {
     recipe.setIngredients(ingredients);
 }
 
-int main() {
+/*int main() {
     try {
         Database* db = new Database();
         RecipeDatabase recipedb = *db -> getDatabase();
@@ -208,4 +208,4 @@ int main() {
     }
 
     return 0;
-}
+}*/
