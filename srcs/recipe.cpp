@@ -30,6 +30,11 @@ void Recipe::addOrder(string order)
     ingredient_order.push_back(order);
 }
 
+void Recipe::deleteOrder()
+{
+    ingredient_order.clear();
+}
+
 //출력
 void Recipe::printRecipe()
 {
@@ -37,7 +42,6 @@ void Recipe::printRecipe()
         cout << "------------------"<< endl;
         cout << "| Selected Recipe |" << endl;
         cout << "-------------------"<< endl;
-        cout << endl;
 
         cout << " Name: " << getName() << endl;
         cout << " Cooking Time: " << getDuration() << endl;
@@ -48,7 +52,8 @@ void Recipe::printRecipe()
             cout << " <Ingredients List>" << endl;
             for (int i = 0; i < getIngredients().size(); i++)
             {
-                cout << " " << i + 1 << ". " << getIngredients()[i].getName() << endl;
+                cout << " " << i + 1 << ". " << getIngredients()[i].getName() << "  " 
+                    << getIngredients()[i].getWeight() << endl;
             }
         }
 
@@ -56,7 +61,7 @@ void Recipe::printRecipe()
         {
             cout << endl;
             cout << " Cooking Order " << endl;
-            for (int i = 0; i < getIngredients().size(); i++)
+            for (int i = 0; i < getOrder().size(); i++)
             {
                 cout << " " << i + 1 << ". " << getOrder()[i] << endl;
             }

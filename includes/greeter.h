@@ -20,6 +20,7 @@ public:
 	void searchRecipe(); // search recipe by ingredients or recipename
 	void showRecipe(); // show all recipe
 	void addPlan(Plan plan_to_add);
+	void addPlan(int year, int month, int day, int meal_type, Plan plan_to_add); // function overloading
 	void deletePlan();
 	void revisePlan();
 	void searchPlan();

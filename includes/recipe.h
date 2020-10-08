@@ -7,19 +7,19 @@ using namespace std;
 class Ingredient {
 private:
 	string name;
-	int weight;
+	string weight;
 public:
-	Ingredient(string name, int weight) : name(name), weight(weight) {}
+	Ingredient(string name, string weight) : name(name), weight(weight) {}
 	string getName() {
 		return name;
 	}
-	int getWeight() {
+	string getWeight() {
 		return weight;
 	}
 	void setName(string name) {
 		this->name = name;
 	}
-	void setWeight(int weight) {
+	void setWeight(string weight) {
 		this->weight = weight;
 	}
 };
@@ -42,6 +42,7 @@ public:
     void addIngredient(Ingredient ingredient);
     bool removeIngredient(string ingredient);
     void addOrder(string order);
+    void Recipe::deleteOrder();
     void printRecipe();
     //Get
     unsigned int getID() {

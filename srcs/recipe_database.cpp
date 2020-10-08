@@ -165,7 +165,7 @@ void Parser::parse(string line, Recipe& recipe) {
             string name, weight;
             getline(ssb, name, ',');
             getline(ssb, weight, ',');
-            Ingredient ingredient(name, stoi(weight));
+            Ingredient ingredient(name, weight);
             ingredients.push_back(ingredient);
         }
     }

@@ -184,44 +184,58 @@ void Greeter::addRecipe() {
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
 
 	// set name
-	std::cout << "Name    :  " <<std::flush;
-	std::cin.clear();	std::cin.ignore();
+	std::cout << "     Name             :  " <<std::flush;
+	std::cin.clear();
 	std::string recipe_name;
 	std::getline(std::cin, recipe_name);
-	recipe.setName(recipe_name);
 
 	// set duration
-	std::cout << "Cooking Duration(min)    :  " << std::flush;
-	std::cin.clear();
-	int duration;
-	std::cin >> duration;
-	recipe.setDuration(duration);
+	while (1) { // TODO : Check int type
+		std::cout << "Cooking Duration(min) :  " << std::flush;
+		int duration;
+		cin >> duration;
+		std::cin.clear();
+		recipe.setDuration(duration);
+		break;
+		
+		//if (typeid(duration).name() != "int") {
+		//	std::cin.clear();
+		//	std::cout << "Please type number." << endl;
+		//}
+		//else {
+		//	std::cin.clear();
+		//	recipe.setDuration(duration);
+		//	break;
+		//}
+	}
+	cin.ignore(); // delete EOF
 
 	// set ingredients
-	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::flush;
-	std::cin.clear();
-	std::vector<Ingredient> ingredients;
-	while (true) {
+	std::cout << "\n-----Ingredients-----\n(If you want to stop adding  ingredients, enter \"stop\")\n" << std::flush;
+	std::vector<Ingredient> ingredients; int i = 1;
+	while (1) {
 		// set ingredient name
-		std::cout << "Ingredient name     :  " << std::flush;
-		std::cin.clear(); std::cin.ignore();
+		std::cout << "Ingredient" << i << " name      :  " << std::flush;
 		string name;
-		std::getline(std::cin, name);
+		std::getline(std::cin, name); 
+
 		if (name == "stop") { break; }
+		else {
+			// set ingredient weight
+			std::cout << "Ingredient" << i << " weight    :  " << std::flush;
+			string weight;
+			std::getline(cin, weight);
+			std::cout << endl;
 
-		// set ingredient weight
-		int weight;
-		std::cout << "Ingredient weight(gram) :  " << std::flush;
-		std::cin.clear();
-		std::cin >> weight;
-
-		Ingredient _ingredient(name, weight);
-		ingredients.push_back(_ingredient);
+			i += 1;
+			Ingredient _ingredient(name, weight);
+			ingredients.push_back(_ingredient);
+		}
 	}
 	recipe.setIngredients(ingredients);
 
 	// set order
-	std::cout << "---Cookin Oreder---\n( If you want to stop adding  Orders, enter \"stop\" )\n" << std::flush;;
+	std::cout << "\n---Cookin Oreder---\n( If you want to stop adding  Orders, enter \"stop\" )\n" << std::flush;;
 	vector<string> ingredient_order;
 	{
 		int i = 1;
@@ -231,18 +245,14 @@ void Greeter::addRecipe() {
 			string order;
 			std::getline(std::cin, order);
 			if (order == "stop") { 
-				cout << "you selected \"stop\"" << endl;
+				cout << "\nyou selected \"stop\"!" << endl;
 				break; }
 			else { recipe.addOrder(order); }
 			i += 1;
 		}
 	}
-
-	// clear buffer
-	cin.ignore(); 	cin.clear();
-
-	// use try catch sentence??
 	recipedatabase->insertRecipe(recipe);
+	std::cout << "Recipe " << recipe.getName() << "save in DB!\nPress Enter to continue.." << endl;
 }
 
 // delete recipe
@@ -253,118 +263,152 @@ void Greeter::deleteRecipeDB() {
 
 	// serarch
 	Recipe del_recipe = recipedatabase->searchRecipes_recipename(del_recipe_name);
-	if (del_recipe.getID()) {
+	if (del_recipe.getID() >= 10000 && del_recipe.getID() <= 11000) {
 		recipedatabase->deleteRecipe(del_recipe);
-		std::cout << "Completely Delete" << endl;
+		std::cout << del_recipe.getName() << " Completely Deleteed" << endl;
 	}
 	else { std::cout << "There is no search result for \"" << del_recipe_name << "\" in recipe list" << endl; }
+	std::cout << "\nPress Enter to continue.." << endl;
 }
 
 // edit recipe
-
 inline void Greeter::editRecipe() {
 	cout << "Enter the recipe name you wnat to edit  : ";
 	string search_recipe;
 	std::getline(cin, search_recipe);
-
 	Recipe search_result = recipedatabase->searchRecipes_recipename(search_recipe);
-	search_result.printRecipe();
 
+	if (search_result.getID() >= 10000 && search_result.getID() <= 11000) {
+		search_result.printRecipe();
+	}
+	else { 
+		std::cout << "There is no search result for \"" << search_recipe << "\" in recipe list" << endl;
+		std::cout << "\nPress Enter to continue.." << endl;
+		return;
+	}
+
+	std::cout << "---------------------------------------------------------" << endl;
 	std::cout << "Which part wnat to edit?\n[1] : name\n[2] : duration\n[3] : ingredients\n[4] : order" << endl;
-	cout << "Select : " << endl;
+	cout << "Select : " << std::flush;
 	int select;
 	cin >> select;
 
 	switch (select) {
 	case 1: {
 		// set name
-		std::cout << "You select to edit Recipe nama" << endl;
-		std::cout << "Name    :" << endl;
+		system("cls");
+		std::cout << "You select to edit Recipe name" << endl;
+		std::cout << "Name to replace   :  " << std::flush;
 		string recipe_name;
+		cin.ignore();
 		std::getline(std::cin, recipe_name);
 		search_result.setName(recipe_name);
+		std::cout << "completly change " << search_recipe << " to " << recipe_name << endl;
 		break;
 	}
 	case 2: {
 		// set duration
-		std::cout << "Cooking Duration(min)    :" << std::endl;
+		system("cls");
+		std::cout << "You select to edit Recipe Duration" << endl;
+		std::cout << "Duration to replace   :  " << std::flush;
 		int duration;
 		std::cin >> duration;
 		search_result.setDuration(duration);
+
+		std::cin.ignore();
+		std::cout << "completly change to " << duration << endl;
+
 		break;
 	}
 	case 3: {
 		// set ingredients
-		std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
-		std::vector<Ingredient> ingredients;
-		while (true) {
+		system("cls");
+		std::cout << "-----Ingredients-----\n(If you want to stop adding  ingredients, enter \"stop\")\n" << std::flush;
+		std::vector<Ingredient> ingredients; int i = 1;
+		cin.ignore();
+		while (1) {
 			// set ingredient name
-			std::cout << "Ingredient name     : " << endl;
+			std::cout << "Ingredient" << i << " name      :  " << std::flush;
 			string name;
 			std::getline(std::cin, name);
+
 			if (name == "stop") { break; }
+			else {
+				// set ingredient weight
+				std::cout << "Ingredient" << i << " weight    :  " << std::flush;
+				string weight;
+				std::getline(cin, weight);
+				std::cout << endl;
 
-			// set ingredient weight
-			int weight;
-			std::cout << "Ingredient weight(gram) : " << endl;
-			std::cin >> weight;
-
-			Ingredient _ingredient(name, weight);
-			ingredients.push_back(_ingredient);
+				i += 1;
+				Ingredient _ingredient(name, weight);
+				ingredients.push_back(_ingredient);
+			}
 		}
 		search_result.setIngredients(ingredients);
+		std::cout << "completly changed the ingredients" << endl;
 		break;
 	}
 	case 4: {
-		std::cout << "---Cookin Oreder---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
+		system("cls");
+		std::cout << "-----Cookin Oreder-----\n( If you want to stop adding  Oreder, enter \"stop\" )\n" << std::endl;
 		vector<string> ingredient_order;
+		search_result.deleteOrder();
+		int i = 1;
+		cin.ignore();
 		while (true) {
-			int i = 1;
 			std::cout << "Order" << i << " : ";
 			string order;
 			std::getline(std::cin, order);
+
 			if (order == "stop") { break; }
 			else { search_result.addOrder(order); }
 			i += 1;
-			break;
 		}
+		break;
 	}
-	default:
-		cout << "select between 1~4" << endl;
+	default: { cout << "select between 1~4" << endl; }
 	}
 	recipedatabase->updateDatabase(search_result);
+	std::cout << "\n\nPress Enter to continue.." << endl;
 }
 
 // search recipe by ingredients or recipename
 void Greeter::searchRecipe() {
-	std::cout << "Which do you search for, recipes or ingredients?\n[1] : recipe\n [2] : ingredient" << endl;
+	std::cout << "Which do you search for, recipe name or ingredients?\n[1] : Recipe name\n[2] : Ingredients" << endl;
 	int select;
 	cin >> select;
 	if (select == 1) { // search for recipe name
-		std::cout << "Enter the recipe name" << endl;
-		std::cout << "Search : " << std::flush;
+		std::cout << "\nEnter the recipe name" << endl;
+		std::cout << "Name : " << std::flush;
 		string search_recipename;
+		cin.ignore();
 		std::getline(std::cin, search_recipename);
 
 		Recipe search_recipe;
 		search_recipe = recipedatabase->searchRecipes_recipename(search_recipename);
-		if (search_recipe.getID()) {
+		if (search_recipe.getID() >= 10000 && search_recipe.getID() <= 11000) {
+			std::cout << endl;
 			recipedatabase->searchRecipes_recipename(search_recipename).printRecipe();
+			std::cout << "Press Enter to continue.." << endl;
 		}
 		else {
 			std::cout << "There is no search result for \"" << search_recipename << "\" in recipe list" << endl;
+			std::cout << "\nPress Enter to continue.." << endl;
 		}
 	}
 	else if (select == 2) { // search for ingredients
-		std::cout << "Enter the ingredients" << endl;
-		std::cout << " If you want to stop adding  ingredients, enter \"stop\"";
-		std::cout << "Search : " << std::flush;
+		std::cout << "\nEnter the ingredients" << endl;
+		std::cout << "(If you want to stop adding  ingredients, enter \"stop\")\n";
 		vector<string> search_ingredients;
+		cin.ignore();
 
 		while (1) {
 			string ingredient;
+			std::cout << "Ingredients : " << std::flush;
 			std::getline(cin, ingredient);
-			if (ingredient == "stop") { break; }
+
+			if (ingredient == "stop") { std::cout << "\nSelected stop\n\n\n" << endl;  break; }
 			else {
 				search_ingredients.push_back(ingredient);
 			}
@@ -373,12 +417,18 @@ void Greeter::searchRecipe() {
 		vector<Recipe> search_list;
 		search_list = recipedatabase->searchRecipes_ingredients(search_ingredients);
 		if (!search_list.empty()) {  // If search_list is not empty, then..
+			system("cls");
 			for (Recipe result_recipe : search_list) {
 				result_recipe.printRecipe();
+				std::cout << "*********************************************" << endl;
 			}
+			std::cout << "\n\nPress Enter to continue.." << endl;
+
 		}
 		else {
 			std::cout << "There is no search result in recipe list" << endl;
+			std::cout << "\n\nPress Enter to continue.." << endl;
+
 		}
 	}
 }
@@ -391,6 +441,7 @@ inline void Greeter::showRecipe() {
 	{
 		recipe.printRecipe();
 	}
+	std::cout << "Press Enter to continue.." << endl;
 }
 
 
@@ -504,6 +555,41 @@ void Greeter::addPlan(Plan plan_to_add) {
 
 }
 
+
+
+void Greeter::addPlan(int year, int month, int day, int meal_type, Plan plan_to_add) {
+	Recipe menu_to_add;
+	string recipe_name;
+	int num_of_people;
+
+	cout << "Enter name of menu you want:";
+	getline(cin, recipe_name);
+	menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
+	while (true) {
+		cout << "Enter number of people:";
+		cin >> num_of_people;
+		if (num_of_people > 0) break;
+		else {
+			cout << "Error: Invalid Number. Enter Again." << endl;
+		}
+	}
+
+	plan_to_add.getMenu()->addMenu(menu_to_add, num_of_people);
+	temp_string = plan_to_add.getMenu()->get_meals()[0].menus.getName();
+	temp_num = num_of_people;
+
+	plan_to_add.menu_name = temp_string;
+	plan_to_add.numOfPeople = temp_num;
+
+	cin.clear(); cin.ignore();
+	int i;
+	cin >> i;
+	cin.clear(); cin.ignore();
+	planmanager.addPlan(plan_to_add);
+
+	return;
+}
+
 void Greeter::deletePlan() {
 
 	int year;
@@ -530,6 +616,7 @@ void Greeter::deletePlan() {
 
 
 }
+
 void Greeter::revisePlan() {
 
 	int year;
@@ -559,7 +646,7 @@ void Greeter::revisePlan() {
 	cout << "[3]Revise Meal" << endl;
 	cout << "[4]Back" << endl;
 	cin >> input_num;
-	cin.clear(); cin.ignore();
+	cin.clear();
 	if (input_num == 1) {
 		system("cls");
 		planmanager.reviseDate(year, month, day, meal_type);
@@ -573,22 +660,25 @@ void Greeter::revisePlan() {
 			string recipe_name;
 			int num_of_people;
 			system("cls");
+			cin.clear(); cin.ignore();
 			cout << "Enter name of menu you want:";
+			cin.clear(); cin.ignore();
 			getline(cin, recipe_name);
 			menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
 			while (true) {
 				cout << "Enter number of people:";
 				cin >> num_of_people;
-				if (num_of_people > 0) break;
+				if (num_of_people > 0) { cin.clear(); cin.ignore(); break; }
 				else {
 					cout << "Error: Invalid Number. Enter Again." << endl;
 				}
 			}
 
-			int input_n;
+			/*int input_n;
 			while (true) {
 				cout << "[1]Add More Menu" << endl;
 				cout << "[2]Finish Revising" << endl;
+				cin.clear(); cin.ignore();
 				cin >> input_n;
 				if (input_n == 1) {
 					break;;
@@ -607,10 +697,11 @@ void Greeter::revisePlan() {
 			else {
 				break;
 			}
-			return;
+			return;*/
 		}
-		planmanager.reviseMeal(year, month, day, meal_type,menu);
-
+		//planmanager.reviseMeal(year, month, day, meal_type,menu);
+		planmanager.deletePlan(year, month, day, meal_type);
+		addPlan(year, month, day, meal_type, Plan());
 	}
 	else if (input_num == 2) {
 		system("cls");
