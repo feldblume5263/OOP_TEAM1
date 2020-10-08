@@ -22,7 +22,8 @@ void RecipeDatabase::updateDatabase(Recipe recipe) {
 }
 
 
-void RecipeDatabase::insertRecipe(Recipe new_recipe) {
+void RecipeDatabase::insertRecipe(Recipe &new_recipe) {
+    //Recipe new_recipe = recipe;
     recipe_list.push_back(new_recipe);
     new_id += 1;
 }

@@ -58,6 +58,8 @@ void Greeter::showMenu() {
 				cout << "[0] Back To Menu" << endl;
 				int input_num_in_recipe;
 				cin >> input_num_in_recipe;
+				// clear buffer
+				cin.ignore(); 	cin.clear();
 				if (input_num_in_recipe == 0) {
 
 					break;
@@ -65,26 +67,31 @@ void Greeter::showMenu() {
 				else if (input_num_in_recipe == 1) {
 					system("cls");
 					addRecipe();
+					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 2) {
 					system("cls");
 					deleteRecipeDB();
+					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 3) {
 					system("cls");
 					editRecipe();
+					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 4) {
 					system("cls");
 					searchRecipe();
+					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 5) {
 					system("cls");
 					showRecipe();
+					cin.ignore();
 					continue;
 				}
 				else {
@@ -95,11 +102,6 @@ void Greeter::showMenu() {
 					if (getchar())continue;
 
 				}
-
-
-
-
-
 			}
 			continue;
 		}
@@ -117,6 +119,8 @@ void Greeter::showMenu() {
 				cout << "[0] Back To Menu" << endl;
 				int input_num_in_plan;
 				cin >> input_num_in_plan;
+				// clear buffer
+				cin.ignore(); 	cin.clear();
 				if (input_num_in_plan == 0) {
 
 					break;
@@ -168,12 +172,10 @@ void Greeter::showMenu() {
 	}
 }
 
-
+// TODO : first letter.
 void Greeter::addRecipe() {
 	Recipe recipe;
-
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
-	// std::flush; std::cin.clear(); std::cin.ignore();
 
 	// set name
 	std::cout << "Name    :  " <<std::flush;
@@ -230,8 +232,8 @@ void Greeter::addRecipe() {
 		}
 	}
 
-	cout << "\n\n\n" << endl;
-	recipe.printRecipe();
+	// clear buffer
+	cin.ignore(); 	cin.clear();
 
 	// use try catch sentence??
 	recipedatabase->insertRecipe(recipe);
@@ -324,7 +326,6 @@ inline void Greeter::editRecipe() {
 	default:
 		cout << "select between 1~4" << endl;
 	}
-
 	recipedatabase->updateDatabase(search_result);
 }
 
