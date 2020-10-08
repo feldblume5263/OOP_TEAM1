@@ -92,7 +92,8 @@ void			Plan::showPlan() {
 	//std::cout << "in plan name : " << *menu_name << "people : " << *numOfPeople << endl;
 
 	std::cout << "in plan people : " << endl;
-	std::cout << *(&numOfPeople) << endl;
+	std::cout << numOfPeople << endl;
+	std::cout << menu_name << endl;
 
 	// cout << "name : " << menu. << " people : " << numOfPeople << endl;
 	//std::cout << "in showplan :  "<<  menu.meals[0].num_of_people << endl;

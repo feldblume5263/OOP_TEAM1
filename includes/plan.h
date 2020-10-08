@@ -17,8 +17,8 @@ protected:
 
 public:
 	// TODO : Make to vector
-	string*	menu_name;
-	int* numOfPeople;
+	string	menu_name;
+	int numOfPeople;
 
 
 

@@ -3,6 +3,8 @@
 Greeter::Greeter() {
 	recipedatabase = make_unique<RecipeDatabase>();
 	planmanager = PlanManager();
+	string temp_string;
+	int temp_num;
 	
 }
 void Greeter::showTitle() {
@@ -126,7 +128,7 @@ void Greeter::showMenu() {
 				}
 				else if (input_num_in_plan == 1) {
 					system("cls");
-					addPlan();
+					addPlan(Plan());
 					std::cin.ignore();
 					continue;
 				}
@@ -396,8 +398,8 @@ inline void Greeter::showRecipe() {
 
 
 
-void Greeter::addPlan() {
-	Plan plan_to_add = Plan();
+void Greeter::addPlan(Plan plan_to_add) {
+	//Plan plan_to_add = Plan();
 	//Meal meal_to_add = Meal();
 
 	while (true) {
@@ -426,27 +428,28 @@ void Greeter::addPlan() {
 				}
 			}
 			plan_to_add.getMenu()->addMenu(menu_to_add, num_of_people);
+			temp_string = plan_to_add.getMenu()->get_meals()[0].menus.getName();
+			temp_num = num_of_people;
+			//std::cout << plan_to_add.getMenu()->get_meals()[0].menus.getName() << endl;
 
-			std::cout << plan_to_add.getMenu()->get_meals()[0].menus.getName() << endl;
+			//plan_to_add.menu_name = &(plan_to_add.getMenu()->get_meals()[0].menus.getName());
 
-			plan_to_add.menu_name = &(plan_to_add.getMenu()->get_meals()[0].menus.getName());
+			//plan_to_add.numOfPeople = &num_of_people;
 
-			plan_to_add.numOfPeople = &num_of_people;
-
-			std::cout << "in greeter name : " << *(plan_to_add.menu_name) << "People : " << *(plan_to_add.numOfPeople) << endl;
+			//std::cout << "in greeter name : " << *(plan_to_add.menu_name) << "People : " << *(plan_to_add.numOfPeople) << endl;
 
 
 
 			//meal_to_add.addMenu(menu_to_add, num_of_people);
 			// plan_to_add.setMenu(meal_to_add);
-		/*	plan_to_add.menu_name = menu_to_add.getName();
-			plan_to_add.numOfPeople = num_of_people;*/
+			plan_to_add.menu_name = temp_string;
+			plan_to_add.numOfPeople = temp_num;
 
 			cin.clear(); cin.ignore();
 			int i;
 			cin >> i;
 			cin.clear(); cin.ignore();
-
+			planmanager.addPlan(plan_to_add);	
 			return;
 			//continue;
 		}
@@ -480,7 +483,7 @@ void Greeter::addPlan() {
 					continue;
 				}
 			}
-			planmanager.addPlan(plan_to_add);
+			
 
 
 
@@ -494,6 +497,7 @@ void Greeter::addPlan() {
 			if (getchar())continue;
 		}
 	}
+	
 	return;
 
 
@@ -555,6 +559,7 @@ void Greeter::revisePlan() {
 	cout << "[3]Revise Meal" << endl;
 	cout << "[4]Back" << endl;
 	cin >> input_num;
+	cin.clear(); cin.ignore();
 	if (input_num == 1) {
 		system("cls");
 		planmanager.reviseDate(year, month, day, meal_type);
@@ -602,8 +607,9 @@ void Greeter::revisePlan() {
 			else {
 				break;
 			}
+			return;
 		}
-		planmanager.reviseMealType(year, month, day, meal_type);
+		planmanager.reviseMeal(year, month, day, meal_type,menu);
 
 	}
 	else if (input_num == 2) {
@@ -627,6 +633,8 @@ void Greeter::searchPlan() {
 
 
 	planmanager.showSpecificPlan(year, month, day, meal_type);
+	int i;
+	cin >> i;
 	return;
 
 }

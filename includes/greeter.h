@@ -8,6 +8,8 @@ class Greeter {
 private:
 	unique_ptr<RecipeDatabase> recipedatabase;
 	PlanManager planmanager;
+	string temp_string;
+	int temp_num;
 public:
 	Greeter();
 	void showTitle();
@@ -17,7 +19,7 @@ public:
 	void editRecipe(); // edit recipe
 	void searchRecipe(); // search recipe by ingredients or recipename
 	void showRecipe(); // show all recipe
-	void addPlan();
+	void addPlan(Plan plan_to_add);
 	void deletePlan();
 	void revisePlan();
 	void searchPlan();
