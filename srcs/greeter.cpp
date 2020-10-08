@@ -399,11 +399,13 @@ inline void Greeter::showRecipe() {
 void Greeter::addPlan() {
 	Plan plan_to_add;
 	Meal meal_to_add = Meal();
+	//vector<Meal> meal_to_add;
+	//meal_to_add.push_back(Meal());
 	while (true) {
 		system("cls");
 		cout << "[1]: Select Date" << endl;
 		cout << "[2]: Next Stage" << endl;
-		cout << "[3]:"; // TODO:
+		cout << "[3]:"; // TODO: EXIT menu
 		int input_num;
 		cin >> input_num;
 		std::cin.clear();	std::cin.ignore();
@@ -425,6 +427,12 @@ void Greeter::addPlan() {
 				}
 			}
 			meal_to_add.addMenu(menu_to_add, num_of_people);
+
+			int temp;
+			cin.clear(); cin.ignore();
+			cin >> temp;
+
+
 			return;
 			//continue;
 		}

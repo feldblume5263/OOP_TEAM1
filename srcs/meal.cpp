@@ -15,8 +15,12 @@ void Meal::addMenu(Recipe &_menu, const int& people_in)
     Serving _serving;
     _serving.menus = _menu;
     _serving.num_of_people = people_in;
+
+    //std::cout << people_in << "  num = "<< _serving.num_of_people << endl;
+    //std::cout << _serving.num_of_people << endl;
+    //std::cout << _serving.menus.getName() << endl;
+
     meals.push_back(_serving);
-    cout << "hello-in addmenu" << endl;
 }
 
 void Meal::deleteMenu(int order)
