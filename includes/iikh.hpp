@@ -15,11 +15,13 @@
 #include <windows.h>
 #include <conio.h>
 
+# include "date.h"
 # include "recipe.h"
 # include "recipe_database.h"
 # include "meal.h"
 # include "plan.h"
 # include "planManager.h"
+# include "greeter.h"
 
 using namespace std;
 

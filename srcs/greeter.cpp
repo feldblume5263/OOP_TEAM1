@@ -1,4 +1,4 @@
-#include "../OOP_TEAM1/includes/greeter.h"
+#include "../includes/greeter.h"
 
 Greeter::Greeter() {
 
