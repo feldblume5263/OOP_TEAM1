@@ -9,7 +9,14 @@ Plan Class
 
 */
 
-//Plan::Plan();
+Plan::Plan() {
+	date = Date();
+	menu = Meal();
+
+	year = 0;
+	month = 0;
+	day = 0;
+};
 
 Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _menu, int _meal_type) {
 
@@ -43,11 +50,11 @@ void			Plan::setDate(int _year, int _month, int _day, string _comment) {
 	date = Date(_year, _month, _day, _comment);
 }
 
-Meal			Plan::getMenu() {
-	return (menu);
+Meal*			Plan::getMenu() {
+	return &menu;
 }
 
-void			Plan::setMenu(Meal& _menu) {
+void			Plan::setMenu(Meal _menu) {
 	menu = _menu;
 }
 
@@ -80,7 +87,17 @@ void			Plan::showPlan() {
 	else
 		meal_label = "unknown";
 	cout << s_year << " / " << s_month << " / " << s_day << " / " << meal_label << endl;
-	menu.showMeal();
+	
+
+	//std::cout << "in plan name : " << *menu_name << "people : " << *numOfPeople << endl;
+
+	std::cout << "in plan people : " << endl;
+	std::cout << *(&numOfPeople) << endl;
+
+	// cout << "name : " << menu. << " people : " << numOfPeople << endl;
+	//std::cout << "in showplan :  "<<  menu.meals[0].num_of_people << endl;
+
+	//menu.showMeal();
 	cout << endl;
 	return;
 }

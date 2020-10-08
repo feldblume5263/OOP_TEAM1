@@ -11,9 +11,8 @@ struct Serving {
 
 class Meal
 {
-protected:
+public:
     std::vector <Serving> meals;
-
 public:
     Meal();
 

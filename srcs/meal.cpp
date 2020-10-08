@@ -41,8 +41,7 @@ void Meal::showMeal()
         cout << " >> Ingredients" << endl;
         for (auto each_ingredient : each_menu.menus.getIngredients())
         {
-            /*cout << "  - " << each_ingredient << "  \tX" << each_menu.num_of_people << endl;*/
-            // TODO :  get_weight * num_of_people (( After checking recipe class ))
+            ;
         }
 
         i += 1;
@@ -52,6 +51,5 @@ void Meal::showMeal()
 }
 
 std::vector<Serving> Meal::get_meals() {
-
     return meals;
 }

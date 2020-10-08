@@ -15,12 +15,17 @@ protected:
 	int				meal_type;
 	Date			date;
 
-
 public:
+	// TODO : Make to vector
+	string*	menu_name;
+	int* numOfPeople;
+
+
+
 	int				year;
 	int				month;
 	int				day;
-	Plan() {};
+	Plan();
 	Plan(int _year, int _month, int _day, string  _comments, Meal& _menu, int _meal_type);
 	
 	~Plan();
@@ -28,8 +33,8 @@ public:
 	Date* getDate();
 	void			setDate(Date& _date);
 	void			setDate(int _year, int _month, int _day, string _comment);
-	Meal			getMenu();
-	void			setMenu(Meal& _menu);
+	Meal*			getMenu();
+	void			setMenu(Meal _menu);
 	int				getMealType();
 	void			setMealType(int _meal_type);
 	bool			comparePlan(int _year, int _month, int _day, int _meal_type);

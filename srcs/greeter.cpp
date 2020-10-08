@@ -397,10 +397,9 @@ inline void Greeter::showRecipe() {
 
 
 void Greeter::addPlan() {
-	Plan plan_to_add;
-	Meal meal_to_add = Meal();
-	//vector<Meal> meal_to_add;
-	//meal_to_add.push_back(Meal());
+	Plan plan_to_add = Plan();
+	//Meal meal_to_add = Meal();
+
 	while (true) {
 		system("cls");
 		cout << "[1]: Select Date" << endl;
@@ -426,12 +425,27 @@ void Greeter::addPlan() {
 					cout << "Error: Invalid Number. Enter Again." << endl;
 				}
 			}
-			meal_to_add.addMenu(menu_to_add, num_of_people);
+			plan_to_add.getMenu()->addMenu(menu_to_add, num_of_people);
 
-			int temp;
+			std::cout << plan_to_add.getMenu()->get_meals()[0].menus.getName() << endl;
+
+			plan_to_add.menu_name = &(plan_to_add.getMenu()->get_meals()[0].menus.getName());
+
+			plan_to_add.numOfPeople = &num_of_people;
+
+			std::cout << "in greeter name : " << *(plan_to_add.menu_name) << "People : " << *(plan_to_add.numOfPeople) << endl;
+
+
+
+			//meal_to_add.addMenu(menu_to_add, num_of_people);
+			// plan_to_add.setMenu(meal_to_add);
+		/*	plan_to_add.menu_name = menu_to_add.getName();
+			plan_to_add.numOfPeople = num_of_people;*/
+
 			cin.clear(); cin.ignore();
-			cin >> temp;
-
+			int i;
+			cin >> i;
+			cin.clear(); cin.ignore();
 
 			return;
 			//continue;
@@ -453,7 +467,13 @@ void Greeter::addPlan() {
 					cout << "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
 					cout << "Enter mealType:";
 					cin >> meal_type;
-					plan_to_add = Plan(year, month, day, s_comments, meal_to_add, meal_type);
+
+					plan_to_add.getDate()->setDay(day);
+					plan_to_add.getDate()->setMonth(month);
+					plan_to_add.getDate()->setYear(year);
+					plan_to_add.setMealType(meal_type);
+
+					// plan_to_add = Plan(year, month, day, s_comments, meal_to_add, meal_type);
 					break;
 				}
 				else {
@@ -612,5 +632,4 @@ void Greeter::searchPlan() {
 }
 void Greeter::showPlan() {
 	planmanager.showAllPlan();
-
 }
