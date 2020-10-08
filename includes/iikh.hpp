@@ -12,8 +12,8 @@
 #include <stdexcept>
 #include <ctime>
 #include <memory>
-#include <windows.h>
-#include <conio.h>
+#include <stdlib.h>
+#include <cstdio.h>
 
 # include "date.h"
 # include "recipe.h"

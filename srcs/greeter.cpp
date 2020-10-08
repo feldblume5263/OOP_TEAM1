@@ -7,23 +7,21 @@ Greeter::Greeter() {
 
 }
 void Greeter::showTitle() {
-	cout << "��";
-	for (int i = 0; i < 54; i++) 	cout << "��";
-	cout << "��" << endl;
-	cout << "��000000000000  000000000000  00        00  00        00��" << endl;
-	cout << "��     00            00       00      00    00        00��" << endl;
-	cout << "��     00            00       00    00      00        00��" << endl;
-	cout << "��     00            00       00  00        00        00��" << endl;
-	cout << "��     00            00       0000          00        00��" << endl;
-	cout << "��     00            00       00            000000000000��" << endl;
-	cout << "��     00            00       0000          00        00��" << endl;
-	cout << "��     00            00       00  00        00        00��" << endl;
-	cout << "��     00            00       00    00      00        00��" << endl;
-	cout << "��     00            00       00      00    00        00��" << endl;
-	cout << "��000000000000  000000000000  00        00  00        00��" << endl;
-	cout << "��";
-	for (int i = 0; i < 54; i++) 	cout << "��";
-	cout << "��" << endl << endl;
+	
+	
+	
+	cout << "000000000000  000000000000  00        00  00        00" << endl;
+	cout << "     00            00       00      00    00        00" << endl;
+	cout << "     00            00       00    00      00        00" << endl;
+	cout << "     00            00       00  00        00        00" << endl;
+	cout << "     00            00       0000          00        00" << endl;
+	cout << "     00            00       00            000000000000" << endl;
+	cout << "     00            00       0000          00        00" << endl;
+	cout << "     00            00       00  00        00        00" << endl;
+	cout << "     00            00       00    00      00        00" << endl;
+	cout << "     00            00       00      00    00        00" << endl;
+	cout << "000000000000  000000000000  00        00  00        00" << endl;
+
 }
 
 
@@ -95,7 +93,7 @@ void Greeter::showMenu() {
 					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
 					cout << "-----------------------------------------------" << endl;
 
-					if (_getch())continue;
+					if (getchar())continue;
 
 				}
 
@@ -153,7 +151,7 @@ void Greeter::showMenu() {
 					cout << "-----------------------------------------------" << endl;
 					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
 					cout << "-----------------------------------------------" << endl;
-					if (_getch())continue;
+					if (getchar())continue;
 
 				}
 
@@ -164,7 +162,7 @@ void Greeter::showMenu() {
 			cout << "-----------------------------------------------" << endl;
 			cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
 			cout << "-----------------------------------------------" << endl;
-			if (_getch())continue;
+			if (getchar())continue;
 		}
 
 
@@ -443,7 +441,7 @@ void Greeter::addPlan() {
 			cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
 			cout << "-----------------------------------------------" << endl;
 
-			if (_getch())continue;
+			if (getchar())continue;
 		}
 	}
 	return;
