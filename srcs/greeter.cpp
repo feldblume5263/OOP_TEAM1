@@ -124,27 +124,27 @@ void Greeter::showMenu() {
 				}
 				else if (input_num_in_plan == 1) {
 					system("cls");
-					//addPlan();
+					addPlan();
 					continue;
 				}
 				else if (input_num_in_plan == 2) {
 					system("cls");
-					//deletePlan();
+					deletePlan();
 					continue;
 				}
 				else if (input_num_in_plan == 3) {
 					system("cls");
-					//revisePlan();
+					revisePlan();
 					continue;
 				}
 				else if (input_num_in_plan == 4) {
 					system("cls");
-					//searchPlan();
+					searchPlan();
 					continue;
 				}
 				else if (input_num_in_plan == 5) {
 					system("cls");
-					//showPlan();
+					showPlan();
 					continue;
 				}
 				else {
@@ -173,34 +173,38 @@ void Greeter::showMenu() {
 void Greeter::addRecipe() {
 	Recipe recipe;
 
-	std::cout << "-------Recipe Infromation-------" << std::endl;
+	std::cout << "-------Recipe Infromation-------\n" << std::flush;
 	// std::flush; std::cin.clear(); std::cin.ignore();
 
 	// set name
-	std::cout << "Name    :" << endl;
+	std::cout << "Name    :  ";
 	std::string recipe_name;
+	std::cin.ignore();
 	std::getline(std::cin, recipe_name);
 	recipe.setName(recipe_name);
 
 	// set duration
-	std::cout << "Cooking Duration(min)    :" << std::endl;
+	std::cout << "Cooking Duration(min)    :  ";
+	std::cin.ignore();
 	int duration;
 	std::cin >> duration;
 	recipe.setDuration(duration);
 
 	// set ingredients
-	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
+	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )" << std::endl;
 	std::vector<Ingredient> ingredients;
 	while (true) {
 		// set ingredient name
-		std::cout << "Ingredient name     : " << endl;
+		std::cout << "Ingredient name     :  ";
+		std::cin.ignore();
 		string name;
 		std::getline(std::cin, name);
 		if (name == "stop") { break; }
 
 		// set ingredient weight
 		int weight;
-		std::cout << "Ingredient weight(gram) : " << endl;
+		std::cout << "Ingredient weight(gram) :  ";
+		std::cin.ignore();
 		std::cin >> weight;
 
 		Ingredient _ingredient(name, weight);
@@ -209,16 +213,18 @@ void Greeter::addRecipe() {
 	recipe.setIngredients(ingredients);
 
 	// set order
-	std::cout << "---Cookin Oreder---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::endl;
+	std::cout << "---Cookin Oreder---\n( If you want to stop adding  ingredients, enter \"stop\" )" << std::endl;
 	vector<string> ingredient_order;
-	while (true) {
+	{
 		int i = 1;
-		std::cout << "Order" << i << " : ";
-		string order;
-		std::getline(std::cin, order);
-		if (order == "stop") { break; }
-		else { recipe.addOrder(order); }
-		i += 1;
+		while (true) {
+			std::cout << "Order" << i << " : ";
+			string order;
+			std::getline(std::cin, order);
+			if (order == "stop") { break; }
+			else { recipe.addOrder(order); }
+			i += 1;
+		}
 	}
 
 	// use try catch sentence??

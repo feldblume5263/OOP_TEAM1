@@ -2,6 +2,11 @@
 
 int main() {
 
+	//std::cout << "Hello" << endl;
+	//string Teststring;
+	//std::getline(cin, Teststring);
+
+	//cout << "After" << endl;
 
 	Greeter g = Greeter();
 	g.showMenu();
@@ -9,5 +14,4 @@ int main() {
 
 	return 0;
 
-	return 0;
 }
