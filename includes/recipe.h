@@ -1,9 +1,28 @@
-#pragma once
 #ifndef RECIPE_H
 #define RECIPE_H
 #include "iikh.hpp"
 
 using namespace std;
+
+class Ingredient {
+private:
+	string name;
+	int weight;
+public:
+	Ingredient(string name, int weight) : name(name), weight(weight) {}
+	string getName() {
+		return name;
+	}
+	int getWeight() {
+		return weight;
+	}
+	void setName(string name) {
+		this->name = name;
+	}
+	void setWeight(int weight) {
+		this->weight = weight;
+	}
+};
 
 class Recipe {
 private:
