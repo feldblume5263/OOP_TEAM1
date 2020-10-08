@@ -2,8 +2,12 @@
 #ifndef MEAL_H
 #define MEAL_H
 #include "iikh.hpp"
-#include "meal.h"
 #include "recipe.h"
+
+struct Serving {
+    Recipe menus;
+    int num_of_people;
+};
 
 class Meal
 {

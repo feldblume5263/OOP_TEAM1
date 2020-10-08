@@ -2,7 +2,8 @@
 # define PLAN_H
 
 #include "iikh.hpp"
-
+#include "meal.h"
+#include "date.h"
 
 using namespace std;
 
@@ -18,8 +19,9 @@ public:
 	int				year;
 	int				month;
 	int				day;
-	Plan(int _year, int _month, int _day, string  _comments, Meal& _menu, int _meal_type);
 	Plan();
+	Plan(int _year, int _month, int _day, string  _comments, Meal& _menu, int _meal_type);
+	
 	~Plan();
 
 	Date* getDate();

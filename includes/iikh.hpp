@@ -15,13 +15,8 @@
 #include <stdlib.h>
 #include <cstdio>
 
-# include "date.h"
-# include "recipe.h"
-# include "recipe_database.h"
-# include "meal.h"
-# include "plan.h"
-# include "planManager.h"
-# include "greeter.h"
+//#include "recipe.h"
+
 
 using namespace std;
 
@@ -32,6 +27,7 @@ using namespace std;
 		//return a.name == this->name ? this->name < a.name : this->weight < a.weight;
 	//}
 //} Ingredient;
+
 class Ingredient {
 private:
 	string name;
@@ -64,10 +60,8 @@ vector<string> split(string str, char delimiter) {
 	return internal;
 }
 
-struct Serving {
-	Recipe menus;
-	int num_of_people;
-};
+
+
 void enterDate(int* _year, int* _month, int* _day) {
 	string s_year;
 	string s_month;

@@ -9,6 +9,8 @@ Plan Class
 
 */
 
+Plan::Plan();
+
 Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _menu, int _meal_type) {
 
 	//Handling exception from Date Class
@@ -25,7 +27,6 @@ Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _menu, int _
 	day = getDate()->getDay();
 }
 
-Plan::Plan();
 Plan::~Plan() { }
 
 //Getter and Setter of Private Value;

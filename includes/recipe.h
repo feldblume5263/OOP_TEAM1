@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RECIPE_H
 #define RECIPE_H
 #include "iikh.hpp"
