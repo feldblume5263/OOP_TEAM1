@@ -20,7 +20,7 @@ public:
     ~Meal();
 
     // add menus
-    void addMenu(Recipe _menu, const int& people_in = 1);
+    void addMenu(Recipe &_menu, const int& people_in = 1);
 
     // delete menus and ingredients form selected menus
     void deleteMenu(int order);

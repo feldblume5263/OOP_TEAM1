@@ -122,32 +122,36 @@ void Greeter::showMenu() {
 				// clear buffer
 				cin.ignore(); 	cin.clear();
 				if (input_num_in_plan == 0) {
-
 					break;
 				}
 				else if (input_num_in_plan == 1) {
 					system("cls");
 					addPlan();
+					std::cin.ignore();
 					continue;
 				}
 				else if (input_num_in_plan == 2) {
 					system("cls");
 					deletePlan();
+					std::cin.ignore();
 					continue;
 				}
 				else if (input_num_in_plan == 3) {
 					system("cls");
 					revisePlan();
+					std::cin.ignore();
 					continue;
 				}
 				else if (input_num_in_plan == 4) {
 					system("cls");
 					searchPlan();
+					std::cin.ignore();
 					continue;
 				}
 				else if (input_num_in_plan == 5) {
 					system("cls");
 					showPlan();
+					std::cin.ignore();
 					continue;
 				}
 				else {
@@ -399,8 +403,10 @@ void Greeter::addPlan() {
 		system("cls");
 		cout << "[1]: Select Date" << endl;
 		cout << "[2]: Next Stage" << endl;
+		cout << "[3]:"; // TODO:
 		int input_num;
 		cin >> input_num;
+		std::cin.clear();	std::cin.ignore();
 		if (input_num == 2) {
 			system("cls");
 			Recipe menu_to_add;
@@ -419,7 +425,8 @@ void Greeter::addPlan() {
 				}
 			}
 			meal_to_add.addMenu(menu_to_add, num_of_people);
-			continue;
+			return;
+			//continue;
 		}
 		else if (input_num == 1) {
 

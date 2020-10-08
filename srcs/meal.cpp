@@ -2,7 +2,7 @@
 
 Meal::Meal()
 {
-    ;
+    //std::vector <Serving> meals;
 }
 
 Meal::~Meal()
@@ -10,12 +10,13 @@ Meal::~Meal()
     ;
 }
 
-void Meal::addMenu(Recipe _menu, const int& people_in)
+void Meal::addMenu(Recipe &_menu, const int& people_in)
 {
     Serving _serving;
     _serving.menus = _menu;
     _serving.num_of_people = people_in;
     meals.push_back(_serving);
+    cout << "hello-in addmenu" << endl;
 }
 
 void Meal::deleteMenu(int order)
