@@ -15,9 +15,6 @@
 #include <stdlib.h>
 #include <cstdio>
 
-//#include "recipe.h"
-
-
 using namespace std;
 
 //typedef struct Ingredient {

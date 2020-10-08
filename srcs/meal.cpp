@@ -1,4 +1,3 @@
-#pragma once
 #include "../includes/meal.h"
 
 Meal::Meal()

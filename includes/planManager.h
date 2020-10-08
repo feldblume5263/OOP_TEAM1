@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef PLANMANAGER_H
 # define PLANMANAGER_H
 # include "iikh.hpp"

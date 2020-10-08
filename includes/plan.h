@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PLAN_H
 # define PLAN_H
 
@@ -19,7 +20,7 @@ public:
 	int				year;
 	int				month;
 	int				day;
-	Plan();
+	Plan() {};
 	Plan(int _year, int _month, int _day, string  _comments, Meal& _menu, int _meal_type);
 	
 	~Plan();

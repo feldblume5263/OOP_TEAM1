@@ -169,10 +169,12 @@ Plan* PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) {
 			return (&(planData[idx]));
 		}
 		idx++;
-		cout << "No matching Plans" << endl;
-		return (NULL);
-	}
+		}
+	cout << "No matching Plans" << endl;
+	return (NULL);
 }
+
+
 
 Plan* PlanManager::searchPlan(Plan plan) {
 	int		idx;
@@ -183,6 +185,6 @@ Plan* PlanManager::searchPlan(Plan plan) {
 			return (&(planData[idx]));
 		}
 		idx++;
-		return (NULL);
 	}
+	return (NULL);
 }
