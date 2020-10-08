@@ -1,5 +1,12 @@
 #include "../OOP_TEAM1/includes/greeter.h"
 
+Greeter::Greeter() {
+
+	RecipeDatabase recipedatabase = RecipeDatabase();
+	PlanManager planmanager = PlanManager();
+
+
+}
 void Greeter::showTitle() {
 	cout << "¦£";
 	for (int i = 0; i < 54; i++) 	cout << "¦¡";
@@ -216,7 +223,7 @@ void Greeter::addRecipe() {
 	}
 
 	// use try catch sentence??
-	recipedatabese.insertRecipe(recipe);
+	recipedatabase.insertRecipe(recipe);
 }
 
 // delete recipe
@@ -226,9 +233,9 @@ void Greeter::deleteRecipeDB() {
 	std::getline(std::cin, del_recipe_name);
 
 	// serarch
-	Recipe del_recipe = recipedatabese.searchRecipes_recipename(del_recipe_name);
+	Recipe del_recipe = recipedatabase.searchRecipes_recipename(del_recipe_name);
 	if (del_recipe.getID()) {
-		recipedatabese.deleteRecipe(del_recipe);
+		recipedatabase.deleteRecipe(del_recipe);
 		std::cout << "Completely Delete" << endl;
 	}
 	else { std::cout << "There is no search result for \"" << del_recipe_name << "\" in recipe list" << endl; }
@@ -241,7 +248,7 @@ inline void Greeter::editRecipe() {
 	string search_recipe;
 	std::getline(cin, search_recipe);
 
-	Recipe search_result = recipedatabese.searchRecipes_recipename(search_recipe);
+	Recipe search_result = recipedatabase.searchRecipes_recipename(search_recipe);
 	search_result.printRecipe();
 
 	std::cout << "Which part wnat to edit?\n[1] : name\n[2] : duration\n[3] : ingredients\n[4] : order" << endl;
@@ -307,7 +314,7 @@ inline void Greeter::editRecipe() {
 		cout << "select between 1~4" << endl;
 	}
 
-	recipedatabese.updateDatabase(search_result);
+	recipedatabase.updateDatabase(search_result);
 }
 
 // search recipe by ingredients or recipename
@@ -322,9 +329,9 @@ void Greeter::searchRecipe() {
 		std::getline(std::cin, search_recipename);
 
 		Recipe search_recipe;
-		search_recipe = recipedatabese.searchRecipes_recipename(search_recipename);
+		search_recipe = recipedatabase.searchRecipes_recipename(search_recipename);
 		if (search_recipe.getID()) {
-			recipedatabese.searchRecipes_recipename(search_recipename).printRecipe();
+			recipedatabase.searchRecipes_recipename(search_recipename).printRecipe();
 		}
 		else {
 			std::cout << "There is no search result for \"" << search_recipename << "\" in recipe list" << endl;
@@ -346,7 +353,7 @@ void Greeter::searchRecipe() {
 		}
 
 		vector<Recipe> search_list;
-		search_list = recipedatabese.searchRecipes_ingredients(search_ingredients);
+		search_list = recipedatabase.searchRecipes_ingredients(search_ingredients);
 		if (!search_list.empty()) {  // If search_list is not empty, then..
 			for (Recipe result_recipe : search_list) {
 				result_recipe.printRecipe();
@@ -361,9 +368,222 @@ void Greeter::searchRecipe() {
 // show all recipe
 inline void Greeter::showRecipe() {
 	vector<Recipe> recipe_list;
-	recipe_list = recipedatabese.getRecipes();
-	for (Recipe recipe : recipe_list )
+	recipe_list = recipedatabase.getRecipes();
+	for (Recipe recipe : recipe_list)
 	{
 		recipe.printRecipe();
 	}
+}
+
+
+
+
+
+
+void Greeter::addPlan() {
+	Plan plan_to_add;
+	Meal meal_to_add = Meal();
+	while (true) {
+		system("cls");
+		cout << "[1]: Select Date" << endl;
+		cout << "[2]: Next Stage" << endl;
+		int input_num;
+		cin >> input_num;
+		if (input_num == 2) {
+			system("cls");
+			Recipe menu_to_add;
+			string recipe_name;
+			int num_of_people;
+			system("cls");
+			cout << "Enter name of menu you want:";
+			getline(cin, recipe_name);
+			menu_to_add = recipedatabase.searchRecipes_recipename(recipe_name);
+			while (true) {
+				cout << "Enter number of people:";
+				cin >> num_of_people;
+				if (num_of_people > 0) break;
+				else {
+					cout << "Error: Invalid Number. Enter Again." << endl;
+				}
+			}
+			meal_to_add.addMenu(menu_to_add, num_of_people);
+			continue;
+		}
+		else if (input_num == 1) {
+
+			int year;
+			int month;
+			int day;
+			string s_comments;
+			int meal_type;
+			system("cls");
+			cout << "-Date Select-" << endl << endl;
+			while (true) {
+				enterDate(&year, &month, &day);
+				if (checkDate(year, month, day)) {
+					cout << "Enter comment:";
+					getline(cin, s_comments);
+					cout << "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
+					cout << "Enter mealType:";
+					cin >> meal_type;
+					plan_to_add = Plan(year, month, day, s_comments, meal_to_add, meal_type);
+					break;
+				}
+				else {
+					continue;
+				}
+			}
+			planmanager.addPlan(plan_to_add);
+
+
+
+
+		}
+		else {
+			cout << "-----------------------------------------------" << endl;
+			cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
+			cout << "-----------------------------------------------" << endl;
+
+			if (_getch())continue;
+		}
+	}
+	return;
+
+
+
+}
+
+void Greeter::deletePlan() {
+
+	int year;
+	int month;
+	int day;
+	int meal_type;
+	system("cls");
+	cout << "Enter date you want to delete!" << endl << endl;
+	while (true) {
+		enterDate(&year, &month, &day);
+		if (checkDate(year, month, day)) {
+			cout << "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
+			cout << "Enter mealType you want to delete:";
+			cin >> meal_type;
+
+			break;
+		}
+		else {
+			continue;
+		}
+	}
+	planmanager.deletePlan(year, month, day, meal_type);
+	return;
+
+
+}
+void Greeter::revisePlan() {
+
+	int year;
+	int month;
+	int day;
+	int meal_type;
+	int input_num;
+	system("cls");
+	cout << "Enter date you want to revise!" << endl << endl;
+	while (true) {
+		enterDate(&year, &month, &day);
+		if (checkDate(year, month, day)) {
+			cout << "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
+			cout << "Enter mealType you want to revise:";
+			cin >> meal_type;
+
+			break;
+		}
+		else {
+			continue;
+		}
+	}
+	system("cls");
+	planmanager.searchPlan(year, month, day, meal_type)->showPlan();
+	cout << "[1]Revise Date" << endl;
+	cout << "[2]Revise Meal Type" << endl;
+	cout << "[3]Revise Meal" << endl;
+	cout << "[4]Back" << endl;
+	cin >> input_num;
+	if (input_num == 1) {
+		system("cls");
+		planmanager.reviseDate(year, month, day, meal_type);
+	}
+	else if (input_num == 3) {
+		system("cls");
+		Meal menu = Meal();
+		while (true) {
+			system("cls");
+			Recipe menu_to_add;
+			string recipe_name;
+			int num_of_people;
+			system("cls");
+			cout << "Enter name of menu you want:";
+			getline(cin, recipe_name);
+			menu_to_add = recipedatabase.searchRecipes_recipename(recipe_name);
+			while (true) {
+				cout << "Enter number of people:";
+				cin >> num_of_people;
+				if (num_of_people > 0) break;
+				else {
+					cout << "Error: Invalid Number. Enter Again." << endl;
+				}
+			}
+
+			int input_n;
+			while (true) {
+				cout << "[1]Add More Menu" << endl;
+				cout << "[2]Finish Revising" << endl;
+				cin >> input_n;
+				if (input_n == 1) {
+					break;;
+				}
+				else if (input_n == 2) {
+					break;
+				}
+				else {
+					cout << "Error: Invalid Number. Enter Again." << endl;
+					continue;
+				}
+			}
+			if (input_n == 1) {
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		planmanager.reviseMealType(year, month, day, meal_type);
+
+	}
+	else if (input_num == 2) {
+		system("cls");
+		planmanager.reviseMealType(year, month, day, meal_type);
+	}
+	return;
+
+
+
+
+}
+void Greeter::searchPlan() {
+	int year;
+	int month;
+	int day;
+	int meal_type;
+	enterDate(&year, &month, &day);
+	cout << "Enter Meal Type:";
+	cin >> meal_type;
+
+
+	planmanager.showSpecificPlan(year, month, day, meal_type);
+	return;
+
+}
+void Greeter::showPlan() {
+	planmanager.showAllPlan();
+
 }

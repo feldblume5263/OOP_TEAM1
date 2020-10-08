@@ -9,27 +9,27 @@ Plan Class
 
 */
 
-Plan::Plan(int _year, int _month, int _day, Meal& _menu, int _meal_type) {
+Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _menu, int _meal_type) {
 
 	//Handling exception from Date Class
 	try {
-		date = Date(_year, _month, _day, "");
+		date = Date(_year, _month, _day, _comments);
 	}
 	catch (out_of_range e) {
 		cout << "Error	: Can not construct date instance. Check parameter!";
 	}
 	menu = _menu;
 	meal_type = _meal_type;
-	year = getDate().getYear();
-	month = getDate().getMonth();
-	day = getDate().getDay();
+	year = getDate()->getYear();
+	month = getDate()->getMonth();
+	day = getDate()->getDay();
 }
 
 Plan::~Plan() { }
 
 //Getter and Setter of Private Value;
 
-Date*			Plan::getDate() {
+Date* Plan::getDate() {
 	return &date;
 }
 
@@ -37,7 +37,7 @@ void			Plan::setDate(Date& _date) {
 	date = _date;
 }
 
-void			Plan::setDate(int _year, int _month, int _day,string _comment) {
+void			Plan::setDate(int _year, int _month, int _day, string _comment) {
 	date = Date(_year, _month, _day, _comment);
 }
 
@@ -60,9 +60,9 @@ void			Plan::setMealType(int _meal_type) {
 
 void			Plan::showPlan() {
 
-	string		s_year = to_string(getDate().getYear());
-	string		s_month = getDate().getMonth() < 10 ? "0" + to_string(getDate().getMonth()) : to_string(getDate().getMonth());
-	string 		s_day = (getDate().getDay() < 10) ? "0" + to_string(getDate().getDay()) : to_string(getDate().getDay());
+	string		s_year = to_string(getDate()->getYear());
+	string		s_month = getDate()->getMonth() < 10 ? "0" + to_string(getDate()->getMonth()) : to_string(getDate()->getMonth());
+	string 		s_day = (getDate()->getDay() < 10) ? "0" + to_string(getDate()->getDay()) : to_string(getDate()->getDay());
 	string		meal_label;
 
 	if (meal_type == 1)
@@ -80,9 +80,8 @@ void			Plan::showPlan() {
 	cout << s_year << " / " << s_month << " / " << s_day << " / " << meal_label << endl;
 	menu.showMeal();
 	cout << endl;
-	return ;
+	return;
 }
-
 
 bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
 	if (this->date.getYear() == _year && this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)

@@ -4,7 +4,8 @@
 
 class Greeter {
 private:
-	RecipeDatabase recipedatabese;
+	RecipeDatabase recipedatabase;
+	PlanManager planmanager;
 public:
 	void showTitle();
 	void showMenu();
@@ -13,6 +14,12 @@ public:
 	void editRecipe(); // edit recipe
 	void searchRecipe(); // search recipe by ingredients or recipename
 	void showRecipe(); // show all recipe
+	void addPlan();
+	void deletePlan();
+	void revisePlan();
+	void searchPlan();
+	void showPlan();
+
 
 
 };

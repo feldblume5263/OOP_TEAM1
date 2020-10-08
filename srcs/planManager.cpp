@@ -6,7 +6,6 @@ PlanManager::PlanManager() { }
 
 PlanManager::~PlanManager() { }
 
-
 void		PlanManager::addPlan(Plan planToAdd) {
 	//Prevention from Overwriting
 	if ((searchPlan(planToAdd))) {
@@ -30,27 +29,28 @@ void	PlanManager::deletePlan(int _year, int _month, int _day, int _meal_type) {
 		}
 		idx++;
 	}
-	// Case:No plan
+	//No Pplan
 	cout << "No matching Plans" << endl;
 	return;
 }
 
 
-void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type) {
-	Meal		newMeal;
+void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type, Meal& meal) {
+	Meal		newMeal = meal;
 	Plan* temp = searchPlan(_year, _month, _day, _meal_type);
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
 		return;
 	}
-	newMeal.get_meals(); // Greeter
+	system("cls");
+	// Greeter
 	temp->setMenu(newMeal);
 
 	return;
 }
 
-void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
+/*void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
 
 	int			newYear;
 
@@ -59,13 +59,13 @@ void		PlanManager::reviseYear(int _year, int _month, int _day, int _meal_type) {
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return;
+		return ;
 	}
 	cout << "Please enter a new year" << endl;
 	cin >> newYear;
 	temp->getDate()->setYear(newYear);
-
-	return;
+	temp->year = newYear;
+	return ;
 }
 
 void		PlanManager::reviseMonth(int _year, int _month, int _day, int _meal_type) {
@@ -77,17 +77,19 @@ void		PlanManager::reviseMonth(int _year, int _month, int _day, int _meal_type) 
 	if (!temp)
 	{
 		cout << "No matching Plans" << endl;
-		return;
+		return ;
 	}
 	cout << "Please enter a new Month" << endl;
 	cin >> newMonth;
 	temp->getDate()->setMonth(newMonth);
+	temp->month = newMonth;
 
-	return;
-}
+	return ;
+}*/
 
-void		PlanManager::reviseDay(int _year, int _month, int _day, int _meal_type) {
-
+void		PlanManager::reviseDate(int _year, int _month, int _day, int _meal_type) {
+	int			newYear;
+	int			newMonth;
 	int			newDay;
 
 	newDay = 0;
@@ -97,9 +99,20 @@ void		PlanManager::reviseDay(int _year, int _month, int _day, int _meal_type) {
 		cout << "No matching Plans" << endl;
 		return;
 	}
-	cout << "Please enter a new Day" << endl;
-	cin >> newDay;
+	while (true) {
+		enterDate(&newYear, &newMonth, &newDay);
+		if (checkDate(newYear, newMonth, newDay)) {
+			break;
+		}
+	}
+
+
+	temp->getDate()->setYear(newYear);
+	temp->year = newYear;
+	temp->getDate()->setMonth(newMonth);
+	temp->month = newMonth;
 	temp->getDate()->setDay(newDay);
+	temp->day = newDay;
 
 
 	return;
@@ -122,7 +135,6 @@ void		PlanManager::reviseMealType(int _year, int _month, int _day, int _meal_typ
 	return;
 }
 
-
 void		PlanManager::showAllPlan() {
 	int		idx;
 
@@ -134,7 +146,6 @@ void		PlanManager::showAllPlan() {
 	}
 	return;
 }
-
 
 void		PlanManager::showSpecificPlan(int _year, int _month, int _day, int _meal_type) {
 	int		idx;
