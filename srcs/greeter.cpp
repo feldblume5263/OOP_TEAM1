@@ -1,10 +1,9 @@
 #include "../includes/greeter.h"
 
 Greeter::Greeter() {
-
-	RecipeDatabase recipedatabase;
-	PlanManager planmanager;
-
+	recipedatabase = make_unique<RecipeDatabase>();
+	planmanager = PlanManager();
+	
 }
 void Greeter::showTitle() {
 
@@ -177,34 +176,35 @@ void Greeter::addRecipe() {
 	// std::flush; std::cin.clear(); std::cin.ignore();
 
 	// set name
-	std::cout << "Name    :  ";
+	std::cout << "Name    :  " <<std::flush;
+	std::cin.clear();	std::cin.ignore();
 	std::string recipe_name;
-	std::cin.ignore();
 	std::getline(std::cin, recipe_name);
 	recipe.setName(recipe_name);
 
 	// set duration
-	std::cout << "Cooking Duration(min)    :  ";
-	std::cin.ignore();
+	std::cout << "Cooking Duration(min)    :  " << std::flush;
+	std::cin.clear();
 	int duration;
 	std::cin >> duration;
 	recipe.setDuration(duration);
 
 	// set ingredients
-	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )" << std::endl;
+	std::cout << "---Ingredients---\n( If you want to stop adding  ingredients, enter \"stop\" )\n" << std::flush;
+	std::cin.clear();
 	std::vector<Ingredient> ingredients;
 	while (true) {
 		// set ingredient name
-		std::cout << "Ingredient name     :  ";
-		std::cin.ignore();
+		std::cout << "Ingredient name     :  " << std::flush;
+		std::cin.clear(); std::cin.ignore();
 		string name;
 		std::getline(std::cin, name);
 		if (name == "stop") { break; }
 
 		// set ingredient weight
 		int weight;
-		std::cout << "Ingredient weight(gram) :  ";
-		std::cin.ignore();
+		std::cout << "Ingredient weight(gram) :  " << std::flush;
+		std::cin.clear();
 		std::cin >> weight;
 
 		Ingredient _ingredient(name, weight);
@@ -213,19 +213,25 @@ void Greeter::addRecipe() {
 	recipe.setIngredients(ingredients);
 
 	// set order
-	std::cout << "---Cookin Oreder---\n( If you want to stop adding  ingredients, enter \"stop\" )" << std::endl;
+	std::cout << "---Cookin Oreder---\n( If you want to stop adding  Orders, enter \"stop\" )\n" << std::flush;;
 	vector<string> ingredient_order;
 	{
 		int i = 1;
 		while (true) {
-			std::cout << "Order" << i << " : ";
+			std::cout << "Order" << i << " : " << std::flush;
+			std::cin.clear();
 			string order;
 			std::getline(std::cin, order);
-			if (order == "stop") { break; }
+			if (order == "stop") { 
+				cout << "you selected \"stop\"" << endl;
+				break; }
 			else { recipe.addOrder(order); }
 			i += 1;
 		}
 	}
+
+	cout << "\n\n\n" << endl;
+	recipe.printRecipe();
 
 	// use try catch sentence??
 	recipedatabase->insertRecipe(recipe);

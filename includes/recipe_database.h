@@ -66,14 +66,15 @@ public:
 	 * @param orders preparation steps to insert
 	 * @param duration expected preparation time to insert
 	 */
-	void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
+	
+	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
+	void insertRecipe(Recipe recipe);
 	void deleteRecipe(Recipe recipe);
 	vector<Recipe> getRecipes();
 	/**
 	 * @param keywords User-entered ingredient list
 	 */
 	//vector<Recipe> getRecipes();
-	void insertRecipe(Recipe recipe);
 	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
 	//void deleteRecipe(Recipe recipe);
 	//vector<Recipe> getRecipes();
