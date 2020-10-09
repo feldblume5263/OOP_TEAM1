@@ -474,19 +474,19 @@ void Greeter::addPlan(Plan plan_to_add) {
 
 				enterDate(&year, &month, &day);
 				if (checkDate(year, month, day)) {
-					cout << "Enter comment:";
+					cout << "Enter comment : ";
 					getline(cin, s_comments);
 					cout << "-Meal Type Select-" << endl;
 					cout <<endl<< "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
-					cout <<endl<< "Enter mealType:";
+					cout <<endl<< "Enter mealType : ";
 					cin >> meal_type;
 
 					plan_to_add.getDate()->setDay(day);
 					plan_to_add.getDate()->setMonth(month);
 					plan_to_add.getDate()->setYear(year);
+					plan_to_add.getDate()->setComment(s_comments);
 					plan_to_add.year = year;
 					plan_to_add.month = month;
-
 					plan_to_add.day = day;
 					plan_to_add.setMealType(meal_type);
 
@@ -495,16 +495,16 @@ void Greeter::addPlan(Plan plan_to_add) {
 			Recipe menu_to_add;
 			string recipe_name;
 			int num_of_people;
-			cout << endl << "-Menu Select-:" << endl;
+			cout << endl << "-Menu Select-" << endl;
 			while (true) {
-				cout << "Enter name of menu you want:";
+				cout << "Enter name of menu you want : ";
 
 				cin.clear(); cin.ignore();
 				getline(cin, recipe_name);
 
 				menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
 				while (true) {
-					cout << "Enter number of people:";
+					cout << "Enter number of people : ";
 					cin >> num_of_people;
 					if (num_of_people > 0) break;
 					else {
@@ -512,9 +512,9 @@ void Greeter::addPlan(Plan plan_to_add) {
 					}
 				}
 				plan_to_add.getMenu()->addMenu(menu_to_add, num_of_people);
-				temp_string = plan_to_add.getMenu()->get_meals()[0].menus.getName();
+				temp_string_name = recipe_name;
 				temp_num = num_of_people;
-				plan_to_add.getMenuName()->push_back(temp_string);
+				plan_to_add.getMenuName()->push_back(temp_string_name);
 				plan_to_add.getNumOfPeople()->push_back(temp_num);
 				cin.clear(); cin.ignore();
 
@@ -710,7 +710,7 @@ void Greeter::deletePlan() {
 		enterDate(&year, &month, &day);
 		if (checkDate(year, month, day)) {
 			cout << "1:Breakfast" << endl << "2:Lunch:" << endl << "3:Dinner" << endl << "4:Snack" << endl << "5:Late-Night Snack" << endl;
-			cout << "Enter mealType you want to delete:";
+			cout << "Enter mealType you want to delete : ";
 			cin >> meal_type;
 
 			break;
@@ -827,7 +827,7 @@ void Greeter::searchPlan() {
 	int day;
 	int meal_type;
 	enterDate(&year, &month, &day);
-	cout << "Enter Meal Type:";
+	cout << "Enter Meal Type : ";
 	cin >> meal_type;
 
 
@@ -839,4 +839,6 @@ void Greeter::searchPlan() {
 }
 void Greeter::showPlan() {
 	planmanager.showAllPlan();
+
+	return;
 }

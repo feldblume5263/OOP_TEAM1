@@ -74,10 +74,6 @@ public:
 	/**
 	 * @param keywords User-entered ingredient list
 	 */
-	//vector<Recipe> getRecipes();
-	//void insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration);
-	//void deleteRecipe(Recipe recipe);
-	//vector<Recipe> getRecipes();
 	vector<Recipe> searchRecipes_ingredients(vector<string> ingredients);
 	Recipe searchRecipes_recipename(string recipename);
 

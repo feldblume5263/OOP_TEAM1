@@ -16,13 +16,13 @@ void enterDate(int* _year, int* _month, int* _day) {
 	string s_year;
 	string s_month;
 	string s_day;
-	cout << "Enter year:";
+	cout << "Enter year : ";
 	getline(cin, s_year);
 	*_year = atoi(s_year.c_str());
-	cout << "Enter month:";
+	cout << "Enter month : ";
 	getline(cin, s_month);
 	*_month = atoi(s_month.c_str());
-	cout << "Enter day:";
+	cout << "Enter day : ";
 	getline(cin, s_month);
 	*_day = atoi(s_month.c_str());
 }

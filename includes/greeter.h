@@ -8,7 +8,7 @@ class Greeter {
 private:
 	unique_ptr<RecipeDatabase> recipedatabase;
 	PlanManager planmanager;
-	string temp_string;
+	string temp_string_name;
 	int temp_num;
 public:
 	Greeter();

@@ -81,6 +81,7 @@ void			Plan::showPlan() {
 	string		s_month = getDate()->getMonth() < 10 ? "0" + to_string(getDate()->getMonth()) : to_string(getDate()->getMonth());
 	string 		s_day = (getDate()->getDay() < 10) ? "0" + to_string(getDate()->getDay()) : to_string(getDate()->getDay());
 	string		meal_label;
+	string		s_comment = getDate()->getComment();
 
 	if (meal_type == 1)
 		meal_label = "Breakfast";
@@ -96,20 +97,13 @@ void			Plan::showPlan() {
 		meal_label = "unknown";
 	cout << "------------------------------------------------"<< endl;
 	cout << s_year << " / " << s_month << " / " << s_day << " / " << meal_label << endl;
-	
-
-	//std::cout << "in plan name : " << *menu_name << "people : " << *numOfPeople << endl;
+	cout << "Comment : " << s_comment << endl;	
 
 	cout << endl << "-menu-" <<  endl;
 	for (int i = 0; i < menu_name.size(); i++) {
 		std::cout << "Menu Name:	" << menu_name[i] << endl;
 		std::cout << "Num of People:	" << numOfPeople[i] << endl;
 	}
-
-	// cout << "name : " << menu. << " people : " << numOfPeople << endl;
-	//std::cout << "in showplan :  "<<  menu.meals[0].num_of_people << endl;
-
-	//menu.showMeal();
 	cout << endl;
 	return;
 }

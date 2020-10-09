@@ -5,6 +5,7 @@ RecipeDatabase::RecipeDatabase(){
     file_manager = new FileManager();
     file_manager->load(recipe_list);
     new_id = recipe_list.size()==0 ? 10000 : recipe_list.back().getID() + 1;
+
 }
 
 RecipeDatabase::~RecipeDatabase(){
