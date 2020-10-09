@@ -194,7 +194,22 @@ void Greeter::showMenu() {
 void Greeter::addRecipe() {
 	Recipe recipe;
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
-
+	// set ID
+	unsigned int	id = 9999;
+	ifstream ifs("./database/recipe.txt");
+	if(ifs.fail()) {
+		throw runtime_error("Unable to open the file");
+	}
+	else {
+		while(ifs) {
+			string line;
+			Recipe recipe;
+			getline(ifs, line);
+			id++;
+		}
+	}
+	ifs.close();
+	recipe.setID(id);
 	// set name
 	std::cout << "     Name             :  " <<std::flush;
 	std::cin.clear();
