@@ -53,7 +53,7 @@ void Greeter::showMenu() {
 			while (true) {
 				system("cls");
 				cout << "-----------" << endl;
-				cout << "Edit Recipe" << endl;
+				cout << "Recipe Manager" << endl;
 				cout << "-----------" << endl;
 				cout << "[1] Add Recipe" << endl;
 				cout << "[2] Delete Recipe" << endl;
@@ -117,7 +117,7 @@ void Greeter::showMenu() {
 			while (true) {
 				system("cls");
 				cout << "---------" << endl;
-				cout << "Edit Plan" << endl;
+				cout << "Plan Manager" << endl;
 				cout << "---------" << endl;
 				cout << "[1] Add Plan" << endl;
 				cout << "[2] Delete Plan" << endl;
@@ -136,7 +136,6 @@ void Greeter::showMenu() {
 					system("cls");
 					addPlan(Plan());
 					cout << endl << "Complete.Enter any key to go back" << endl;
-
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
@@ -206,12 +205,12 @@ void Greeter::addRecipe() {
 			string line;
 			Recipe recipe;
 			getline(ifs, line);
-			id++;
+			id += 10;
 		}
 	}
 	ifs.close();
 	recipe.setID(id + add_count);
-	add_count++;
+	add_count += 10;
 	// set name
 	std::cout << "     Name             :  " <<std::flush;
 	std::cin.clear();
@@ -285,7 +284,7 @@ void Greeter::deleteRecipeDB() {
 
 	// serarch
 	Recipe del_recipe = recipedatabase->searchRecipes_recipename(del_recipe_name);
-	if (del_recipe.getID() >= 10000 && del_recipe.getID() <= 11000) {
+	if (del_recipe.getID() >= 10000 && del_recipe.getID() <= 30000) {
 		recipedatabase->deleteRecipe(del_recipe);
 		std::cout << del_recipe.getName() << " Completely Deleteed" << endl;
 	}
@@ -300,7 +299,7 @@ inline void Greeter::editRecipe() {
 	std::getline(cin, search_recipe);
 	Recipe search_result = recipedatabase->searchRecipes_recipename(search_recipe);
 
-	if (search_result.getID() >= 10000 && search_result.getID() <= 11000) {
+	if (search_result.getID() >= 10000 && search_result.getID() <= 30000) {
 		search_result.printRecipe();
 	}
 	else {
@@ -411,7 +410,7 @@ void Greeter::searchRecipe() {
 		Recipe search_recipe;
 		search_recipe = recipedatabase->searchRecipes_recipename(search_recipename);
 
-		if (search_recipe.getID() >= 10000 && search_recipe.getID() <= 11000) {
+		if (search_recipe.getID() >= 10000 && search_recipe.getID() <= 30000) {
 			std::cout << endl;
 			recipedatabase->searchRecipes_recipename(search_recipename).printRecipe();
 			std::cout << "Press Enter to continue.." << endl;
