@@ -36,8 +36,8 @@ void Greeter::showMenu() {
 		cout << "----" << endl;
 		cout << "Menu" << endl;
 		cout << "----" << endl;
-		cout << "[1] Edit Recipe" << endl;
-		cout << "[2] Edit Plan" << endl;
+		cout << "[1] Recipe Manager" << endl;
+		cout << "[2] Plan Manager" << endl;
 		cout << "[0] Exit" << endl;
 
 		std::cout << "\nSelect : " << std::flush;
