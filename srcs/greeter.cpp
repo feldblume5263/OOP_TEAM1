@@ -5,7 +5,7 @@ Greeter::Greeter() {
 	planmanager = PlanManager();
 	string temp_string;
 	int temp_num;
-	
+
 }
 void Greeter::showTitle() {
 
@@ -131,7 +131,7 @@ void Greeter::showMenu() {
 					system("cls");
 					addPlan(Plan());
 					cout << endl << "Complete.Enter any key to go back" << endl;
-					
+
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
@@ -145,7 +145,7 @@ void Greeter::showMenu() {
 				/*else if (input_num_in_plan == 3) {
 					system("cls");
 					revisePlan();
-					
+
 					continue;
 				}*/
 				else if (input_num_in_plan == 3) {
@@ -206,7 +206,7 @@ void Greeter::addRecipe() {
 		std::cin.clear();
 		recipe.setDuration(duration);
 		break;
-		
+
 		//if (typeid(duration).name() != "int") {
 		//	std::cin.clear();
 		//	std::cout << "Please type number." << endl;
@@ -226,7 +226,7 @@ void Greeter::addRecipe() {
 		// set ingredient name
 		std::cout << "Ingredient" << i << " name      :  " << std::flush;
 		string name;
-		std::getline(std::cin, name); 
+		std::getline(std::cin, name);
 
 		if (name == "stop") { break; }
 		else {
@@ -253,7 +253,7 @@ void Greeter::addRecipe() {
 			std::cin.clear();
 			string order;
 			std::getline(std::cin, order);
-			if (order == "stop") { 
+			if (order == "stop") {
 				cout << "\nyou selected \"stop\"!" << endl;
 				break; }
 			else { recipe.addOrder(order); }
@@ -292,7 +292,7 @@ inline void Greeter::editRecipe() {
 	if (search_result.getID() >= 10000 && search_result.getID() <= 11000) {
 		search_result.printRecipe();
 	}
-	else { 
+	else {
 		std::cout << "There is no search result for \"" << search_recipe << "\" in recipe list" << endl;
 		std::cout << "\nPress Enter to continue.." << endl;
 		return;
@@ -464,9 +464,9 @@ void Greeter::addPlan(Plan plan_to_add) {
 
 	while (true) {
 		system("cls");
-		
-		
-		
+
+
+
 			int year;
 			int month;
 			int day;
@@ -474,7 +474,7 @@ void Greeter::addPlan(Plan plan_to_add) {
 			int meal_type;
 			system("cls");
 			cout << "-Date Select-" << endl << endl;
-			
+
 				enterDate(&year, &month, &day);
 				if (checkDate(year, month, day)) {
 					cout << "Enter comment:";
@@ -492,9 +492,9 @@ void Greeter::addPlan(Plan plan_to_add) {
 
 					plan_to_add.day = day;
 					plan_to_add.setMealType(meal_type);
-					
+
 				}
-			
+
 			Recipe menu_to_add;
 			string recipe_name;
 			int num_of_people;
@@ -520,13 +520,13 @@ void Greeter::addPlan(Plan plan_to_add) {
 				plan_to_add.getMenuName()->push_back(temp_string);
 				plan_to_add.getNumOfPeople()->push_back(temp_num);
 				cin.clear(); cin.ignore();
-				
+
 				int input_num;
 				while (true) {
-				
+
 					cout << endl << "[1]:Add More Menu" << endl;
 					cout << "[2]:Finish" << endl;
-					
+
 					cin >> input_num;
 					if (input_num == 1) {
 						break;
@@ -552,10 +552,10 @@ void Greeter::addPlan(Plan plan_to_add) {
 			return;
 			//continue;
 		}
-	
-	
-	
-	
+
+
+
+
 	return;
 
 
@@ -785,7 +785,7 @@ void Greeter::deletePlan() {
 				}
 			}
 
-			/*int input_n;
+			int input_n;
 			while (true) {
 				cout << "[1]Add More Menu" << endl;
 				cout << "[2]Finish Revising" << endl;
