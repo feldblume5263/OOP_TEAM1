@@ -396,10 +396,11 @@ inline void Greeter::editRecipe() {
 // search recipe by ingredients or recipename
 void Greeter::searchRecipe() {
 	std::cout << "Which do you search for, recipe name or ingredients?\n[1] : Recipe name\n[2] : Ingredients" << endl;
+	std::cout << "Select : " << std::flush;
 	int select;
 	cin >> select;
 	if (select == 1) { // search for recipe name
-		std::cout << "\nEnter the recipe name" << endl;
+		std::cout << "---------------------------\nEnter the recipe name" << endl;
 		std::cout << "Name : " << std::flush;
 		string search_recipename;
 		cin.ignore();
@@ -407,8 +408,6 @@ void Greeter::searchRecipe() {
 
 		Recipe search_recipe;
 		search_recipe = recipedatabase->searchRecipes_recipename(search_recipename);
-
-		std::cout << " get ID : " << search_recipe.getID() << endl;
 
 		if (search_recipe.getID() >= 10000 && search_recipe.getID() <= 11000) {
 			std::cout << endl;
@@ -421,7 +420,7 @@ void Greeter::searchRecipe() {
 		}
 	}
 	else if (select == 2) { // search for ingredients
-		std::cout << "\nEnter the ingredients" << endl;
+		std::cout << "\n---------------------------\nEnter the ingredients" << endl;
 		std::cout << "(If you want to stop adding  ingredients, enter \"stop\")\n";
 		vector<string> search_ingredients;
 		cin.ignore();
