@@ -1,5 +1,5 @@
 #pragma once
-#include "iikh.hpp"	
+#include "iikh.hpp"
 #include "recipe_database.h"
 #include "planManager.h"
 
@@ -11,6 +11,7 @@ private:
 	string temp_string_name;
 	int temp_num;
 public:
+	int	add_count;
 	Greeter();
 	void showTitle();
 	void showMenu();
