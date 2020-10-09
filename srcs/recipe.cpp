@@ -13,7 +13,6 @@ void Recipe::addIngredient(Ingredient ingredient)
 	ingredients.push_back(ingredient);
 }
 
-
 bool Recipe::removeIngredient(string ingredient)
 {
 	int size = ingredients.size();

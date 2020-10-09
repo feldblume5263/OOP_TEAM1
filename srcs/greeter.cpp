@@ -487,6 +487,10 @@ void Greeter::addPlan(Plan plan_to_add) {
 					plan_to_add.getDate()->setDay(day);
 					plan_to_add.getDate()->setMonth(month);
 					plan_to_add.getDate()->setYear(year);
+					plan_to_add.year = year;
+					plan_to_add.month = month;
+
+					plan_to_add.day = day;
 					plan_to_add.setMealType(meal_type);
 					
 				}
