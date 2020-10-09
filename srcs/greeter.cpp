@@ -5,6 +5,7 @@ Greeter::Greeter() {
 	planmanager = PlanManager();
 	string temp_string;
 	int temp_num;
+	add_count = 0;
 
 }
 void Greeter::showTitle() {
@@ -195,7 +196,7 @@ void Greeter::addRecipe() {
 	Recipe recipe;
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
 	// set ID
-	unsigned int	id = 9999;
+	unsigned int	id = 10000;
 	ifstream ifs("./database/recipe.txt");
 	if(ifs.fail()) {
 		throw runtime_error("Unable to open the file");
@@ -209,7 +210,8 @@ void Greeter::addRecipe() {
 		}
 	}
 	ifs.close();
-	recipe.setID(id);
+	recipe.setID(id + add_count);
+	add_count++;
 	// set name
 	std::cout << "     Name             :  " <<std::flush;
 	std::cin.clear();
