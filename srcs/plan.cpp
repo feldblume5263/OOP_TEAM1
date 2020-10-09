@@ -38,6 +38,14 @@ Plan::~Plan() { }
 
 //Getter and Setter of Private Value;
 
+
+vector<string>* Plan::getMenuName() {
+	return &menu_name;
+
+}
+vector<int>* Plan::getNumOfPeople() {
+	return &numOfPeople;
+}
 Date* Plan::getDate() {
 	return &date;
 }
@@ -86,14 +94,17 @@ void			Plan::showPlan() {
 		meal_label = "Late Night Snack";
 	else
 		meal_label = "unknown";
+	cout << "------------------------------------------------"<< endl;
 	cout << s_year << " / " << s_month << " / " << s_day << " / " << meal_label << endl;
 	
 
 	//std::cout << "in plan name : " << *menu_name << "people : " << *numOfPeople << endl;
 
-	std::cout << "in plan people : " << endl;
-	std::cout << numOfPeople << endl;
-	std::cout << menu_name << endl;
+	cout << endl << "-menu-" <<  endl;
+	for (int i = 0; i < menu_name.size(); i++) {
+		std::cout << "Menu Name:	" << menu_name[i] << endl;
+		std::cout << "Num of People:	" << numOfPeople[i] << endl;
+	}
 
 	// cout << "name : " << menu. << " people : " << numOfPeople << endl;
 	//std::cout << "in showplan :  "<<  menu.meals[0].num_of_people << endl;

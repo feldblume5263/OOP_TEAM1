@@ -42,7 +42,7 @@ public:
     void addIngredient(Ingredient ingredient);
     bool removeIngredient(string ingredient);
     void addOrder(string order);
-    void Recipe::deleteOrder();
+    void deleteOrder();
     void printRecipe();
     //Get
     unsigned int getID() {

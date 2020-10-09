@@ -10,6 +10,10 @@ using namespace std;
 
 class				Plan
 {
+private:
+	vector<string>	menu_name;
+	vector<int> numOfPeople;
+
 protected:
 	Meal			menu;
 	int				meal_type;
@@ -17,8 +21,7 @@ protected:
 
 public:
 	// TODO : Make to vector
-	string	menu_name;
-	int numOfPeople;
+	
 
 
 
@@ -31,6 +34,8 @@ public:
 	~Plan();
 
 	Date* getDate();
+	vector<string>*	getMenuName();
+	vector<int>* getNumOfPeople();
 	void			setDate(Date& _date);
 	void			setDate(int _year, int _month, int _day, string _comment);
 	Meal*			getMenu();

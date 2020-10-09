@@ -170,7 +170,7 @@ Plan* PlanManager::searchPlan(int _year, int _month, int _day, int _meal_type) {
 		}
 		idx++;
 		}
-	cout << "No matching Plans" << endl;
+	//cout << "No matching Plans" << endl;
 	return (NULL);
 }
 

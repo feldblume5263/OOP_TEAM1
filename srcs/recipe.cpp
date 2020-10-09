@@ -1,6 +1,6 @@
 #include "../includes/recipe.h"
 
-//재료 추가
+//?�료 추�?
 void Recipe::addIngredient(Ingredient ingredient)
 {
     int size = ingredients.size();
@@ -13,7 +13,7 @@ void Recipe::addIngredient(Ingredient ingredient)
 	ingredients.push_back(ingredient);
 }
 
-//재료 삭제
+//?�료 ??��
 bool Recipe::removeIngredient(string ingredient)
 {
 	int size = ingredients.size();
