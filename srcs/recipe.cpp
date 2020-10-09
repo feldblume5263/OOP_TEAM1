@@ -1,6 +1,6 @@
 #include "../includes/recipe.h"
 
-//?¬ë£Œ ì¶”ê?
+
 void Recipe::addIngredient(Ingredient ingredient)
 {
     int size = ingredients.size();
@@ -13,7 +13,7 @@ void Recipe::addIngredient(Ingredient ingredient)
 	ingredients.push_back(ingredient);
 }
 
-//?¬ë£Œ ?? œ
+
 bool Recipe::removeIngredient(string ingredient)
 {
 	int size = ingredients.size();
@@ -35,7 +35,7 @@ void Recipe::deleteOrder()
     ingredient_order.clear();
 }
 
-//ì¶œë ¥
+
 void Recipe::printRecipe()
 {
     {
