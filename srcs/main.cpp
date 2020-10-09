@@ -2,15 +2,11 @@
 
 int main() {
 
-	//std::cout << "Hello" << endl;
-	//string Teststring;
-	//std::getline(cin, Teststring);
-
-	//cout << "After" << endl;
+	//int i = 332131;
+	
 
 	Greeter g = Greeter();
 	g.showMenu();
-
 
 	return 0;
 

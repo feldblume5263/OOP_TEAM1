@@ -38,6 +38,8 @@ void Greeter::showMenu() {
 		cout << "[1] Edit Recipe" << endl;
 		cout << "[2] Edit Plan" << endl;
 		cout << "[0] Exit" << endl;
+
+		std::cout << "\nSelect : " << std::flush;
 		int input_number;
 		cin >> input_number;
 
@@ -58,6 +60,8 @@ void Greeter::showMenu() {
 				cout << "[4] Search Recipe" << endl;
 				cout << "[5] Show All Recipe" << endl;
 				cout << "[0] Back To Menu" << endl;
+
+				std::cout << "\nSelect : " << std::flush;
 				int input_num_in_recipe;
 				cin >> input_num_in_recipe;
 				// clear buffer
@@ -101,7 +105,7 @@ void Greeter::showMenu() {
 					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
 					cout << "-----------------------------------------------" << endl;
 
-					cin.ignore(); 	cin.clear();
+					cin.ignore();
 					if (getchar())continue;
 
 				}
@@ -199,23 +203,13 @@ void Greeter::addRecipe() {
 	recipe.setName(recipe_name);
 
 	// set duration
-	while (1) { // TODO : Check int type
+	while (1) {
 		std::cout << "Cooking Duration(min) :  " << std::flush;
 		int duration;
 		cin >> duration;
 		std::cin.clear();
 		recipe.setDuration(duration);
 		break;
-
-		//if (typeid(duration).name() != "int") {
-		//	std::cin.clear();
-		//	std::cout << "Please type number." << endl;
-		//}
-		//else {
-		//	std::cin.clear();
-		//	recipe.setDuration(duration);
-		//	break;
-		//}
 	}
 	cin.ignore(); // delete EOF
 
@@ -398,6 +392,9 @@ void Greeter::searchRecipe() {
 
 		Recipe search_recipe;
 		search_recipe = recipedatabase->searchRecipes_recipename(search_recipename);
+
+		std::cout << " get ID : " << search_recipe.getID() << endl;
+
 		if (search_recipe.getID() >= 10000 && search_recipe.getID() <= 11000) {
 			std::cout << endl;
 			recipedatabase->searchRecipes_recipename(search_recipename).printRecipe();
