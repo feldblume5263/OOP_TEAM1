@@ -7,7 +7,7 @@
 class Greeter {
 private:
 	unique_ptr<RecipeDatabase> recipedatabase;
-	PlanManager planmanager;
+	unique_ptr<PlanManager> planmanager;
 	string temp_string_name;
 	int temp_num;
 public:
