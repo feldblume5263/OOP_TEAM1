@@ -18,6 +18,14 @@ Plan::Plan() {
 	day = 0;
 };
 
+Plan::Plan(Date date) {
+	year = date.getYear();
+	month = date.getMonth();
+	day = date.getDay();
+
+	meal = Meal();
+}
+
 Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _meal, int _meal_type) {
 
 	//Handling exception from Date Class
@@ -29,9 +37,9 @@ Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _meal, int _
 	}
 	meal = _meal;
 	meal_type = _meal_type;
-	year = getDate().getYear();
-	month = getDate().getMonth();
-	day = getDate().getDay();
+	year = date.getYear();
+	month = date.getMonth();
+	day = date.getDay();
 }
 
 Plan::~Plan() { }

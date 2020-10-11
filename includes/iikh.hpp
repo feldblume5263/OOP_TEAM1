@@ -14,16 +14,9 @@
 #include <memory>
 #include <stdlib.h>
 #include <cstdio>
+#include <unordered_map>
 
 using namespace std;
-
-//typedef struct Ingredient {
-	//string name;
-	//int weight;
-	//bool operator<(const Ingredient& a) {
-		//return a.name == this->name ? this->name < a.name : this->weight < a.weight;
-	//}
-//} Ingredient;
 
 typedef struct Serving {
     Recipe menus;

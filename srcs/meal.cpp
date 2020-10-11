@@ -2,7 +2,7 @@
 
 Meal::Meal()
 {
-    //std::vector <Serving> meals;
+    servings = vector<Serving>();
 }
 
 Meal::~Meal()
@@ -37,13 +37,44 @@ void Meal::showMeal()
         cout << " >> Ingredients" << endl;
         for (auto each_ingredient : each_menu.menus.getIngredients())
         {
-            ;
+            cout << "|" << each_ingredient.getName() << ", " << each_ingredient.getWeight() << "|" << "g" << endl;
         }
 
         i += 1;
 
         cout << "---------------------\n" << endl;
     }
+    
+}
+
+void Meal::showTotalIngredients() {
+    vector<string> ingredients;
+    unordered_map<string, int> required_ingredients;
+
+    for (auto each_menu : servings)
+    {
+        for (auto each_ingredient : each_menu.menus.getIngredients())
+        {
+            string ingredient_name = each_ingredient.getName();
+            int ingredient_weight = stoi(each_ingredient.getWeight()) * each_menu.num_of_people;
+            if(!required_ingredients.count(ingredient_name)) {
+                ingredients.push_back(ingredient_name);
+                required_ingredients[ingredient_name] = ingredient_weight;
+            }
+            else {
+                required_ingredients[ingredient_name] += ingredient_weight;
+            }
+        }
+    }
+
+    cout << "---------------------" << endl;
+    cout << "| Required Ingredients |" << endl;
+
+    for(string ingredient_name: ingredients) {
+        cout << "| " <<  ingredient_name << ", " << required_ingredients[ingredient_name] << " |" << endl;
+    }
+
+    cout << "---------------------\n" << endl;
 }
 
 std::vector<Serving> Meal::getServings() {

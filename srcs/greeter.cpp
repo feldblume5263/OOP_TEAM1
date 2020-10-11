@@ -5,7 +5,6 @@ Greeter::Greeter() {
 	planmanager = PlanManager();
 	string temp_string;
 	int temp_num;
-	add_count = 0;
 
 }
 void Greeter::showTitle() {
@@ -192,39 +191,20 @@ void Greeter::showMenu() {
 
 
 void Greeter::addRecipe() {
-	Recipe recipe;
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
-	// set ID
-	unsigned int	id = 10000;
-	ifstream ifs("./database/recipe.txt");
-	if(ifs.fail()) {
-		throw runtime_error("Unable to open the file");
-	}
-	else {
-		while(ifs) {
-			string line;
-			Recipe recipe;
-			getline(ifs, line);
-			id += 10;
-		}
-	}
-	ifs.close();
-	recipe.setID(id + add_count);
-	add_count += 10;
+	
 	// set name
 	std::cout << "     Name             :  " <<std::flush;
 	std::cin.clear();
 	std::string recipe_name;
 	std::getline(std::cin, recipe_name);
-	recipe.setName(recipe_name);
 
+	int duration;
 	// set duration
 	while (1) {
 		std::cout << "Cooking Duration(min) :  " << std::flush;
-		int duration;
 		cin >> duration;
 		std::cin.clear();
-		recipe.setDuration(duration);
 		break;
 	}
 	cin.ignore(); // delete EOF
@@ -251,7 +231,6 @@ void Greeter::addRecipe() {
 			ingredients.push_back(_ingredient);
 		}
 	}
-	recipe.setIngredients(ingredients);
 
 	// set order
 	std::cout << "\n---Cookin Oreder---\n( If you want to stop adding  Orders, enter \"stop\" )\n" << std::flush;;
@@ -266,12 +245,12 @@ void Greeter::addRecipe() {
 			if (order == "stop") {
 				cout << "\nyou selected \"stop\"!" << endl;
 				break; }
-			else { recipe.addOrder(order); }
+			else { ingredient_order.push_back(order); }
 			i += 1;
 		}
 	}
-	recipedatabase->insertRecipe(recipe);
-	std::cout << "Recipe " << recipe.getName() << "save in DB!\nPress Enter to continue.." << endl;
+	recipedatabase->insertRecipe(recipe_name, ingredients, ingredient_order, duration);
+	std::cout << "Recipe " << recipe_name << "save in DB!\nPress Enter to continue.." << endl;
 }
 
 
@@ -294,7 +273,7 @@ void Greeter::deleteRecipeDB() {
 
 // edit recipe
 inline void Greeter::editRecipe() {
-	cout << "Enter the recipe name you wnat to edit  : ";
+	cout << "Enter the recipe name you want to edit  : ";
 	string search_recipe;
 	std::getline(cin, search_recipe);
 	Recipe search_result = recipedatabase->searchRecipes_recipename(search_recipe);

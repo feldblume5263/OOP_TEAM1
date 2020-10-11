@@ -26,6 +26,9 @@ public:
     // show name of menus and ingredients scaled by num_of_people
     void showMeal();
 
+    // show name of ingredients and unified weight of ingredients
+    void showTotalIngredients();
+
     vector <Serving> getServings();
 };
 

@@ -26,6 +26,7 @@ public:
 	int				month;
 	int				day;
 	Plan();
+	Plan(Date date);
 	Plan(int _year, int _month, int _day, string  _comments, Meal& _meal, int _meal_type);
 	
 	~Plan();
@@ -41,10 +42,8 @@ public:
 	bool			comparePlan(Plan plan);
 	void			showPlan();
 
-	void			makePlan() { }; // make new plan
-
 	//for vector sorting
-	bool			operator < (Plan plan) const {
+	bool			operator < (const Plan& plan) const {
 		if (this->year == plan.year) {
 			if (this->month == plan.month) {
 				if (this->day == plan.day)
@@ -57,7 +56,7 @@ public:
 		}
 		else
 			return (this->year < plan.year);
-	}
+	} 
 };
 
 #endif

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class				PlanManager : Plan
+class				PlanManager 
 {
 private:
 	vector<Plan>	planData;
@@ -28,9 +28,11 @@ public:
 	void			reviseDate(int _year, int _month, int _day, int _meal_type);
 	void			reviseMealType(int _year, int _month, int _day, int _meal_type);
 
-	Plan* searchPlan(int _year, int _month, int _day, int _meal_type);
-	Plan* searchPlan(Plan plan);
-
+	Plan* 			searchPlan(int _year, int _month, int _day, int _meal_type);
+	Plan* 			searchPlan(Plan plan);
+	vector<Plan> 	searchPlan(const Date& start, const Date& end);
+	
+	void			showIngredientsForPeriods(vector<Plan> plans);
 	void			showSpecificPlan(int _year, int _month, int _day, int _meal_type);
 	void			showAllPlan();
 

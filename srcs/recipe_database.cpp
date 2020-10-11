@@ -1,5 +1,4 @@
 #include "../includes/recipe_database.h"
-//#include "../includes/factory.hpp"
 
 RecipeDatabase::RecipeDatabase(){
     file_manager = new FileManager();
@@ -10,6 +9,7 @@ RecipeDatabase::RecipeDatabase(){
 
 RecipeDatabase::~RecipeDatabase(){
     file_manager -> write(recipe_list);
+    delete file_manager;
 }
 void RecipeDatabase::updateDatabase(Recipe recipe) {
     for(auto& rec: recipe_list) {
@@ -23,18 +23,12 @@ void RecipeDatabase::updateDatabase(Recipe recipe) {
 }
 
 
-void RecipeDatabase::insertRecipe(Recipe &new_recipe) {
-    //Recipe new_recipe = recipe;
-    recipe_list.push_back(new_recipe);
-    new_id += 1;
+void RecipeDatabase::insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration) {
+   Recipe new_recipe = Recipe(new_id, duration, name, ingredients, orders);
+   recipe_list.push_back(new_recipe);
+   new_id += 1;
 }
-
-//void RecipeDatabase::insertRecipe(string name, vector<Ingredient> ingredients, vector<string> orders, int duration) {
-//    Recipe new_recipe = Recipe(new_id, duration, name, ingredients, orders);
-//    recipe_list.push_back(new_recipe);
-//    new_id += 1;
-//}
-void RecipeDatabase::deleteRecipe(Recipe recipe) {
+void RecipeDatabase::deleteRecipe(Recipe& recipe) {
     for(int i=0; i<recipe_list.size(); i++) {
         if(recipe_list[i].getID() == recipe.getID()) {
             recipe_list.erase(recipe_list.begin() + i);
@@ -179,24 +173,24 @@ void Parser::parse(string line, Recipe& recipe) {
         Database* db = new Database();
         RecipeDatabase recipedb = *db -> getDatabase();
         vector<Ingredient> ingredients;
-        ingredients.push_back(Ingredient("µÎºÎ", 400));
-        ingredients.push_back(Ingredient("±èÄ¡", 600));
-        recipedb.insertRecipe("µÎºÎ±èÄ¡", ingredients, {"±èÄ¡¸¦ ½ã´Ù.", "µÎºÎ¸¦ ½ã´Ù.", "Á¢½Ã¿¡ ´ã´Â´Ù."}, 5);
+        ingredients.push_back(Ingredient("ï¿½Îºï¿½", 400));
+        ingredients.push_back(Ingredient("ï¿½ï¿½Ä¡", 600));
+        recipedb.insertRecipe("ï¿½ÎºÎ±ï¿½Ä¡", ingredients, {"ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½.", "ï¿½ÎºÎ¸ï¿½ ï¿½ï¿½ï¿½.", "ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½Â´ï¿½."}, 5);
 
         ingredients.clear();
-        ingredients.push_back(Ingredient("±èÄ¡", 400));
-        ingredients.push_back(Ingredient("¹°", 600));
-        ingredients.push_back(Ingredient("´ÙÁø ¸¶´Ã", 10));
-        recipedb.insertRecipe("±èÄ¡Âî°³", ingredients, {"±èÄ¡¸¦ ½ã´Ù.", "´ÙÁø ¸¶´ÃÀ» ºº´Â´Ù.", "¹°À» º×°í ²úÀÎ´Ù.", "±èÄ¡¸¦ ³Ö°í ²úÀÎ´Ù."}, 20);
+        ingredients.push_back(Ingredient("ï¿½ï¿½Ä¡", 400));
+        ingredients.push_back(Ingredient("ï¿½ï¿½", 600));
+        ingredients.push_back(Ingredient("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½", 10));
+        recipedb.insertRecipe("ï¿½ï¿½Ä¡ï¿½î°³", ingredients, {"ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½.", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.", "ï¿½ï¿½ï¿½ï¿½ ï¿½×°ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.", "ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½Î´ï¿½."}, 20);
 
         recipedb.deleteRecipe(Recipe(10000));
         recipedb.deleteRecipe(Recipe(10001));
 
         ingredients.clear();
-        ingredients.push_back(Ingredient("µÈÀå", 50));
-        ingredients.push_back(Ingredient("¹°", 600));
-        ingredients.push_back(Ingredient("´ÙÁø ¸¶´Ã", 10));
-        recipedb.updateDatabase(Recipe(10003, 60, "µÈÀåÂî°³", ingredients, {"µÈÀåÀ» ³Ö´Â´Ù.", "¹°À» ²úÀÎ´Ù."}));
+        ingredients.push_back(Ingredient("ï¿½ï¿½ï¿½ï¿½", 50));
+        ingredients.push_back(Ingredient("ï¿½ï¿½", 600));
+        ingredients.push_back(Ingredient("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½", 10));
+        recipedb.updateDatabase(Recipe(10003, 60, "ï¿½ï¿½ï¿½ï¿½ï¿½î°³", ingredients, {"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Â´ï¿½.", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½."}));
 
         vector<Recipe> recipes = recipedb.getRecipes();
         for(auto recipe: recipes) {

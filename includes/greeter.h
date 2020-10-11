@@ -11,7 +11,6 @@ private:
 	string temp_string_name;
 	int temp_num;
 public:
-	int	add_count;
 	Greeter();
 	void showTitle();
 	void showMenu();
