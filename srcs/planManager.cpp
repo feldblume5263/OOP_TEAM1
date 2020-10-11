@@ -4,7 +4,12 @@ using namespace std;
 
 PlanManager::PlanManager() { }
 
-PlanManager::~PlanManager() { }
+PlanManager::~PlanManager() { 
+	for(auto& plan: planData) {
+		delete plan.getMeal();
+		delete plan.getDate();
+	}
+}
 
 void		PlanManager::addPlan(Plan planToAdd) {
 	//Prevention from Overwriting
@@ -43,7 +48,7 @@ void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type, M
 		cout << "No matching Plans" << endl;
 		return;
 	}
-	system("cls");
+	system("clear");
 	// Greeter
 	temp->setMeal(&newMeal);
 

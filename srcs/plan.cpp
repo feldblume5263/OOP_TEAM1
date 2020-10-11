@@ -42,7 +42,10 @@ Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _meal, int _
 	day = date->getDay();
 }
 
-Plan::~Plan() { }
+Plan::~Plan() { 
+	delete date;
+	delete meal;
+}
 
 //Getter and Setter of Private Value;
 

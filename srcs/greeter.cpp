@@ -2,7 +2,7 @@
 
 Greeter::Greeter() {
 	recipedatabase = make_unique<RecipeDatabase>();
-	planmanager = PlanManager();
+	planmanager = make_unique<PlanManager>();
 	string temp_string;
 	int temp_num;
 
@@ -132,7 +132,7 @@ void Greeter::showMenu() {
 					break;
 				}
 				else if (input_num_in_plan == 1) {
-					system("cls");
+					system("clear");
 					Plan *new_plan = new Plan();
 					addPlan(new_plan);
 					cout << endl << "Complete.Enter any key to go back" << endl;
@@ -494,10 +494,19 @@ void Greeter::addPlan(Plan* plan_to_add) {
 			while (true) {
 				cout << "Enter name of menu you want : ";
 
-				cin.clear(); cin.ignore();
-				getline(cin, recipe_name);
+				while(true) {
+					cin.clear(); cin.ignore();
+					getline(cin, recipe_name);
 
-				menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
+					menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
+					if(menu_to_add.getName().size() > 0) break;
+					else {
+						cout << "No recipe for such name." << endl;
+						cout << "Enter any key to go back" << endl;
+						cin.ignore(); 	cin.clear();
+						if (getchar())continue;
+					}
+				}
 				while (true) {
 					cout << "Enter number of people : ";
 					cin >> num_of_people;
@@ -538,7 +547,8 @@ void Greeter::addPlan(Plan* plan_to_add) {
 				}
 
 			}
-			planmanager.addPlan(*plan_to_add);
+			planmanager->addPlan(*plan_to_add);
+			delete plan_to_add;
 			return;
 			//continue;
 		}
@@ -712,7 +722,7 @@ void Greeter::deletePlan() {
 			continue;
 		}
 	}
-	planmanager.deletePlan(year, month, day, meal_type);
+	planmanager->deletePlan(year, month, day, meal_type);
 	return;
 
 
@@ -824,14 +834,14 @@ void Greeter::searchPlan() {
 	cin >> meal_type;
 
 
-	planmanager.showSpecificPlan(year, month, day, meal_type);
+	planmanager->showSpecificPlan(year, month, day, meal_type);
 	int i;
 	cin >> i;
 	return;
 
 }
 void Greeter::showPlan() {
-	planmanager.showAllPlan();
+	planmanager->showAllPlan();
 
 	return;
 }
