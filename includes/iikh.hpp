@@ -16,12 +16,9 @@
 #include <cstdio>
 #include <unordered_map>
 
+
 using namespace std;
 
-typedef struct Serving {
-    Recipe menus;
-    int num_of_people;
-} Serving;
 
 class Ingredient {
 private:

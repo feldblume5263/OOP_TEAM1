@@ -30,7 +30,7 @@ void Greeter::showMenu() {
 
 	int input_number;
 	while (true) {
-		system("cls");
+		system("clear");
 		showTitle();
 		cout << "----" << endl;
 		cout << "Menu" << endl;
@@ -50,7 +50,7 @@ void Greeter::showMenu() {
 		else if (input_number == 1) {
 
 			while (true) {
-				system("cls");
+				system("clear");
 				cout << "-----------" << endl;
 				cout << "Recipe Manager" << endl;
 				cout << "-----------" << endl;
@@ -71,31 +71,31 @@ void Greeter::showMenu() {
 					break;
 				}
 				else if (input_num_in_recipe == 1) {
-					system("cls");
+					system("clear");
 					addRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 2) {
-					system("cls");
+					system("clear");
 					deleteRecipeDB();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 3) {
-					system("cls");
+					system("clear");
 					editRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 4) {
-					system("cls");
+					system("clear");
 					searchRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 5) {
-					system("cls");
+					system("clear");
 					showRecipe();
 					cin.ignore();
 					continue;
@@ -114,7 +114,7 @@ void Greeter::showMenu() {
 		}
 		else if (input_number == 2) {
 			while (true) {
-				system("cls");
+				system("clear");
 				cout << "---------" << endl;
 				cout << "Plan Manager" << endl;
 				cout << "---------" << endl;
@@ -140,27 +140,27 @@ void Greeter::showMenu() {
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 2) {
-					system("cls");
+					system("clear");
 					deletePlan();
 					cout << endl << "Complete.Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
 				/*else if (input_num_in_plan == 3) {
-					system("cls");
+					system("clear");
 					revisePlan();
 
 					continue;
 				}*/
 				else if (input_num_in_plan == 3) {
-					system("cls");
+					system("clear");
 					searchPlan();
 					cout <<endl<< "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 4) {
-					system("cls");
+					system("clear");
 					showPlan();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
@@ -297,7 +297,7 @@ inline void Greeter::editRecipe() {
 	switch (select) {
 	case 1: {
 		// set name
-		system("cls");
+		system("clear");
 		std::cout << "You select to edit Recipe name" << endl;
 		std::cout << "Name to replace   :  " << std::flush;
 		string recipe_name;
@@ -309,7 +309,7 @@ inline void Greeter::editRecipe() {
 	}
 	case 2: {
 		// set duration
-		system("cls");
+		system("clear");
 		std::cout << "You select to edit Recipe Duration" << endl;
 		std::cout << "Duration to replace   :  " << std::flush;
 		int duration;
@@ -323,7 +323,7 @@ inline void Greeter::editRecipe() {
 	}
 	case 3: {
 		// set ingredients
-		system("cls");
+		system("clear");
 		std::cout << "-----Ingredients-----\n(If you want to stop adding  ingredients, enter \"stop\")\n" << std::flush;
 		std::vector<Ingredient> ingredients; int i = 1;
 		cin.ignore();
@@ -351,7 +351,7 @@ inline void Greeter::editRecipe() {
 		break;
 	}
 	case 4: {
-		system("cls");
+		system("clear");
 		std::cout << "-----Cookin Oreder-----\n( If you want to stop adding  Oreder, enter \"stop\" )\n" << std::endl;
 		vector<string> ingredient_order;
 		search_result.deleteOrder();
@@ -420,7 +420,7 @@ void Greeter::searchRecipe() {
 		vector<Recipe> search_list;
 		search_list = recipedatabase->searchRecipes_ingredients(search_ingredients);
 		if (!search_list.empty()) {  // If search_list is not empty, then..
-			system("cls");
+			system("clear");
 			for (Recipe result_recipe : search_list) {
 				result_recipe.printRecipe();
 				std::cout << "*********************************************" << endl;
@@ -455,7 +455,7 @@ inline void Greeter::showRecipe() {
 void Greeter::addPlan(Plan* plan_to_add) {
 
 	while (true) {
-		system("cls");
+		system("clear");
 
 
 
@@ -464,7 +464,7 @@ void Greeter::addPlan(Plan* plan_to_add) {
 			int day;
 			string s_comments;
 			int meal_type;
-			system("cls");
+			system("clear");
 			cout << "-Date Select-" << endl << endl;
 
 				enterDate(&year, &month, &day);
@@ -556,7 +556,7 @@ void Greeter::addPlan(Plan* plan_to_add) {
 	//Meal meal_to_add = Meal();
 
 	while (true) {
-		system("cls");
+		system("clear");
 		cout << "[1]: Select Date" << endl;
 		cout << "[2]: Next Stage" << endl;
 		cout << "[3]:"; // TODO: EXIT menu
@@ -564,11 +564,11 @@ void Greeter::addPlan(Plan* plan_to_add) {
 		cin >> input_num;
 		std::cin.clear();	std::cin.ignore();
 		if (input_num == 2) {
-			system("cls");
+			system("clear");
 			Recipe menu_to_add;
 			string recipe_name;
 			int num_of_people;
-			system("cls");
+			system("clear");
 			cout << "Enter name of menu you want:";
 			getline(cin, recipe_name);
 			menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
@@ -613,7 +613,7 @@ void Greeter::addPlan(Plan* plan_to_add) {
 			int day;
 			string s_comments;
 			int meal_type;
-			system("cls");
+			system("clear");
 			cout << "-Date Select-" << endl << endl;
 			while (true) {
 				enterDate(&year, &month, &day);
@@ -697,7 +697,7 @@ void Greeter::deletePlan() {
 	int month;
 	int day;
 	int meal_type;
-	system("cls");
+	system("clear");
 	cout << "Enter date you want to delete!" << endl << endl;
 	while (true) {
 		enterDate(&year, &month, &day);
@@ -725,7 +725,7 @@ void Greeter::deletePlan() {
 	int day;
 	int meal_type;
 	int input_num;
-	system("cls");
+	system("clear");
 	cout << "Enter date you want to revise!" << endl << endl;
 	while (true) {
 		enterDate(&year, &month, &day);
@@ -740,7 +740,7 @@ void Greeter::deletePlan() {
 			continue;
 		}
 	}
-	system("cls");
+	system("clear");
 	planmanager.searchPlan(year, month, day, meal_type)->showPlan();
 	cout << "[1]Revise Date" << endl;
 	cout << "[2]Revise Meal Type" << endl;
@@ -749,18 +749,18 @@ void Greeter::deletePlan() {
 	cin >> input_num;
 	cin.clear();
 	if (input_num == 1) {
-		system("cls");
+		system("clear");
 		planmanager.reviseDate(year, month, day, meal_type);
 	}
 	else if (input_num == 3) {
-		system("cls");
+		system("clear");
 		Meal menu = Meal();
 		while (true) {
-			system("cls");
+			system("clear");
 			Recipe menu_to_add;
 			string recipe_name;
 			int num_of_people;
-			system("cls");
+			system("clear");
 			cin.clear(); cin.ignore();
 			cout << "Enter name of menu you want:";
 			cin.clear(); cin.ignore();
@@ -805,7 +805,7 @@ void Greeter::deletePlan() {
 		addPlan(year, month, day, meal_type, Plan());
 	}
 	else if (input_num == 2) {
-		system("cls");
+		system("clear");
 		planmanager.reviseMealType(year, month, day, meal_type);
 	}
 	return;
