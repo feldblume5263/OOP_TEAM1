@@ -123,6 +123,7 @@ void Greeter::showMenu() {
 				//cout << "[3] Revise Plan" << endl;
 				cout << "[3] Search Plan" << endl;
 				cout << "[4] Show All Plan" << endl;
+				cout << "[5] Show All Ingriedent for Period" << endl;
 				cout << "[0] Back To Menu" << endl;
 				int input_num_in_plan;
 				cin >> input_num_in_plan;
@@ -166,6 +167,13 @@ void Greeter::showMenu() {
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
+				else if (input_num_in_plan == 5) {
+					system("cls");
+					showPeriod();
+					cout << endl << "Enter any key to go back" << endl;
+					cin.ignore(); 	cin.clear();
+					if (getchar())continue;
+				}
 				else {
 					cout << "-----------------------------------------------" << endl;
 					cout << "Error: Invalid Input. Press Any Key to Go Back." << endl;
@@ -193,7 +201,7 @@ void Greeter::showMenu() {
 
 void Greeter::addRecipe() {
 	std::cout << "-------Recipe Infromation-------\n" << std::flush;
-	
+
 	// set name
 	std::cout << "     Name             :  " <<std::flush;
 	std::cin.clear();
@@ -842,4 +850,37 @@ void Greeter::showPlan() {
 	planmanager->showAllPlan();
 
 	return;
+}
+
+void Greeter::showPeriod() {
+	int 			i;
+	int				inputNum;
+	vector<Plan>	plan;
+	Date			startDate;
+	Date			endDate;
+
+	cout << "Show all Ingridient for Peroids" << endl;
+	cout << "Enter period" << endl;
+	cout << "Start Date" << endl;
+	cout << "year : ";
+	cin >> inputNum;
+	startDate.setYear(inputNum);
+	cout << "month : ";
+	cin >> inputNum;
+	startDate.setMonth(inputNum);
+	cout << "day : ";
+	cin >> inputNum;
+	startDate.setDay(inputNum);
+	cout << "End Date" << endl;
+	cout << "year : ";
+	cin >> inputNum;
+	endDate.setYear(inputNum);
+	cout << "month : ";
+	cin >> inputNum;
+	endDate.setMonth(inputNum);
+	cout << "day : ";
+	cin >> inputNum;
+	plan = planmanager->searchPlan(startDate, endDate);
+	planmanager->showIngredientsForPeriods(plan);
+	std::cout << "Press Enter to continue.." << endl;
 }

@@ -25,9 +25,7 @@ public:
 	void revisePlan();
 	void searchPlan();
 	void showPlan();
-
-
-
+	void showPeriod();
 };
 
 
