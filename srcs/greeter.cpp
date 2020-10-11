@@ -492,9 +492,9 @@ void Greeter::addPlan(Plan* plan_to_add) {
 			int num_of_people;
 			cout << endl << "-Menu Select-" << endl;
 			while (true) {
-				cout << "Enter name of menu you want : ";
 
 				while(true) {
+					cout << "Enter name of menu you want : ";
 					cin.clear(); cin.ignore();
 					getline(cin, recipe_name);
 
