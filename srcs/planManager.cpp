@@ -195,13 +195,10 @@ Plan* PlanManager::searchPlan(Plan plan) {
 }
 
 vector<Plan> PlanManager::searchPlan(const Date& begin, const Date& end) {
-	cout << 2 << endl;
 	vector<Plan> ret;
 	vector<Plan> sorted_plans = planData;
 	// sort by date and meal_type
 	sort(sorted_plans.begin(), sorted_plans.end());
-	cout << 3 << endl;
-
 	// for lower_bound searching, setting the meal type as 0, which is the lowest number of it
 	Plan begin_keyword = Plan(begin); 	begin_keyword.setMealType(0);
 	// for lower_bound searching, setting the meal type as 10, which is greater than the highest meal type arrangment.
@@ -209,11 +206,7 @@ vector<Plan> PlanManager::searchPlan(const Date& begin, const Date& end) {
 	Plan end_keyword = Plan(end);		end_keyword.setMealType(10);
 	int begin_idx = lower_bound(sorted_plans.begin(), sorted_plans.end(), begin_keyword) - sorted_plans.begin();
 	int end_idx = lower_bound(sorted_plans.begin(), sorted_plans.end(), end_keyword) - sorted_plans.begin() - 1;	// we will not contain the iterator of next day
-	cout << 4 << endl;
-
 	ret.assign( sorted_plans.begin() + begin_idx, sorted_plans.end() + end_idx );
-	cout << 5 << endl;
-
 	return ret;
 }
 
@@ -221,8 +214,10 @@ vector<Plan> PlanManager::searchPlan(const Date& begin, const Date& end) {
 void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
 	vector<string> ingredients;
     unordered_map<string, int> required_ingredients;
+	int		idx;
 
-    for (Plan plan: plans)
+	idx = 0;
+    for (Plan plan : plans)
     {
 		vector<Serving> servings = plan.getMeal()->getServings();
         for (Serving serving : servings)
@@ -244,6 +239,7 @@ void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
 				}
 			}
         }
+		idx++;
     }
 
     cout << "---------------------" << endl;

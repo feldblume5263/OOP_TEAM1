@@ -168,7 +168,7 @@ void Greeter::showMenu() {
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 5) {
-					system("cls");
+					system("clear");
 					showPeriod();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
@@ -887,9 +887,7 @@ void Greeter::showPeriod() {
 	endDate.setMonth(inputNum);
 	cout << "day : ";
 	cin >> inputNum;
-	cout << 1 << endl;
 	plan = planmanager->searchPlan(startDate, endDate);
-	cout << 6 << endl;
 	if (plan.size() > 0)
 		planmanager->showIngredientsForPeriods(plan);
 	else
