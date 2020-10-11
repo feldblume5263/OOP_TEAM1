@@ -5,10 +5,10 @@ using namespace std;
 PlanManager::PlanManager() { }
 
 PlanManager::~PlanManager() { 
-	for(auto& plan: planData) {
+	/*for(auto& plan: planData) {
 		delete plan.getMeal();
 		delete plan.getDate();
-	}
+	}*/
 }
 
 void		PlanManager::addPlan(Plan planToAdd) {

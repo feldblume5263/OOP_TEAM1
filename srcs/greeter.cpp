@@ -495,16 +495,15 @@ void Greeter::addPlan(Plan* plan_to_add) {
 
 				while(true) {
 					cout << "Enter name of menu you want : ";
-					cin.clear(); cin.ignore();
+					cin.ignore(); cin.clear();
 					getline(cin, recipe_name);
 
 					menu_to_add = recipedatabase->searchRecipes_recipename(recipe_name);
 					if(menu_to_add.getName().size() > 0) break;
 					else {
 						cout << "No recipe for such name." << endl;
-						cout << "Enter any key to go back" << endl;
-						cin.ignore(); 	cin.clear();
-						if (getchar())continue;
+						cout << "Enter any character to go back" << endl;
+						string temp; cin >> temp;
 					}
 				}
 				while (true) {
@@ -548,7 +547,6 @@ void Greeter::addPlan(Plan* plan_to_add) {
 
 			}
 			planmanager->addPlan(*plan_to_add);
-			delete plan_to_add;
 			return;
 			//continue;
 		}
