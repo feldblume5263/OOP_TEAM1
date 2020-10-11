@@ -133,7 +133,8 @@ void Greeter::showMenu() {
 				}
 				else if (input_num_in_plan == 1) {
 					system("cls");
-					addPlan(Plan());
+					Plan *new_plan = new Plan();
+					addPlan(new_plan);
 					cout << endl << "Complete.Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
@@ -451,7 +452,7 @@ inline void Greeter::showRecipe() {
 
 
 
-void Greeter::addPlan(Plan plan_to_add) {
+void Greeter::addPlan(Plan* plan_to_add) {
 
 	while (true) {
 		system("cls");
@@ -475,14 +476,14 @@ void Greeter::addPlan(Plan plan_to_add) {
 					cout <<endl<< "Enter mealType : ";
 					cin >> meal_type;
 
-					plan_to_add.getDate().setDay(day);
-					plan_to_add.getDate().setMonth(month);
-					plan_to_add.getDate().setYear(year);
-					plan_to_add.getDate().setComment(s_comments);
-					plan_to_add.year = year;
-					plan_to_add.month = month;
-					plan_to_add.day = day;
-					plan_to_add.setMealType(meal_type);
+					plan_to_add->getDate().setDay(day);
+					plan_to_add->getDate().setMonth(month);
+					plan_to_add->getDate().setYear(year);
+					plan_to_add->getDate().setComment(s_comments);
+					plan_to_add->year = year;
+					plan_to_add->month = month;
+					plan_to_add->day = day;
+					plan_to_add->setMealType(meal_type);
 
 				}
 
@@ -505,7 +506,7 @@ void Greeter::addPlan(Plan plan_to_add) {
 						cout << "Error: Invalid Number. Enter Again." << endl;
 					}
 				}
-				plan_to_add.getMeal().addMenu(menu_to_add, num_of_people);
+				plan_to_add->getMeal().addMenu(menu_to_add, num_of_people);
 				temp_string_name = recipe_name;
 				temp_num = num_of_people;
 				cin.clear(); cin.ignore();
@@ -537,7 +538,7 @@ void Greeter::addPlan(Plan plan_to_add) {
 				}
 
 			}
-			planmanager.addPlan(plan_to_add);
+			planmanager.addPlan(*plan_to_add);
 			return;
 			//continue;
 		}
