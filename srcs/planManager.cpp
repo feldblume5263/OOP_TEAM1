@@ -4,7 +4,7 @@ using namespace std;
 
 PlanManager::PlanManager() { }
 
-PlanManager::~PlanManager() { 
+PlanManager::~PlanManager() {
 	/*for(auto& plan: planData) {
 		delete plan.getMeal();
 		delete plan.getDate();
@@ -195,20 +195,25 @@ Plan* PlanManager::searchPlan(Plan plan) {
 }
 
 vector<Plan> PlanManager::searchPlan(const Date& begin, const Date& end) {
+	cout << 2 << endl;
 	vector<Plan> ret;
 	vector<Plan> sorted_plans = planData;
 	// sort by date and meal_type
 	sort(sorted_plans.begin(), sorted_plans.end());
-	
+	cout << 3 << endl;
+
 	// for lower_bound searching, setting the meal type as 0, which is the lowest number of it
 	Plan begin_keyword = Plan(begin); 	begin_keyword.setMealType(0);
 	// for lower_bound searching, setting the meal type as 10, which is greater than the highest meal type arrangment.
 	// then, lower_bound function will return the Plan iterator that is next to the end Date
 	Plan end_keyword = Plan(end);		end_keyword.setMealType(10);
 	int begin_idx = lower_bound(sorted_plans.begin(), sorted_plans.end(), begin_keyword) - sorted_plans.begin();
-	int end_idx = lower_bound(sorted_plans.begin(), sorted_plans.end(), end_keyword) - sorted_plans.begin() - 1;	// we will not contain the iterator of next day 
+	int end_idx = lower_bound(sorted_plans.begin(), sorted_plans.end(), end_keyword) - sorted_plans.begin() - 1;	// we will not contain the iterator of next day
+	cout << 4 << endl;
 
 	ret.assign( sorted_plans.begin() + begin_idx, sorted_plans.end() + end_idx );
+	cout << 5 << endl;
+
 	return ret;
 }
 
@@ -223,7 +228,7 @@ void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
         for (Serving serving : servings)
         {
 			Recipe recipe = serving.menus;
-            for(Ingredient ingredient: recipe.getIngredients()) 
+            for(Ingredient ingredient: recipe.getIngredients())
 			{
 				string ingredient_name = ingredient.getName();
 				int ingredient_weight = stoi(ingredient.getWeight()) * serving.num_of_people;
@@ -245,7 +250,7 @@ void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
     cout << "| Required Ingredients for periods |" << endl;
 
     for(string ingredient_name: ingredients) {
-        cout << "| " <<  ingredient_name << ", " << required_ingredients[ingredient_name] << " |" << endl;
+        cout <<  ingredient_name << ", " << required_ingredients[ingredient_name] << endl;
     }
 
     cout << "---------------------\n" << endl;
