@@ -23,6 +23,26 @@ typedef struct Serving {
     int num_of_people;
 } Serving;
 
+class Ingredient {
+private:
+	string name;
+	string weight;
+public:
+	Ingredient(string name, string weight) : name(name), weight(weight) {}
+	string getName() {
+		return name;
+	}
+	string getWeight() {
+		return weight;
+	}
+	void setName(string name) {
+		this->name = name;
+	}
+	void setWeight(string weight) {
+		this->weight = weight;
+	}
+};
+
 vector<string> split(string str, char delimiter);
 void enterDate(int* _year, int* _month, int* _day);
 bool checkDate(int _year, int _month, int _day);
