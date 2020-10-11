@@ -247,7 +247,7 @@ void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
     }
 
     cout << "---------------------" << endl;
-    cout << "| Required Ingredients for periods |" << endl;
+    cout << "Required Ingredients for periods" << endl;
 
     for(string ingredient_name: ingredients) {
         cout <<  ingredient_name << ", " << required_ingredients[ingredient_name] << endl;
