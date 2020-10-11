@@ -4,26 +4,6 @@
 
 using namespace std;
 
-class Ingredient {
-private:
-	string name;
-	string weight;
-public:
-	Ingredient(string name, string weight) : name(name), weight(weight) {}
-	string getName() {
-		return name;
-	}
-	string getWeight() {
-		return weight;
-	}
-	void setName(string name) {
-		this->name = name;
-	}
-	void setWeight(string weight) {
-		this->weight = weight;
-	}
-};
-
 class Recipe {
 private:
     unsigned int id;

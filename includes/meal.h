@@ -4,6 +4,11 @@
 #include "iikh.hpp"
 #include "recipe.h"
 
+typedef struct Serving {
+    Recipe menus;
+    int num_of_people;
+} Serving;
+
 class Meal
 {
 private:
