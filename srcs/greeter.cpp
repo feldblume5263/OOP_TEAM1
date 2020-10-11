@@ -476,10 +476,10 @@ void Greeter::addPlan(Plan* plan_to_add) {
 					cout <<endl<< "Enter mealType : ";
 					cin >> meal_type;
 
-					plan_to_add->getDate().setDay(day);
-					plan_to_add->getDate().setMonth(month);
-					plan_to_add->getDate().setYear(year);
-					plan_to_add->getDate().setComment(s_comments);
+					plan_to_add->getDate()->setDay(day);
+					plan_to_add->getDate()->setMonth(month);
+					plan_to_add->getDate()->setYear(year);
+					plan_to_add->getDate()->setComment(s_comments);
 					plan_to_add->year = year;
 					plan_to_add->month = month;
 					plan_to_add->day = day;
@@ -506,7 +506,7 @@ void Greeter::addPlan(Plan* plan_to_add) {
 						cout << "Error: Invalid Number. Enter Again." << endl;
 					}
 				}
-				plan_to_add->getMeal().addMenu(menu_to_add, num_of_people);
+				plan_to_add->getMeal()->addMenu(menu_to_add, num_of_people);
 				temp_string_name = recipe_name;
 				temp_num = num_of_people;
 				cin.clear(); cin.ignore();

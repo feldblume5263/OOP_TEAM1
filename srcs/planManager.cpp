@@ -45,7 +45,7 @@ void		PlanManager::reviseMeal(int _year, int _month, int _day, int _meal_type, M
 	}
 	system("cls");
 	// Greeter
-	temp->setMeal(newMeal);
+	temp->setMeal(&newMeal);
 
 	return;
 }
@@ -107,11 +107,11 @@ void		PlanManager::reviseDate(int _year, int _month, int _day, int _meal_type) {
 	}
 
 
-	temp->getDate().setYear(newYear);
+	temp->getDate()->setYear(newYear);
 	temp->year = newYear;
-	temp->getDate().setMonth(newMonth);
+	temp->getDate()->setMonth(newMonth);
 	temp->month = newMonth;
-	temp->getDate().setDay(newDay);
+	temp->getDate()->setDay(newDay);
 	temp->day = newDay;
 
 
@@ -214,7 +214,7 @@ void PlanManager::showIngredientsForPeriods(vector<Plan> plans) {
 
     for (Plan plan: plans)
     {
-		vector<Serving> servings = plan.getMeal().getServings();
+		vector<Serving> servings = plan.getMeal()->getServings();
         for (Serving serving : servings)
         {
 			Recipe recipe = serving.menus;

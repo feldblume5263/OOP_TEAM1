@@ -12,9 +12,9 @@ class				Plan
 {
 private:
 
-	Meal			meal;
+	Meal*			meal;
 	int				meal_type;
-	Date			date;
+	Date*			date;
 
 public:
 	// TODO : Make to vector
@@ -31,11 +31,11 @@ public:
 	
 	~Plan();
 
-	Date getDate();
-	void			setDate(Date& _date);
+	Date*			getDate();
+	void			setDate(Date* _date);
 	void			setDate(int _year, int _month, int _day, string _comment);
-	Meal			getMeal();
-	void			setMeal(Meal _meal);
+	Meal*			getMeal();
+	void			setMeal(Meal* _meal);
 	int				getMealType();
 	void			setMealType(int _meal_type);
 	bool			comparePlan(int _year, int _month, int _day, int _meal_type);

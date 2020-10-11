@@ -10,8 +10,8 @@ Plan Class
 */
 
 Plan::Plan() {
-	date = Date();
-	meal = Meal();
+	date = new Date();
+	meal = new Meal();
 
 	year = 0;
 	month = 0;
@@ -23,23 +23,23 @@ Plan::Plan(Date date) {
 	month = date.getMonth();
 	day = date.getDay();
 
-	meal = Meal();
+	meal = new Meal();
 }
 
 Plan::Plan(int _year, int _month, int _day, string _comments, Meal& _meal, int _meal_type) {
 
 	//Handling exception from Date Class
 	try {
-		date = Date(_year, _month, _day, _comments);
+		date = new Date(_year, _month, _day, _comments);
 	}
 	catch (out_of_range e) {
 		cout << "Error	: Can not construct date instance. Check parameter!";
 	}
-	meal = _meal;
+	meal = &_meal;
 	meal_type = _meal_type;
-	year = date.getYear();
-	month = date.getMonth();
-	day = date.getDay();
+	year = date->getYear();
+	month = date->getMonth();
+	day = date->getDay();
 }
 
 Plan::~Plan() { }
@@ -47,23 +47,23 @@ Plan::~Plan() { }
 //Getter and Setter of Private Value;
 
 
-Date Plan::getDate() {
+Date* Plan::getDate() {
 	return date;
 }
 
-void			Plan::setDate(Date& _date) {
+void			Plan::setDate(Date* _date) {
 	date = _date;
 }
 
 void			Plan::setDate(int _year, int _month, int _day, string _comment) {
-	date = Date(_year, _month, _day, _comment);
+	date = new Date(_year, _month, _day, _comment);
 }
 
-Meal			Plan::getMeal() {
+Meal*			Plan::getMeal() {
 	return meal;
 }
 
-void			Plan::setMeal(Meal _meal) {
+void			Plan::setMeal(Meal* _meal) {
 	meal = _meal;
 }
 
@@ -78,11 +78,11 @@ void			Plan::setMealType(int _meal_type) {
 
 void			Plan::showPlan() {
 
-	string		s_year = to_string(date.getYear());
-	string		s_month = date.getMonth() < 10 ? "0" + to_string(date.getMonth()) : to_string(date.getMonth());
-	string 		s_day = (date.getDay() < 10) ? "0" + to_string(date.getDay()) : to_string(date.getDay());
+	string		s_year = to_string(date->getYear());
+	string		s_month = date->getMonth() < 10 ? "0" + to_string(date->getMonth()) : to_string(date->getMonth());
+	string 		s_day = (date->getDay() < 10) ? "0" + to_string(date->getDay()) : to_string(date->getDay());
 	string		meal_label;
-	string		s_comment = date.getComment();
+	string		s_comment = date->getComment();
 
 	if (meal_type == 1)
 		meal_label = "Breakfast";
@@ -101,7 +101,7 @@ void			Plan::showPlan() {
 	cout << "Comment : " << s_comment << endl;	
 
 	cout << endl << "-menu-" <<  endl;
-	vector<Serving> servings = meal.getServings();
+	vector<Serving> servings = meal->getServings();
 	for (int i = 0; i < servings.size(); i++) {
 		std::cout << "Menu Name:	" << servings[i].menus.getName() << endl;
 		std::cout << "Num of People:	" << servings[i].num_of_people << endl;
@@ -111,14 +111,14 @@ void			Plan::showPlan() {
 }
 
 bool			Plan::comparePlan(int _year, int _month, int _day, int _meal_type) {
-	if (this->date.getYear() == _year && this->date.getMonth() == _month && this->date.getDay() == _day && meal_type == _meal_type)
+	if (this->date->getYear() == _year && this->date->getMonth() == _month && this->date->getDay() == _day && meal_type == _meal_type)
 		return (true);
 	return (false);
 }
 
 
 bool			Plan::comparePlan(Plan plan) {
-	if (plan.date.getMonth() == date.getMonth() && plan.date.getDay() == date.getDay() && plan.meal_type == meal_type)
+	if (plan.date->getMonth() == date->getMonth() && plan.date->getDay() == date->getDay() && plan.meal_type == meal_type)
 		return (true);
 	return (false);
 }
