@@ -4,20 +4,19 @@
 #include "iikh.hpp"
 #include "recipe.h"
 
-struct Serving {
-    Recipe menus;
-    int num_of_people;
-};
-
 class Meal
 {
-public:
-    std::vector <Serving> meals;
+private:
+    string name;
+    vector <Serving> servings;
+
 public:
     Meal();
 
     ~Meal();
 
+    string getName() { return this->name; }
+    void setName(string name) { this->name = name; }
     // add menus
     void addMenu(Recipe &_menu, const int& people_in = 1);
 
@@ -27,7 +26,7 @@ public:
     // show name of menus and ingredients scaled by num_of_people
     void showMeal();
 
-    vector <Serving> get_meals();
+    vector <Serving> getServings();
 };
 
 

@@ -25,6 +25,11 @@ using namespace std;
 	//}
 //} Ingredient;
 
+typedef struct Serving {
+    Recipe menus;
+    int num_of_people;
+} Serving;
+
 vector<string> split(string str, char delimiter);
 void enterDate(int* _year, int* _month, int* _day);
 bool checkDate(int _year, int _month, int _day);

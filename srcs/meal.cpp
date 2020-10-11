@@ -16,20 +16,20 @@ void Meal::addMenu(Recipe &_menu, const int& people_in)
     _serving.menus = _menu;
     _serving.num_of_people = people_in;
 
-    meals.push_back(_serving);
+    servings.push_back(_serving);
 }
 
 void Meal::deleteMenu(int order)
 {
-    auto itr = meals.begin() + order;
-    meals.erase(itr);
+    auto itr = servings.begin() + order;
+    servings.erase(itr);
 }
 
 void Meal::showMeal()
 {
     int i = 1;
 
-    for (auto each_menu : meals)
+    for (auto each_menu : servings)
     {
         cout << "---------------------" << endl;
         cout << "| Serving " << i << " " << each_menu.menus.getName() << " |" << endl;
@@ -46,6 +46,6 @@ void Meal::showMeal()
     }
 }
 
-std::vector<Serving> Meal::get_meals() {
-    return meals;
+std::vector<Serving> Meal::getServings() {
+    return servings;
 }

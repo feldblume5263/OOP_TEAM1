@@ -11,11 +11,8 @@ using namespace std;
 class				Plan
 {
 private:
-	vector<string>	menu_name;
-	vector<int> numOfPeople;
 
-protected:
-	Meal			menu;
+	Meal			meal;
 	int				meal_type;
 	Date			date;
 
@@ -29,17 +26,15 @@ public:
 	int				month;
 	int				day;
 	Plan();
-	Plan(int _year, int _month, int _day, string  _comments, Meal& _menu, int _meal_type);
+	Plan(int _year, int _month, int _day, string  _comments, Meal& _meal, int _meal_type);
 	
 	~Plan();
 
-	Date* getDate();
-	vector<string>*	getMenuName();
-	vector<int>* getNumOfPeople();
+	Date getDate();
 	void			setDate(Date& _date);
 	void			setDate(int _year, int _month, int _day, string _comment);
-	Meal*			getMenu();
-	void			setMenu(Meal _menu);
+	Meal			getMeal();
+	void			setMeal(Meal _meal);
 	int				getMealType();
 	void			setMealType(int _meal_type);
 	bool			comparePlan(int _year, int _month, int _day, int _meal_type);
