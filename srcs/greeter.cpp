@@ -168,7 +168,7 @@ void Greeter::showMenu() {
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 5) {
-					system("cls");
+					system("clear");
 					showPeriod();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
@@ -860,8 +860,13 @@ void Greeter::showPeriod() {
 	Date			endDate;
 
 	cout << "Show all Ingridient for Peroids" << endl;
+	cout << endl;
+	cout << endl;
 	cout << "Enter period" << endl;
+	cout << endl;
+	cout << endl;
 	cout << "Start Date" << endl;
+	cout << endl;
 	cout << "year : ";
 	cin >> inputNum;
 	startDate.setYear(inputNum);
@@ -870,8 +875,10 @@ void Greeter::showPeriod() {
 	startDate.setMonth(inputNum);
 	cout << "day : ";
 	cin >> inputNum;
+	cout << endl << endl;
 	startDate.setDay(inputNum);
 	cout << "End Date" << endl;
+	cout << endl;
 	cout << "year : ";
 	cin >> inputNum;
 	endDate.setYear(inputNum);
@@ -881,6 +888,10 @@ void Greeter::showPeriod() {
 	cout << "day : ";
 	cin >> inputNum;
 	plan = planmanager->searchPlan(startDate, endDate);
-	planmanager->showIngredientsForPeriods(plan);
+	if (plan.size() > 0)
+		planmanager->showIngredientsForPeriods(plan);
+	else
+		cout << "you have no Plan" << endl;
+
 	std::cout << "Press Enter to continue.." << endl;
 }
